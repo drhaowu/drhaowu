@@ -4,6 +4,5 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://drhaowu.github.io',
-  base: '/drhaowu',
   integrations: [tailwind(), react()],
 }); 
