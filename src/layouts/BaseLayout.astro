@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Dr Hao Wu's Personal Website" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-gray-50">
+		<nav class="fixed top-0 left-0 h-screen w-48 bg-white shadow-lg p-6">
+			<div class="mb-8">
+				<a href="/" class="text-2xl font-bold text-gray-900 hover:text-gray-600">
+					Dr Hao Wu
+				</a>
+			</div>
+			
+			<div class="space-y-4">
+				<a href="/" class={`block text-lg ${Astro.url.pathname === "/" ? "font-bold text-gray-900" : "text-gray-600 hover:text-gray-900"}`}>
+					首页
+				</a>
+				<a href="/about" class={`block text-lg ${Astro.url.pathname === "/about" ? "font-bold text-gray-900" : "text-gray-600 hover:text-gray-900"}`}>
+					关于
+				</a>
+				<a href="/projects" class={`block text-lg ${Astro.url.pathname === "/projects" ? "font-bold text-gray-900" : "text-gray-600 hover:text-gray-900"}`}>
+					项目
+				</a>
+				<a href="/contact" class={`block text-lg ${Astro.url.pathname === "/contact" ? "font-bold text-gray-900" : "text-gray-600 hover:text-gray-900"}`}>
+					联系
+				</a>
+			</div>
+		</nav>
+		
+		<main class="ml-48 p-8">
+			<slot />
+		</main>
+	</body>
+</html> 

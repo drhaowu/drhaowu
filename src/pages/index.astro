@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Dr Hao Wu">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		<!-- Featured Project -->
+		<div class="col-span-full bg-white rounded-lg overflow-hidden shadow-md">
+			<img src="/img/banner.jpg" alt="Featured Project" class="w-full h-64 object-cover" />
+			<div class="p-6">
+				<h2 class="text-2xl font-semibold mb-2">数字空间中的酷儿文化研究</h2>
+				<p class="text-gray-600">探索在线社交媒体平台上的酷儿群体如何构建身份认同和社区归属感...</p>
+			</div>
+		</div>
+
+		<!-- Project Cards -->
+		<div class="bg-white rounded-lg p-6 shadow-md">
+			<div class="text-4xl mb-4">📚</div>
+			<h3 class="text-xl font-semibold mb-2">最新发表</h3>
+			<p class="text-gray-600 mb-4">数字人类学视角下的性/别认同研究</p>
+			<div class="text-sm text-gray-500">2024</div>
+		</div>
+
+		<div class="bg-white rounded-lg p-6 shadow-md">
+			<div class="text-4xl mb-4">🔬</div>
+			<h3 class="text-xl font-semibold mb-2">当前项目</h3>
+			<p class="text-gray-600 mb-4">边缘群体的数字赋权研究</p>
+			<div class="text-sm text-gray-500">进行中</div>
+		</div>
+
+		<div class="bg-white rounded-lg p-6 shadow-md">
+			<div class="text-4xl mb-4">🎥</div>
+			<h3 class="text-xl font-semibold mb-2">纪录片</h3>
+			<p class="text-gray-600 mb-4">《边缘的声音》系列纪录片</p>
+			<div class="text-sm text-gray-500">2024</div>
+		</div>
+
+		<div class="bg-white rounded-lg p-6 shadow-md">
+			<div class="text-4xl mb-4">🎙️</div>
+			<h3 class="text-xl font-semibold mb-2">播客</h3>
+			<p class="text-gray-600 mb-4">数字人类学对话</p>
+			<div class="text-sm text-gray-500">即将推出</div>
+		</div>
+	</div>
+</BaseLayout> 
