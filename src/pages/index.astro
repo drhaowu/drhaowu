@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 ---
 
 <BaseLayout title="Dr Hao Wu">
@@ -14,32 +15,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		</div>
 
 		<!-- Project Cards -->
-		<div class="bg-white rounded-lg p-6 shadow-md">
-			<div class="text-4xl mb-4">📚</div>
-			<h3 class="text-xl font-semibold mb-2">最新发表</h3>
-			<p class="text-gray-600 mb-4">数字人类学视角下的性/别认同研究</p>
-			<div class="text-sm text-gray-500">2024</div>
-		</div>
+		<ProjectCard
+			emoji="📚"
+			title="最新发表"
+			description="数字人类学视角下的性/别认同研究"
+			status="2024"
+		/>
 
-		<div class="bg-white rounded-lg p-6 shadow-md">
-			<div class="text-4xl mb-4">🔬</div>
-			<h3 class="text-xl font-semibold mb-2">当前项目</h3>
-			<p class="text-gray-600 mb-4">边缘群体的数字赋权研究</p>
-			<div class="text-sm text-gray-500">进行中</div>
-		</div>
+		<ProjectCard
+			emoji="🔬"
+			title="当前项目"
+			description="边缘群体的数字赋权研究"
+			status="进行中"
+		/>
 
-		<div class="bg-white rounded-lg p-6 shadow-md">
-			<div class="text-4xl mb-4">🎥</div>
-			<h3 class="text-xl font-semibold mb-2">纪录片</h3>
-			<p class="text-gray-600 mb-4">《边缘的声音》系列纪录片</p>
-			<div class="text-sm text-gray-500">2024</div>
-		</div>
+		<ProjectCard
+			emoji="🎥"
+			title="纪录片"
+			description="《边缘的声音》系列纪录片"
+			status="2024"
+		/>
 
-		<div class="bg-white rounded-lg p-6 shadow-md">
-			<div class="text-4xl mb-4">🎙️</div>
-			<h3 class="text-xl font-semibold mb-2">播客</h3>
-			<p class="text-gray-600 mb-4">数字人类学对话</p>
-			<div class="text-sm text-gray-500">即将推出</div>
-		</div>
+		<ProjectCard
+			emoji="🎙️"
+			title="播客"
+			description="数字人类学对话"
+			status="即将推出"
+		/>
 	</div>
 </BaseLayout> 
