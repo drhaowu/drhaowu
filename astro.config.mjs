@@ -3,7 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://drhaowu.com', // 您的自定义域名
+  site: 'https://drhaowu.github.io',
+  base: '/drhaowu',
   vite: {
     plugins: [tailwindcss()]
   }
