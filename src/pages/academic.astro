@@ -1,0 +1,455 @@
+---
+// Academic页面 - 学术背景展示
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Academic Profile - Dr. Hao Wu</title>
+</head>
+<body>
+  <!-- 动态背景 -->
+  <div class="dynamic-bg">
+    <img src="/assets/videos/background.gif" alt="Background" class="bg-video">
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- 导航栏 -->
+  <Header />
+
+  <!-- 页面标题 -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Academic Profile</h1>
+      <p class="page-subtitle">Research, Teaching & Academic Leadership</p>
+    </div>
+  </section>
+
+  <!-- About区域 -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="liquid-glass-card">
+            <h3 class="about-subtitle">Academic Background</h3>
+            <p>Recently completed <strong>PhD in Digital Geography</strong> at University College London (UCL), 
+            focusing on <em>digital technologies and hybrid queer spaces in China</em>. Awarded <strong>AFHEA 
+            (Associate Fellow of the Higher Education Academy)</strong> accreditation, demonstrating excellence 
+            in teaching and learning support.</p>
+          </div>
+          
+          <div class="liquid-glass-card">
+            <h3 class="about-subtitle">Teaching & Leadership</h3>
+            <p>Currently serving as <strong>UCL Faculty Representative</strong> for the School of Social and 
+            Historical Sciences. Extensive experience in <em>academic teaching, research supervision, and 
+            cross-cultural education</em>. Led multiple research projects and academic initiatives.</p>
+          </div>
+          
+          <div class="liquid-glass-card">
+            <h3 class="about-subtitle">Media & Creative Skills</h3>
+            <p>Combines academic expertise with <strong>professional media production skills</strong>, including 
+            video editing, visual design, and content creation. Specialized in <em>cross-cultural communication 
+            and international audience engagement</em> through various digital platforms.</p>
+          </div>
+        </div>
+        
+        <div class="about-image">
+          <div class="about-image-placeholder">
+            <img src="/assets/images/avatar.png" alt="Dr. Hao Wu" class="about-image-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Skills区域 -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title">Academic Skills & Expertise</h2>
+      <div class="grid grid--3">
+        <div class="liquid-glass-card">
+          <div class="skill-icon">
+            <img src="/assets/images/avatar.png" alt="PhD Research" style="width: 48px; height: 48px; border-radius: 50%;" />
+          </div>
+          <h3 class="skill-name">PhD Research</h3>
+          <p class="skill-description">Digital Geography, Queer Studies, Cross-cultural Understanding, Qualitative Research Methods, Data Analysis, and Academic Writing</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">
+            <img src="/assets/images/avatar.png" alt="Teaching Experience" style="width: 48px; height: 48px; border-radius: 50%;" />
+          </div>
+          <h3 class="skill-name">Teaching Experience</h3>
+          <p class="skill-description">Higher Education Teaching, Curriculum Design, Student Mentoring, AFHEA Certification, Inclusive Teaching Practices</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🎓</div>
+          <h3 class="skill-name">Academic Publications</h3>
+          <p class="skill-description">Multiple papers under preparation and accepted for publication in peer-reviewed journals including Gender and Education and BERJ</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🌍</div>
+          <h3 class="skill-name">Language Skills</h3>
+          <p class="skill-description">Chinese (Native), English (Fluent), Thai (Basic), Cross-cultural Communication and International Academic Collaboration</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🤝</div>
+          <h3 class="skill-name">Research Collaboration</h3>
+          <p class="skill-description">Interdisciplinary research projects, international academic networks, conference presentations, and collaborative publications</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">
+            <img src="/assets/images/avatar.png" alt="Academic Leadership" style="width: 48px; height: 48px; border-radius: 50%;" />
+          </div>
+          <h3 class="skill-name">Academic Leadership</h3>
+          <p class="skill-description">UCL SHS Faculty Representative, PGR Coordinator, Guest Lecturer, and active participation in academic governance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Projects区域 -->
+  <section class="section section--light" id="projects">
+    <div class="container">
+      <h2 class="section-title">Research Projects</h2>
+      <div class="grid grid--2">
+        <div class="liquid-glass-card">
+          <div class="project-image">
+            <img src="/assets/images/avatar.png" alt="PhD Research" style="width: 80px; height: 80px; border-radius: 50%;" />
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">The Role of Digital Technologies in Producing Hybrid Queer Spaces</h3>
+            <p class="project-category">PhD Research Project</p>
+            <p class="project-description">
+              A biographical analysis of Chinese queer males across generations, exploring how digital platforms 
+              create hybrid spaces that bridge physical and virtual queer communities. This research examines 
+              the intersection of technology, identity, and space in contemporary China.
+            </p>
+            <a href="#" class="btn btn--glass">View Details →</a>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="project-image">📊</div>
+          <div class="project-content">
+            <h3 class="project-title">Global South PhD Student Experience Research</h3>
+            <p class="project-category">Collaborative Research</p>
+            <p class="project-description">
+              Research on the experiences of PhD students from the Global South studying in UK universities. 
+              This project explores challenges, opportunities, and support systems for international students 
+              in higher education contexts.
+            </p>
+            <a href="#" class="btn btn--glass">View Details →</a>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="project-image">🎓</div>
+          <div class="project-content">
+            <h3 class="project-title">Guest Lecturer Experience</h3>
+            <p class="project-category">Teaching & Pedagogy</p>
+            <p class="project-description">
+              Experience as a guest lecturer at various institutions, delivering lectures on digital geography, 
+              queer studies, and cross-cultural research methods. This includes curriculum development and 
+              innovative teaching approaches.
+            </p>
+            <a href="#" class="btn btn--glass">View Details →</a>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="project-image">📚</div>
+          <div class="project-content">
+            <h3 class="project-title">Academic Publications</h3>
+            <p class="project-category">Research Output</p>
+            <p class="project-description">
+              Multiple academic papers under preparation and accepted for publication in peer-reviewed journals 
+              including Gender and Education and BERJ. Focus on digital geography, queer studies, and 
+              cross-cultural research methodologies.
+            </p>
+            <a href="#" class="btn btn--glass">View Publications →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <Footer />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import '../styles/variables.css';
+    @import '../styles/components.css';
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* 动态背景 */
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      filter: brightness(1.2) contrast(0.9);
+      animation: slowLoop 8s ease-in-out infinite;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes slowLoop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* 页面标题 */
+    .page-header {
+      padding: 8rem 0 4rem;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    .page-subtitle {
+      font-size: 1.3rem;
+      color: #42DEE4;
+      font-weight: 500;
+    }
+
+    /* 区域标题 */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    /* About区域 */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-subtitle {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-text p {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      line-height: 1.7;
+    }
+
+    .about-text strong {
+      color: #ffffff;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-text em {
+      color: #42DEE4;
+      font-style: normal;
+      font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-image {
+      text-align: center;
+    }
+
+    .about-image-placeholder {
+      width: 400px;
+      height: 400px;
+      background: #ffffff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image-img {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .about-image-placeholder:hover .about-image-img {
+      transform: scale(1.02);
+    }
+
+    /* 技能图标 */
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-description {
+      line-height: 1.7;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 项目图片 */
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-size: 4rem;
+    }
+
+    .project-image img {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-category {
+      color: #42DEE4;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-description {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-image-placeholder {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  </style>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

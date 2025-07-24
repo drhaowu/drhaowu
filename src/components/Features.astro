@@ -1,0 +1,137 @@
+---
+// 统一的Features组件 - Liquid Glass风格
+---
+
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-card liquid-glass-card">
+        <div class="feature-icon">🚀</div>
+        <h3 class="feature-title">Fast Performance</h3>
+        <p class="feature-description">Optimized for speed and efficiency, ensuring smooth user experience across all devices.</p>
+      </div>
+      
+      <div class="feature-card liquid-glass-card">
+        <div class="feature-icon">🎨</div>
+        <h3 class="feature-title">Modern Design</h3>
+        <p class="feature-description">Contemporary liquid glass aesthetics with beautiful animations and interactions.</p>
+      </div>
+      
+      <div class="feature-card liquid-glass-card">
+        <div class="feature-icon">📱</div>
+        <h3 class="feature-title">Responsive</h3>
+        <p class="feature-description">Perfectly adapted for desktop, tablet, and mobile devices with seamless transitions.</p>
+      </div>
+      
+      <div class="feature-card liquid-glass-card">
+        <div class="feature-icon">🔧</div>
+        <h3 class="feature-title">Flexible</h3>
+        <p class="feature-description">Easy to customize and extend with modular components and CSS variables.</p>
+      </div>
+      
+      <div class="feature-card liquid-glass-card">
+        <div class="feature-icon">⚡</div>
+        <h3 class="feature-title">Efficient</h3>
+        <p class="feature-description">Built with modern web technologies for optimal performance and maintainability.</p>
+      </div>
+      
+      <div class="feature-card liquid-glass-card">
+        <div class="feature-icon">🌟</div>
+        <h3 class="feature-title">Accessible</h3>
+        <p class="feature-description">Designed with accessibility in mind, ensuring inclusive user experience for all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .feature-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .feature-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature-card {
+      padding: 1.5rem;
+    }
+  }
+</style>

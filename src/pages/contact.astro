@@ -1,0 +1,507 @@
+---
+// Contact页面 - 联系方式和合作信息
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Contact - Dr. Hao Wu</title>
+</head>
+<body>
+  <!-- 动态背景 -->
+  <div class="dynamic-bg">
+    <img src="/assets/videos/background.gif" alt="Background" class="bg-video">
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- 导航栏 -->
+  <Header />
+
+  <!-- 页面标题 -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Let's Connect</h1>
+      <p class="page-subtitle">Get in touch for collaborations, opportunities, or just to say hello</p>
+    </div>
+  </section>
+
+  <!-- Contact Methods区域 -->
+  <section class="section" id="contact-methods">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="grid grid--3">
+        <div class="liquid-glass-card">
+          <div class="contact-icon">📧</div>
+          <h3 class="contact-method-title">Email</h3>
+          <p class="contact-method-description">For academic inquiries, research collaboration, or general questions</p>
+          <a href="mailto:hao.wu@ucl.ac.uk" class="btn btn--glass">Send Email</a>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="contact-icon">💼</div>
+          <h3 class="contact-method-title">LinkedIn</h3>
+          <p class="contact-method-description">Connect professionally and view detailed work experience</p>
+          <a href="https://linkedin.com/in/hao-wu-digital-geographer" class="btn btn--glass">Connect</a>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="contact-icon">📝</div>
+          <h3 class="contact-method-title">Research Blog</h3>
+          <p class="contact-method-description">Read about my latest research and academic insights</p>
+          <a href="https://uclgeographynews.com" class="btn btn--glass">Read Blog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaboration Areas区域 -->
+  <section class="section" id="collaboration">
+    <div class="container">
+      <h2 class="section-title">Areas of Collaboration</h2>
+      <div class="collaboration-grid">
+        <div class="liquid-glass-card">
+          <div class="collaboration-icon">🎓</div>
+          <h3 class="collaboration-title">Academic Research</h3>
+          <p class="collaboration-description">
+            Collaborative research projects in digital geography, queer studies, cross-cultural research, 
+            and interdisciplinary approaches to understanding technology and society.
+          </p>
+          <ul class="collaboration-topics">
+            <li>Digital Ethnography</li>
+            <li>Cross-cultural Studies</li>
+            <li>Qualitative Research</li>
+            <li>Academic Writing</li>
+          </ul>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="collaboration-icon">👨‍🏫</div>
+          <h3 class="collaboration-title">Teaching & Education</h3>
+          <p class="collaboration-description">
+            Guest lectures, curriculum development, teaching workshops, and educational content creation 
+            for higher education institutions and training programs.
+          </p>
+          <ul class="collaboration-topics">
+            <li>Guest Lectures</li>
+            <li>Curriculum Design</li>
+            <li>Teaching Workshops</li>
+            <li>Educational Content</li>
+          </ul>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="collaboration-icon">🎬</div>
+          <h3 class="collaboration-title">Media Production</h3>
+          <p class="collaboration-description">
+            Video production, content creation, social media management, and creative direction for 
+            brands, organizations, and educational content.
+          </p>
+          <ul class="collaboration-topics">
+            <li>Video Editing</li>
+            <li>Content Strategy</li>
+            <li>Social Media Management</li>
+            <li>Creative Direction</li>
+          </ul>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="collaboration-icon">🌍</div>
+          <h3 class="collaboration-title">International Projects</h3>
+          <p class="collaboration-description">
+            Cross-cultural communication, international collaboration, multilingual content creation, 
+            and global brand strategies for diverse audiences.
+          </p>
+          <ul class="collaboration-topics">
+            <li>Cross-cultural Communication</li>
+            <li>International Collaboration</li>
+            <li>Multilingual Content</li>
+            <li>Global Strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系表单区域 -->
+  <section class="section section--light" id="contact-form">
+    <div class="container">
+      <div class="form-container">
+        <h2 class="section-title">Send a Message</h2>
+        <p class="form-description">
+          Have a specific project in mind? Fill out the form below and I'll get back to you as soon as possible.
+        </p>
+        
+        <form class="contact-form liquid-glass-card">
+          <div class="form-group">
+            <label for="name" class="form-label">Name *</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject *</label>
+            <select id="subject" name="subject" class="form-select" required>
+              <option value="">Select a subject</option>
+              <option value="academic">Academic Collaboration</option>
+              <option value="teaching">Teaching Opportunity</option>
+              <option value="media">Media Production</option>
+              <option value="consulting">Consulting</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Message *</label>
+            <textarea id="message" name="message" rows="6" class="form-textarea" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <Footer />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import '../styles/variables.css';
+    @import '../styles/components.css';
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* 动态背景 */
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      filter: brightness(1.2) contrast(0.9);
+      animation: slowLoop 8s ease-in-out infinite;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes slowLoop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* 页面标题 */
+    .page-header {
+      padding: 8rem 0 4rem;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    .page-subtitle {
+      font-size: 1.3rem;
+      color: #42DEE4;
+      font-weight: 500;
+    }
+
+    /* 区域标题 */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    /* 联系信息 */
+    .contact-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-intro {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .contact-description {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .contact-method {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-method-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-method-description {
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 合作领域 */
+    .collaboration-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .collaboration-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .collaboration-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .collaboration-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .collaboration-topics {
+      list-style: none;
+      padding: 0;
+    }
+
+    .collaboration-topics li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      padding-left: 1.5rem;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .collaboration-topics li:before {
+      content: '•';
+      color: #42DEE4;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .collaboration-topics li:last-child {
+      border-bottom: none;
+    }
+
+    /* 联系表单 */
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .form-description {
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-form {
+      padding: 3rem;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #42DEE4;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(66, 222, 228, 0.1);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn--primary {
+      background: #42DEE4;
+      color: #000;
+      border-color: #42DEE4;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .btn--primary:hover {
+      background: #078FFB;
+      border-color: #078FFB;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(7, 143, 251, 0.5);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
+      
+      .collaboration-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-form {
+        padding: 2rem;
+      }
+    }
+  </style>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // 表单提交处理
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // 获取表单数据
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const subject = formData.get('subject');
+      const message = formData.get('message');
+      
+      // 这里可以添加实际的表单提交逻辑
+      alert(`Thank you for your message, ${name}! I'll get back to you at ${email} soon.`);
+      
+      // 重置表单
+      this.reset();
+    });
+  </script>
+</body>
+</html> 

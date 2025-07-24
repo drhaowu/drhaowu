@@ -1,0 +1,101 @@
+---
+// 统一的导航组件 - Liquid Glass风格
+---
+
+<header class="navbar">
+  <div class="container">
+    <div class="nav-content">
+      <div class="nav-logo">
+        <a href="/" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+          <img src="/assets/images/avatar.png" alt="Dr. Hao Wu" class="nav-avatar">
+          <h1 class="nav-title">Dr. Hao Wu</h1>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/academic" class="nav-link">Academic</a>
+        <a href="/media" class="nav-link">Media</a>
+        <a href="/experience" class="nav-link">Experience</a>
+        <a href="/contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .navbar:hover {
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .nav-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-cyan);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: 1rem;
+    }
+    
+    .nav-link {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>

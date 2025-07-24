@@ -1,0 +1,117 @@
+:root {
+  /* 主题颜色 */
+  --primary-blue: #078FFB;
+  --primary-cyan: #42DEE4;
+  --primary-green: #67E356;
+  --primary-aqua: #A9EFE5;
+  
+  /* 文字颜色 */
+  --text-white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-gray: #64748b;
+  --text-light-gray: #374151;
+  
+  /* Liquid Glass 效果 */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-border-hover: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --glass-shadow-hover: 0 15px 40px rgba(31, 38, 135, 0.5);
+  --glass-blur: blur(20px);
+  --glass-radius: 20px;
+  
+  /* 传统卡片效果 */
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --card-radius: 16px;
+  --card-border: rgba(0, 0, 0, 0.05);
+  
+  /* 背景渐变 */
+  --bg-gradient-light: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  --bg-gradient-medium: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  --bg-gradient-dark: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  
+  /* 文字阴影 */
+  --text-shadow-light: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --text-shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --text-shadow-heavy: 0 4px 8px rgba(0, 0, 0, 0.3);
+  
+  /* 动画时间 */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* 间距 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+}
+
+/* Liquid Glass 通用类 */
+.liquid-glass {
+  background: var(--glass-bg);
+  border-radius: var(--glass-radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-5px);
+}
+
+/* 传统卡片通用类 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-8px);
+}
+
+/* 文字样式通用类 */
+.text-glass {
+  color: var(--text-white);
+  text-shadow: var(--text-shadow-light);
+}
+
+.text-glass-strong {
+  color: var(--text-white);
+  text-shadow: var(--text-shadow-medium);
+}
+
+.text-glass-title {
+  color: var(--text-white);
+  text-shadow: var(--text-shadow-heavy);
+}
+
+/* 背景渐变通用类 */
+.bg-gradient-light {
+  background: var(--bg-gradient-light);
+}
+
+.bg-gradient-medium {
+  background: var(--bg-gradient-medium);
+}
+
+.bg-gradient-dark {
+  background: var(--bg-gradient-dark);
+} 

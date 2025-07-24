@@ -1,16 +1,287 @@
 ---
-
+// 主页面 - 简化设计，专注玻璃效果
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Dr. Hao Wu - Digital Geographer & Media Creator</title>
+</head>
+<body>
+  <!-- 动态背景 -->
+  <div class="dynamic-bg">
+    <img src="/assets/videos/background.gif" alt="Background" class="bg-video">
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- 导航栏 -->
+  <Header />
+
+  <!-- Hero区域 -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-avatar">
+        <img src="/assets/images/avatar.png" alt="Dr. Hao Wu" />
+      </div>
+      <h1 class="hero-title">Dr. Hao Wu</h1>
+      <p class="hero-subtitle">Digital Geography PhD | AFHEA | UCL SHS Faculty Representative</p>
+      <p class="hero-description">
+        Recently graduated PhD researcher focused on digital technologies and hybrid queer spaces in China.
+        Awarded AFHEA accreditation and serving as UCL Faculty Representative. Extensive experience in
+        media production, social media management, and cross-cultural research.
+      </p>
+      <div class="hero-buttons">
+        <a href="/academic" class="hero-button primary">Academic Profile</a>
+        <a href="/media" class="hero-button">Media Work</a>
+        <a href="/experience" class="hero-button">Experience</a>
+        <a href="/contact" class="hero-button">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <Footer />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import '../styles/variables.css';
+    @import '../styles/components.css';
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* 动态背景 */
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      filter: brightness(1.1) contrast(1.2);
+      animation: slowLoop 8s ease-in-out infinite;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes slowLoop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Hero区域 */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 2rem;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      z-index: 3;
+    }
+
+    .hero-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 3rem auto;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-avatar img {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-avatar:hover img {
+      transform: scale(1.05);
+    }
+
+    .hero-avatar::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #078FFB, #42DEE4, #67E356);
+      z-index: -1;
+      opacity: 0.1;
+      animation: avatarGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes avatarGlow {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.2; transform: scale(1.05); }
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-button {
+      padding: 1rem 2rem;
+      border: 2px solid #ffffff;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1a1a1a;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      text-shadow: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-button:hover {
+      background: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+      color: #1a1a1a;
+    }
+
+    .hero-button.primary {
+      background: #ffffff;
+      color: #1a1a1a;
+      text-shadow: none;
+    }
+
+    .hero-button.primary:hover {
+      background: #ffffff;
+      color: #1a1a1a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // 导航栏滚动效果
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        if (window.scrollY > 100) {
+          navbar.style.background = 'rgba(0, 0, 0, 0.5)';
+          navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        } else {
+          navbar.style.background = 'rgba(0, 0, 0, 0.3)';
+          navbar.style.boxShadow = 'none';
+        }
+      }
+    });
+  </script>
+</body>
 </html>

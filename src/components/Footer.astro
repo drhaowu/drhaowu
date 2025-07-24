@@ -1,0 +1,185 @@
+---
+// 统一的Footer组件 - Liquid Glass风格
+---
+
+<footer class="footer-section">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="/assets/images/avatar.png" alt="Dr. Hao Wu" class="footer-avatar">
+          <h3 class="footer-title">Dr. Hao Wu</h3>
+        </div>
+        <p class="footer-description">
+          Digital Geographer & Media Creator<br>
+          Exploring the intersection of technology and space
+        </p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-section-group">
+          <h4 class="footer-section-title">Academic</h4>
+          <a href="/academic" class="footer-link">Research</a>
+          <a href="/academic" class="footer-link">Teaching</a>
+          <a href="/academic" class="footer-link">Publications</a>
+        </div>
+        
+        <div class="footer-section-group">
+          <h4 class="footer-section-title">Media</h4>
+          <a href="/media" class="footer-link">Video Production</a>
+          <a href="/media" class="footer-link">Visual Design</a>
+          <a href="/media" class="footer-link">Content Creation</a>
+        </div>
+        
+        <div class="footer-section-group">
+          <h4 class="footer-section-title">Connect</h4>
+          <a href="/contact" class="footer-link">Contact</a>
+          <a href="/contact" class="footer-link">LinkedIn</a>
+          <a href="/contact" class="footer-link">Research Blog</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-divider"></div>
+      <p class="footer-copyright">
+        © 2025 Dr. Hao Wu. All rights reserved. | Built with Liquid Glass Design
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: #ffffff;
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(7, 143, 251, 0.1), rgba(66, 222, 228, 0.1));
+    pointer-events: none;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-info {
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .footer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-section-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-cyan);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0;
+  }
+
+  .footer-link:hover {
+    color: var(--primary-cyan);
+    transform: translateX(5px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .footer-info {
+      max-width: none;
+      text-align: center;
+    }
+
+    .footer-logo {
+      justify-content: center;
+    }
+  }
+</style>

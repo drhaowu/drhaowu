@@ -1,0 +1,551 @@
+---
+// Media页面 - 媒体和创意工作展示
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Media & Creative Work - Dr. Hao Wu</title>
+</head>
+<body>
+  <!-- 动态背景 -->
+  <div class="dynamic-bg">
+    <img src="/assets/videos/background.gif" alt="Background" class="bg-video">
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- 导航栏 -->
+  <Header />
+
+  <!-- 页面标题 -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Media & Creative Work</h1>
+      <p class="page-subtitle">Video Production, Visual Design & Content Creation</p>
+    </div>
+  </section>
+
+  <!-- Media Skills区域 -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title">Media Skills & Expertise</h2>
+      <div class="grid grid--3">
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🎬</div>
+          <h3 class="skill-name">Video Production</h3>
+          <p class="skill-description">Final Cut Pro, CapCut, Adobe Premiere, Script Writing, Platform Optimization, Short-form Content Creation</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🎨</div>
+          <h3 class="skill-name">Visual Design</h3>
+          <p class="skill-description">Adobe Illustrator, Photoshop, Figma, Brand Identity, Layout Design, Visual Storytelling</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">📱</div>
+          <h3 class="skill-name">Social Media</h3>
+          <p class="skill-description">Cross-platform Management, Content Strategy, Audience Engagement, International Marketing</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🎙️</div>
+          <h3 class="skill-name">Podcast Production</h3>
+          <p class="skill-description">Audio Editing, Script Writing, Content Planning, Digital Distribution, Brand Integration</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">🌍</div>
+          <h3 class="skill-name">Cross-cultural Content</h3>
+          <p class="skill-description">International Audiences, Cultural Adaptation, Multilingual Content, Global Brand Strategy</p>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="skill-icon">📊</div>
+          <h3 class="skill-name">Content Analytics</h3>
+          <p class="skill-description">Performance Tracking, Audience Insights, Data-driven Strategy, ROI Optimization</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creative Projects区域 -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Creative Projects</h2>
+      <div class="grid grid--2">
+        <div class="liquid-glass-card">
+          <div class="project-image">
+            <img src="/assets/images/avatar.png" alt="Video Production" style="width: 80px; height: 80px; border-radius: 50%;" />
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Video Production & Editing</h3>
+            <p class="project-category">Professional Media Skills</p>
+            <p class="project-description">
+              Expert in video editing using Final Cut Pro, CapCut, and Adobe Premiere. Specialized in creating 
+              engaging content for social media platforms, including short-form videos for TikTok and Douyin. 
+              Experience in script writing and platform-specific optimization.
+            </p>
+            <a href="#" class="btn btn--glass">View Portfolio →</a>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="project-image">🎨</div>
+          <div class="project-content">
+            <h3 class="project-title">Visual Design & Creative Direction</h3>
+            <p class="project-category">Design & Branding</p>
+            <p class="project-description">
+              Proficient in Adobe Illustrator, Photoshop, and Figma for visual design and branding. Experience in 
+              creating multimedia content for international audiences, including graphics, layouts, and visual 
+              storytelling for social media campaigns and brand promotion.
+            </p>
+            <a href="#" class="btn btn--glass">View Portfolio →</a>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="project-image">📱</div>
+          <div class="project-content">
+            <h3 class="project-title">Social Media Management</h3>
+            <p class="project-category">Cross-Platform Content Strategy</p>
+            <p class="project-description">
+              Extensive experience managing social media operations across diverse platforms including WeChat, Weibo, 
+              Xiaohongshu, Douyin, and TikTok. Specialized in creating engaging content for international and 
+              multicultural audiences, with expertise in content strategy and audience engagement.
+            </p>
+            <a href="#" class="btn btn--glass">View Portfolio →</a>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card">
+          <div class="project-image">🎙️</div>
+          <div class="project-content">
+            <h3 class="project-title">Podcast Production & Content Creation</h3>
+            <p class="project-category">Audio & Digital Content</p>
+            <p class="project-description">
+              Experience in podcast production and audio content creation. Skilled in script writing, audio editing, 
+              and creating engaging digital content for various platforms. Expertise in developing content strategies 
+              that resonate with diverse international audiences.
+            </p>
+            <a href="#" class="btn btn--glass">View Portfolio →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience区域 -->
+  <section class="section section--light" id="experience">
+    <div class="container">
+      <h2 class="section-title">Media Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="liquid-glass-card">
+            <div class="timeline-date">03/2025 - Present</div>
+            <h3 class="timeline-title">Freelance Content Creator</h3>
+            <p class="timeline-company">Croud Inc. (Remote)</p>
+            <p class="timeline-description">
+              Producing bilingual short-form video content for TikTok and Douyin to promote a UK-based co-working brand.
+              Involved in scripting, editing, and platform-specific optimisation using tools such as CapCut and Figma.
+            </p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="liquid-glass-card">
+            <div class="timeline-date">02/2021 - 02/2025</div>
+            <h3 class="timeline-title">Marketing Assistant (Part-time)</h3>
+            <p class="timeline-company">China Telecom (Europe) Limited, UK</p>
+            <p class="timeline-description">
+              Managing social media operations across diverse platforms including Sina Weibo, Red Book, and WeChat, 
+              effectively engaging international and multicultural audiences. Designing and producing multimedia content 
+              tailored for official social media channels, showcasing strong skills in digital content creation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio区域 -->
+  <section class="section section--medium" id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Portfolio Highlights</h2>
+      <div class="portfolio-grid">
+        <div class="liquid-glass-card portfolio-item">
+          <div class="portfolio-image">
+            <img src="/assets/images/avatar.png" alt="Video Project" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;" />
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">TikTok Content Series</h3>
+            <p class="portfolio-category">Video Production</p>
+            <p class="portfolio-description">Short-form video content for international brands, optimized for TikTok and Douyin platforms.</p>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card portfolio-item">
+          <div class="portfolio-image">
+            <img src="/assets/images/avatar.png" alt="Design Project" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;" />
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Brand Identity Design</h3>
+            <p class="portfolio-category">Visual Design</p>
+            <p class="portfolio-description">Complete brand identity packages including logos, color schemes, and visual guidelines.</p>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card portfolio-item">
+          <div class="portfolio-image">
+            <img src="/assets/images/avatar.png" alt="Social Media Project" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;" />
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Social Media Campaigns</h3>
+            <p class="portfolio-category">Social Media Management</p>
+            <p class="portfolio-description">Multi-platform social media campaigns for international audiences and brands.</p>
+          </div>
+        </div>
+        
+        <div class="liquid-glass-card portfolio-item">
+          <div class="portfolio-image">
+            <img src="/assets/images/avatar.png" alt="Podcast Project" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;" />
+          </div>
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Podcast Series</h3>
+            <p class="portfolio-category">Audio Production</p>
+            <p class="portfolio-description">Educational and entertainment podcast content with professional audio production.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <Footer />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import '../styles/variables.css';
+    @import '../styles/components.css';
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* 动态背景 */
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      filter: brightness(1.2) contrast(0.9);
+      animation: slowLoop 8s ease-in-out infinite;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes slowLoop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* 页面标题 */
+    .page-header {
+      padding: 8rem 0 4rem;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    .page-subtitle {
+      font-size: 1.3rem;
+      color: #42DEE4;
+      font-weight: 500;
+    }
+
+    /* 区域标题 */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    /* 技能图标 */
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-description {
+      line-height: 1.7;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 项目图片 */
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #078FFB, #42DEE4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-size: 4rem;
+    }
+
+    .project-image img {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-category {
+      color: #42DEE4;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-description {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 时间线 */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #078FFB, #42DEE4);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 4rem;
+    }
+
+    .timeline-item:nth-child(odd) .liquid-glass-card {
+      margin-left: 0;
+      margin-right: 50%;
+      text-align: right;
+      padding-right: 3rem;
+    }
+
+    .timeline-item:nth-child(even) .liquid-glass-card {
+      margin-left: 50%;
+      margin-right: 0;
+      text-align: left;
+      padding-left: 3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #078FFB;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      border: 4px solid #fff;
+      box-shadow: 0 0 0 4px #078FFB;
+    }
+
+    .timeline-date {
+      color: #42DEE4;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-company {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-description {
+      line-height: 1.7;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 作品集 */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-item {
+      overflow: hidden;
+    }
+
+    .portfolio-image {
+      margin-bottom: 1.5rem;
+    }
+
+    .portfolio-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-category {
+      color: #42DEE4;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-description {
+      line-height: 1.7;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .timeline-item:nth-child(odd) .liquid-glass-card,
+      .timeline-item:nth-child(even) .liquid-glass-card {
+        margin-left: 0;
+        margin-right: 0;
+        text-align: left;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-dot {
+        left: 20px;
+      }
+    }
+  </style>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
