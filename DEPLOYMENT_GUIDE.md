@@ -1,39 +1,31 @@
 # 🚀 部署指南 - GitHub Pages
 
-## 📋 部署步骤
+## ✅ 部署完成！
 
-### 1. 创建GitHub仓库
-1. 在GitHub上创建一个新的仓库，命名为 `250723Website`
-2. 不要初始化README文件（因为我们已经有了）
+您的网站已经成功部署到GitHub Pages！
 
-### 2. 连接本地仓库到GitHub
-```bash
-# 添加远程仓库
-git remote add origin https://github.com/casperwu/250723Website.git
-
-# 推送代码
-git push -u origin main
+### 🌐 网站地址
+```
+https://drhaowu.github.io/drhaowu/
 ```
 
-### 3. 启用GitHub Pages
-1. 进入GitHub仓库设置
-2. 找到 "Pages" 选项
-3. 在 "Source" 中选择 "GitHub Actions"
-4. 保存设置
+## 📋 部署详情
 
-### 4. 自动部署
-- 每次推送到 `main` 分支时，GitHub Actions会自动构建并部署网站
-- 网站将在几分钟内上线
+### 使用的仓库
+- **仓库名称**: `drhaowu/drhaowu`
+- **GitHub Pages**: 已启用
+- **自动部署**: GitHub Actions 已配置
 
-## 🌐 网站地址
-部署完成后，网站将在以下地址可用：
-```
-https://casperwu.github.io/250723Website/
-```
+### 网站特色
+- ✅ Liquid Glass 玻璃效果设计
+- ✅ 动态GIF背景
+- ✅ 响应式多页面结构
+- ✅ 完整的导航系统
+- ✅ 自动部署到GitHub Pages
 
 ## 📁 项目结构
 ```
-250723Website/
+drhaowu/
 ├── src/
 │   ├── pages/
 │   │   ├── index.astro          # 主页
@@ -55,13 +47,6 @@ https://casperwu.github.io/250723Website/
     └── deploy.yml               # 自动部署配置
 ```
 
-## 🎨 特色功能
-- ✅ Liquid Glass 玻璃效果设计
-- ✅ 动态GIF背景
-- ✅ 响应式布局
-- ✅ 多页面结构
-- ✅ 自动部署到GitHub Pages
-
 ## 🔧 本地开发
 ```bash
 # 安装依赖
@@ -74,7 +59,12 @@ npm run dev
 npm run build
 ```
 
-## 📝 注意事项
-- 确保GitHub仓库是公开的
-- 第一次部署可能需要几分钟时间
-- 如果遇到问题，检查GitHub Actions日志 
+## 📝 更新网站
+每次推送代码到 `main` 分支时，GitHub Actions会自动构建并部署网站。
+
+## 🎯 页面导航
+- **主页**: https://drhaowu.github.io/drhaowu/
+- **学术**: https://drhaowu.github.io/drhaowu/academic
+- **媒体**: https://drhaowu.github.io/drhaowu/media
+- **经历**: https://drhaowu.github.io/drhaowu/experience
+- **联系**: https://drhaowu.github.io/drhaowu/contact 
