@@ -1,0 +1,36 @@
+---
+import { Header, Button, Footer } from '@components/odyssey-theme';
+import Layout from './Base.astro';
+import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
+import Logo from '../components/Logo.astro';
+import { settings } from '../config/settings';
+import { footerSocials, footerLists } from '../config/footer';
+
+export interface Props {
+	seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props as Props;
+---
+
+<Layout seo={seo}>
+	<Header rightMenu navData={settings.nav} slot="header">
+		<span slot="logo">
+			<Logo />
+		</span>
+	</Header>
+	<div id="page">
+		<slot />
+	</div>
+	<Footer
+		slot="footer"
+		background="var(--theme-surface-1)"
+		color="var(--theme-on-surface-1)"
+		copyrightName={settings.footer.text}
+		footerSocials={footerSocials}
+		footerLists={footerLists}
+		showPlug={false}
+	>
+		<Logo slot="logo" />
+	</Footer>
+</Layout>

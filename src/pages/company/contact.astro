@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Page.astro';
+import { Container, Button } from '@components/odyssey-theme';
+
+const seo = {
+	title: 'Contact | Dr Hao Wu',
+	description: 'Contact information for Dr Hao Wu',
+};
+---
+
+<Layout {seo}>
+	<Container>
+		<section class="contact">
+			<h1>Contact</h1>
+			<p>
+				For public collaboration or project discussion, please use the channels
+				below.
+			</p>
+			<div class="actions">
+				<Button href="https://github.com/casperwu" newTab>GitHub</Button>
+			</div>
+			<p class="note">
+				For private communication, please connect first through a public channel.
+			</p>
+		</section>
+	</Container>
+</Layout>
+
+<style>
+	.contact {
+		max-width: 760px;
+		margin: 5rem 0;
+	}
+	.actions {
+		margin: 1.5rem 0 1rem;
+	}
+	.note {
+		opacity: 0.75;
+	}
+</style>

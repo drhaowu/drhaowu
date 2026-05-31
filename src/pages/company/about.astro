@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Page.astro';
+import { Container } from '@components/odyssey-theme';
+
+const seo = {
+	title: 'About | Dr Hao Wu',
+	description: 'About Dr Hao Wu',
+};
+---
+
+<Layout {seo}>
+	<Container>
+		<section class="about">
+			<h1>About</h1>
+			<p>
+				I am interested in building practical bridges between research, product,
+				and real-world operations. My work focuses on clarity, delivery quality,
+				and long-term maintainability.
+			</p>
+			<p>
+				This website intentionally shares completed and public-facing work only.
+				Private collaborations, unfinished projects, and sensitive details are
+				not published.
+			</p>
+		</section>
+
+		<section class="about">
+			<h2>What I Work On</h2>
+			<ul>
+				<li>Applied research and structured analysis</li>
+				<li>Website and product implementation</li>
+				<li>Workflow and process optimization</li>
+				<li>Cross-functional project delivery</li>
+			</ul>
+		</section>
+
+		<section class="about">
+			<h2>Public Work</h2>
+			<p>
+				You can view selected posts and writeups in the Work section. These
+				entries represent completed, reviewable output.
+			</p>
+			<p><a href="/blog">Go to Selected Work</a></p>
+		</section>
+	</Container>
+</Layout>
+
+<style>
+	.about {
+		max-width: 780px;
+		margin: 4rem 0;
+	}
+	.about h1,
+	.about h2 {
+		margin-bottom: 1rem;
+	}
+	.about ul {
+		padding-left: 1.25rem;
+	}
+</style>

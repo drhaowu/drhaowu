@@ -1,62 +1,50 @@
-# Dr. Hao Wu - Personal Website
+# Dr Hao Wu's Personal Website
 
-Personal website showcasing academic profile, media work, and professional experience.
+This is the personal website of Dr Hao Wu, built with Astro.
 
-## 🚀 Deployment
+## Runtime Requirement
 
-This website is deployed on GitHub Pages at: https://drhaowu.github.io/drhaowu
+- Node.js `20.x` (required, see `.nvmrc`)
 
-### GitHub Pages Setup
+## Features
 
-1. **Enable GitHub Pages**:
-   - Go to your repository settings
-   - Navigate to "Pages" section
-   - Set source to "GitHub Actions"
+- 🚀 Built with [Astro](https://astro.build)
+- 🎨 Modern and clean design
+- 📱 Fully responsive
+- 🔍 SEO optimized
+- 🎯 Fast performance
 
-2. **Repository Settings**:
-   - Ensure repository is public
-   - Check that GitHub Actions are enabled
+## Getting Started
 
-3. **Deploy**:
-   - Push changes to `main` branch
-   - GitHub Actions will automatically build and deploy
-
-### Local Development
-
+1. Clone the repository:
 ```bash
-# Install dependencies
+git clone https://github.com/casperwu/drhaowu.git
+```
+
+2. Use Node 20:
+```bash
+nvm use
+```
+
+3. Install dependencies:
+```bash
 npm install
+```
 
-# Start development server
+4. Start the development server:
+```bash
 npm run dev
+```
 
-# Build for production
+5. Build for production:
+```bash
 npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## 🛠️ Tech Stack
+## Maintenance
 
-- **Framework**: Astro
-- **Styling**: Tailwind CSS + Custom CSS
-- **Deployment**: GitHub Pages
-- **Animation**: CSS Animations
+See [MAINTENANCE.md](MAINTENANCE.md) for archive, recovery, and deployment baseline steps.
 
-## 📁 Project Structure
+## License
 
-```
-src/
-├── components/     # Reusable components
-├── pages/         # Page components
-└── styles/        # Global styles and variables
-```
-
-## 🎨 Features
-
-- Responsive design
-- Liquid glass effects
-- Dynamic background animations
-- Multi-page architecture
-- Professional portfolio layout
+MIT License - see the [LICENSE](LICENSE) file for details.
