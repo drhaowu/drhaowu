@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Page.astro';
+import { Container, Button } from '@components/odyssey-theme';
+
+const seo = {
+	title: "Research Map | Mapping Hao's Research",
+	description:
+		'A bilingual research map of Hao Wu’s projects across digital technology, migration, education, queer spaces, and AI.',
+};
+
+const projects = [
+	{
+		location: 'Chengdu, China',
+		title: 'Hybrid Queer Spaces',
+		year: '2020–2025',
+		themes: ['Digital geography', 'Queer spaces', 'Identity'],
+		description:
+			'A PhD project examining how Chinese queer men use digital platforms and offline spaces to negotiate identity, visibility, and belonging.',
+	},
+	{
+		location: 'Nottingham, UK',
+		title: 'Hong Kong Experience',
+		year: '2024–2025',
+		themes: ['Migration', 'Family', 'Education'],
+		description:
+			'A documentary and research project exploring the lived experiences of Hong Kong immigrant families adapting to life in Nottingham.',
+	},
+	{
+		location: 'London, UK',
+		title: 'Global South PhD Students',
+		year: '2024–2025',
+		themes: ['Higher education', 'Decolonising education', 'Academic identity'],
+		description:
+			'A collaborative project on doctoral education, language, supervision, academic belonging, and decolonising higher education.',
+	},
+	{
+		location: 'Mongolia, China, Japan',
+		title: 'International Student Mobility',
+		year: 'Emerging project',
+		themes: ['Mobility', 'Scholarships', 'Regional space'],
+		description:
+			'An emerging comparative project on how scholarship-mediated pathways shape Mongolian students’ educational mobility to China and Japan.',
+	},
+	{
+		location: 'South Africa',
+		title: 'Digital Futures and AI',
+		year: 'Emerging project',
+		themes: ['AI', 'Digital futures', 'Global South'],
+		description:
+			'An emerging inquiry into digital technology, AI, and future imaginaries from a Global South perspective.',
+	},
+];
+---
+
+<Layout {seo}>
+	<Container>
+		<section class="hero">
+			<p class="eyebrow">Mapping Hao's Research</p>
+			<h1>Research Map</h1>
+			<p class="intro">
+				This page maps Hao Wu's research across places, projects, and themes. It is
+				designed as a bilingual research archive where visitors can explore how
+				digital technologies reshape space, mobility, identity, education, and
+				everyday life.
+			</p>
+			<p class="intro zh-intro">
+				这个页面以地图方式呈现 Hao Wu 的研究项目，展示数字技术如何在不同地点影响空间、流动、身份、教育与日常生活。
+			</p>
+			<div class="hero-actions">
+				<Button href="/blog">View Projects</Button>
+				<Button href="/zh" outlined>中文</Button>
+			</div>
+		</section>
+	</Container>
+
+	<Container>
+		<section class="map-section">
+			<div class="map-placeholder" aria-label="Research map placeholder">
+				<div class="map-point chengdu">Chengdu</div>
+				<div class="map-point nottingham">Nottingham</div>
+				<div class="map-point london">London</div>
+				<div class="map-point mobility">Mongolia · China · Japan</div>
+				<div class="map-point south-africa">South Africa</div>
+				<p>Interactive globe coming soon</p>
+			</div>
+			<div class="map-note">
+				<p class="eyebrow">Next step</p>
+				<h2>From project list to interactive atlas</h2>
+				<p>
+					The current version organises the research map as a structured project
+					database. The next version can connect this data to an interactive globe or
+					2D map, allowing visitors to filter projects by place, theme, method, and
+					output.
+				</p>
+			</div>
+		</section>
+	</Container>
+
+	<Container>
+		<section class="project-section">
+			<h2>Mapped Projects</h2>
+			<p class="section-intro">
+				Each card represents one location-based project or emerging research
+				direction. These entries will later become map markers.
+			</p>
+			<div class="project-grid">
+				{projects.map((project) => (
+					<article class="project-card">
+						<p class="project-location">📍 {project.location}</p>
+						<h3>{project.title}</h3>
+						<p class="project-year">{project.year}</p>
+						<p>{project.description}</p>
+						<ul class="theme-list">
+							{project.themes.map((theme) => <li>{theme}</li>)}
+						</ul>
+					</article>
+				))}
+			</div>
+		</section>
+	</Container>
+</Layout>
+
+<style>
+	.hero {
+		max-width: 860px;
+		margin: 5rem 0 3rem;
+	}
+	.eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: var(--font-size-sm);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		opacity: 0.72;
+	}
+	h1 {
+		margin: 0;
+		font-size: clamp(2.8rem, 7vw, 5.5rem);
+		line-height: 0.95;
+	}
+	.intro {
+		max-width: 760px;
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+	}
+	.zh-intro {
+		font-size: var(--font-size-md);
+		opacity: 0.78;
+	}
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
+	}
+	.map-section {
+		display: grid;
+		grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+		gap: 2rem;
+		align-items: stretch;
+		margin: 2rem 0 4rem;
+	}
+	.map-placeholder {
+		position: relative;
+		min-height: 460px;
+		border: 1px solid var(--theme-outline);
+		border-radius: 24px;
+		background:
+			radial-gradient(circle at 25% 35%, rgba(255, 255, 255, 0.16), transparent 8%),
+			radial-gradient(circle at 70% 55%, rgba(255, 255, 255, 0.12), transparent 10%),
+			linear-gradient(135deg, var(--theme-surface-1), var(--theme-surface-2));
+		overflow: hidden;
+	}
+	.map-placeholder::before {
+		content: '';
+		position: absolute;
+		inset: 12%;
+		border: 1px dashed var(--theme-outline);
+		border-radius: 999px;
+		opacity: 0.6;
+	}
+	.map-placeholder p {
+		position: absolute;
+		left: 1.25rem;
+		bottom: 1.25rem;
+		margin: 0;
+		opacity: 0.7;
+	}
+	.map-point {
+		position: absolute;
+		padding: 0.35rem 0.6rem;
+		border: 1px solid var(--theme-outline);
+		border-radius: 999px;
+		background: var(--theme-surface-1);
+		font-size: var(--font-size-sm);
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+	}
+	.map-point::before {
+		content: '•';
+		margin-right: 0.35rem;
+	}
+	.chengdu {
+		top: 46%;
+		left: 67%;
+	}
+	.nottingham {
+		top: 31%;
+		left: 43%;
+	}
+	.london {
+		top: 39%;
+		left: 46%;
+	}
+	.mobility {
+		top: 24%;
+		left: 62%;
+	}
+	.south-africa {
+		top: 72%;
+		left: 54%;
+	}
+	.map-note,
+	.project-card {
+		padding: 1.25rem;
+		border: 1px solid var(--theme-outline);
+		border-radius: 16px;
+		background: var(--theme-surface-1);
+	}
+	.map-note h2,
+	.project-section h2 {
+		margin-top: 0;
+	}
+	.project-section {
+		margin: 2rem 0 5rem;
+	}
+	.section-intro {
+		max-width: 760px;
+		line-height: 1.6;
+		opacity: 0.82;
+	}
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+	.project-card h3 {
+		margin: 0.25rem 0;
+	}
+	.project-location,
+	.project-year {
+		margin: 0;
+		font-size: var(--font-size-sm);
+		opacity: 0.72;
+	}
+	.theme-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0 0;
+	}
+	.theme-list li {
+		padding: 0.25rem 0.55rem;
+		border: 1px solid var(--theme-outline);
+		border-radius: 999px;
+		font-size: var(--font-size-sm);
+	}
+	@media (max-width: 900px) {
+		.map-section,
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+		.map-placeholder {
+			min-height: 360px;
+		}
+	}
+</style>

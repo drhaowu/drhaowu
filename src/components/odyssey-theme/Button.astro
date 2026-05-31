@@ -1,0 +1,44 @@
+---
+interface Props {
+	href: string;
+	outlined?: boolean;
+	newTab?: boolean;
+}
+
+const { href, outlined = false, newTab = false } = Astro.props;
+const url = href.startsWith('http') ? href : `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`;
+---
+
+<a
+	class:list={['btn', { 'btn--outlined': outlined }]}
+	href={url}
+	target={newTab ? '_blank' : undefined}
+	rel={newTab ? 'noopener noreferrer' : undefined}
+>
+	<slot />
+</a>
+
+<style>
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.65rem 1.1rem;
+		border-radius: 8px;
+		border: 1px solid var(--theme-primary);
+		background: var(--theme-primary);
+		color: var(--theme-on-primary);
+		font-weight: 600;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.btn:hover {
+		opacity: 0.9;
+	}
+
+	.btn--outlined {
+		background: transparent;
+		color: var(--theme-primary);
+	}
+</style>

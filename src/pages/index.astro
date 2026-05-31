@@ -3,53 +3,53 @@ import Layout from '../layouts/Page.astro';
 import { Container, Button } from '@components/odyssey-theme';
 
 const seo = {
-	title: 'Dr Hao Wu',
-	description: 'Personal website of Dr Hao Wu',
+	title: "Mapping Hao's Research",
+	description:
+		'An interactive archive of research projects exploring digital technology, migration, education, queer spaces, and AI across different parts of the world.',
 };
 ---
 
 <Layout {seo}>
 	<Container>
 		<section class="hero">
-			<p class="eyebrow">Personal Website</p>
-			<h1>Dr Hao Wu</h1>
+			<p class="eyebrow">Mapping Hao's Research</p>
+			<h1>Digital Lives, Spaces, and Identities Across Places</h1>
 			<p class="intro">
-				I work across research, product, and digital systems. This site shares
-				selected completed work and public writing.
+				An interactive archive of research projects exploring digital technology,
+				migration, education, queer spaces, and AI across different parts of the
+				world.
 			</p>
 			<div class="hero-actions">
-				<Button href="/company/about">About</Button>
-				<Button href="/blog" outlined>Selected Work</Button>
+				<Button href="/research-map">Research Map</Button>
+				<Button href="/blog" outlined>Projects</Button>
 			</div>
 		</section>
 	</Container>
 
 	<Container>
 		<section class="section">
-			<h2>Selected Completed Work</h2>
+			<h2>Research Themes</h2>
 			<p class="section-intro">
-				A focused snapshot of completed and publicly shareable output.
+				Core areas connecting technology, place, and social life across field sites
+				and collaborations.
 			</p>
 			<div class="cards">
 				<article class="card">
-					<h3>Research and Writing</h3>
+					<h3>Digital Technology</h3>
 					<p>
-						Published analyses and essays covering human-centered systems,
-						technology, and practical implementation questions.
+						How digital platforms, AI, and media systems shape everyday life.
 					</p>
 				</article>
 				<article class="card">
-					<h3>Web and Product Delivery</h3>
+					<h3>Space and Mobility</h3>
 					<p>
-						End-to-end website and workflow builds, from planning and structure
-						to implementation and maintenance.
+						Migration, international education, and the production of place.
 					</p>
 				</article>
 				<article class="card">
-					<h3>Operational Improvement</h3>
+					<h3>Identity and Community</h3>
 					<p>
-						Process and tooling updates that reduce friction and improve delivery
-						speed for ongoing projects.
+						Queer spaces, belonging, visibility, and social change.
 					</p>
 				</article>
 			</div>
@@ -57,13 +57,15 @@ const seo = {
 	</Container>
 
 	<Container>
-		<section class="section">
-			<h2>Current Focus</h2>
-			<p>
-				I keep in-progress work private by default. Public updates here are
-				limited to finalized, shareable outcomes and reflections.
-			</p>
-			<Button href="/company/contact">Contact</Button>
+		<section class="section map-preview">
+			<h2>Research Locations</h2>
+			<ul class="locations">
+				<li>📍 Chengdu — Hybrid Queer Spaces</li>
+				<li>📍 Nottingham — Hong Kong Experience</li>
+				<li>📍 London — Global South PhD Students</li>
+				<li>📍 Mongolia-China-Japan — International Student Mobility</li>
+			</ul>
+			<Button href="/research-map">Explore the Map</Button>
 		</section>
 	</Container>
 </Layout>
@@ -112,6 +114,15 @@ const seo = {
 	}
 	.card h3 {
 		margin-top: 0;
+	}
+	.locations {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1.5rem;
+		line-height: 1.8;
+	}
+	.locations li {
+		padding: 0.35rem 0;
 	}
 	@media (max-width: 900px) {
 		.cards {

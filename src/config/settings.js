@@ -1,8 +1,8 @@
 export const settings = {
 	// Site
 	site: {
-		title: 'Dr Hao Wu',
-		description: 'Personal website of Dr Hao Wu',
+		title: "Mapping Hao's Research",
+		description: 'A bilingual (English/Chinese) interactive map of research projects across digital technology, migration, education, queer spaces, and AI.',
 		base: '/',
 		trailingSlash: false,
 		language: 'en',
@@ -12,11 +12,15 @@ export const settings = {
 		name: 'Dr Hao Wu',
 		avatar: '/assets/images/home/classic-hero.jpg',
 		status: '👨‍💻',
-		bio: 'Researcher and builder',
+		bio: 'Mapping digital lives, spaces, and identities across places | 数字生活、空间与身份的研究地图',
 		metadata: [
 			{
 				text: 'GitHub',
 				link: 'https://github.com/casperwu',
+			},
+			{
+				text: 'EN | 中文',
+				link: '/zh',
 			},
 		],
 	},
@@ -31,7 +35,11 @@ export const settings = {
 			link: '/company/about',
 		},
 		{
-			text: 'Work',
+			text: 'Research Map',
+			link: '/research-map',
+		},
+		{
+			text: 'Projects',
 			link: '/blog',
 		},
 		{
@@ -62,7 +70,11 @@ export const settings = {
 				link: '/company/about',
 			},
 			{
-				text: 'Work',
+				text: 'Research Map',
+				link: '/research-map',
+			},
+			{
+				text: 'Projects',
 				link: '/blog',
 			},
 			{
@@ -74,7 +86,7 @@ export const settings = {
 	// Footer
 	footer: {
 		enabled: true,
-		text: 'Dr Hao Wu',
+		text: "Mapping Hao's Research",
 	},
 	// Social
 	social: [

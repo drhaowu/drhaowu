@@ -1,0 +1,79 @@
+---
+interface NavItem {
+	text: string;
+	link: string;
+}
+
+interface Props {
+	navData?: NavItem[];
+	rightMenu?: boolean;
+}
+
+const { navData = [], rightMenu = false } = Astro.props;
+
+const withBase = (link: string) =>
+	link.startsWith('http') ? link : `${import.meta.env.BASE_URL}${link.replace(/^\//, '')}`;
+---
+
+<header class="site-header">
+	<div class="site-header__inner">
+		<div class="site-header__logo">
+			<slot name="logo" />
+		</div>
+		<nav class:list={['site-header__nav', { 'site-header__nav--right': rightMenu }]}>
+			{
+				navData.map((item) => (
+					<a class="site-header__link" href={withBase(item.link)}>
+						{item.text}
+					</a>
+				))
+			}
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		border-bottom: 1px solid var(--theme-outline);
+		background: color-mix(in srgb, var(--theme-surface-1) 92%, transparent);
+		backdrop-filter: blur(10px);
+	}
+
+	.site-header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		width: min(100% - 2rem, 1120px);
+		margin-inline: auto;
+		padding: 0.85rem 1rem;
+	}
+
+	.site-header__nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.25rem;
+	}
+
+	.site-header__link {
+		color: var(--theme-on-surface-1);
+		text-decoration: none;
+		font-weight: 500;
+		opacity: 0.85;
+	}
+
+	.site-header__link:hover {
+		opacity: 1;
+		color: var(--theme-primary);
+	}
+
+	@media (max-width: 768px) {
+		.site-header__inner {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>
