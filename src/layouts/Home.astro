@@ -1,0 +1,25 @@
+---
+import Layout from './Base.astro';
+import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
+
+export interface Props {
+	seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+---
+
+<Layout seo={seo}>
+	<slot />
+</Layout>
+
+<style is:global>
+	html,
+	body {
+		height: 100%;
+	}
+
+	main {
+		min-height: 100%;
+	}
+</style>

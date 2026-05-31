@@ -1,94 +1,38 @@
 export const settings = {
-	// Site
+	// Site — public launch: Home only
 	site: {
-		title: "Mapping Hao's Research",
-		description: 'A bilingual (English/Chinese) interactive map of research projects across digital technology, migration, education, queer spaces, and AI.',
+		title: 'DR HAO WU',
+		description: 'DR HAO WU — personal site.',
 		base: '/',
 		trailingSlash: false,
 		language: 'en',
 	},
-	// Author
 	author: {
-		name: 'Dr Hao Wu',
-		avatar: '/assets/images/home/classic-hero.jpg',
-		status: '👨‍💻',
-		bio: 'Mapping digital lives, spaces, and identities across places | 数字生活、空间与身份的研究地图',
-		metadata: [
-			{
-				text: 'GitHub',
-				link: 'https://github.com/casperwu',
-			},
-			{
-				text: 'EN | 中文',
-				link: '/zh',
-			},
-		],
+		name: 'DR HAO WU',
+		avatar: '/assets/images/avatar.png',
+		status: '',
+		bio: 'DR HAO WU — personal site.',
+		metadata: [],
 	},
-	// Navigation
-	nav: [
-		{
-			text: 'Home',
-			link: '/',
-		},
-		{
-			text: 'About',
-			link: '/company/about',
-		},
-		{
-			text: 'Research Map',
-			link: '/research-map',
-		},
-		{
-			text: 'Projects',
-			link: '/blog',
-		},
-		{
-			text: 'Contact',
-			link: '/company/contact',
-		},
-	],
-	// Search
+	// Navigation — empty while other pages live in /other
+	nav: [],
 	search: {
-		enabled: true,
-		type: 'google', // google | algolia
+		enabled: false,
+		type: 'google',
 		placeholder: 'Search...',
 		algoliaAppId: '',
 		algoliaSearchKey: '',
 		algoliaAdminKey: '',
 	},
-	// Sidebar
 	sidebar: {
-		enabled: true,
-		position: 'right', // left | right
-		items: [
-			{
-				text: 'Home',
-				link: '/',
-			},
-			{
-				text: 'About',
-				link: '/company/about',
-			},
-			{
-				text: 'Research Map',
-				link: '/research-map',
-			},
-			{
-				text: 'Projects',
-				link: '/blog',
-			},
-			{
-				text: 'Contact',
-				link: '/company/contact',
-			},
-		],
+		enabled: false,
+		position: 'right',
+		items: [],
 	},
-	// Footer
 	footer: {
-		enabled: true,
-		text: "Mapping Hao's Research",
+		enabled: false,
+		text: 'DR HAO WU',
 	},
-	// Social
 	social: [
 		{
 			name: 'GitHub',

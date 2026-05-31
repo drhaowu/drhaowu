@@ -1,135 +1,174 @@
 ---
-import Layout from '../layouts/Page.astro';
-import { Container, Button } from '@components/odyssey-theme';
+import HomeLayout from '../layouts/Home.astro';
+import { settings } from '../config/settings';
+
+const base = import.meta.env.BASE_URL;
+const avatarSrc = `${base}assets/images/avatar.png`;
+const displayName = 'DR HAO WU';
 
 const seo = {
-	title: "Mapping Hao's Research",
-	description:
-		'An interactive archive of research projects exploring digital technology, migration, education, queer spaces, and AI across different parts of the world.',
+	title: displayName,
+	description: settings.author.bio,
 };
 ---
 
-<Layout {seo}>
-	<Container>
-		<section class="hero">
-			<p class="eyebrow">Mapping Hao's Research</p>
-			<h1>Digital Lives, Spaces, and Identities Across Places</h1>
-			<p class="intro">
-				An interactive archive of research projects exploring digital technology,
-				migration, education, queer spaces, and AI across different parts of the
-				world.
-			</p>
-			<div class="hero-actions">
-				<Button href="/research-map">Research Map</Button>
-				<Button href="/blog" outlined>Projects</Button>
-			</div>
-		</section>
-	</Container>
+<HomeLayout {seo}>
+	<div class="landing" aria-label={displayName}>
+		<div class="landing__bg" aria-hidden="true">
+			<div class="landing__orb landing__orb--1"></div>
+			<div class="landing__orb landing__orb--2"></div>
+			<div class="landing__orb landing__orb--3"></div>
+		</div>
 
-	<Container>
-		<section class="section">
-			<h2>Research Themes</h2>
-			<p class="section-intro">
-				Core areas connecting technology, place, and social life across field sites
-				and collaborations.
-			</p>
-			<div class="cards">
-				<article class="card">
-					<h3>Digital Technology</h3>
-					<p>
-						How digital platforms, AI, and media systems shape everyday life.
-					</p>
-				</article>
-				<article class="card">
-					<h3>Space and Mobility</h3>
-					<p>
-						Migration, international education, and the production of place.
-					</p>
-				</article>
-				<article class="card">
-					<h3>Identity and Community</h3>
-					<p>
-						Queer spaces, belonging, visibility, and social change.
-					</p>
-				</article>
-			</div>
-		</section>
-	</Container>
+		<a class="landing__avatar" href={base} aria-label={displayName}>
+			<img src={avatarSrc} alt="" width="72" height="72" />
+		</a>
 
-	<Container>
-		<section class="section map-preview">
-			<h2>Research Locations</h2>
-			<ul class="locations">
-				<li>📍 Chengdu — Hybrid Queer Spaces</li>
-				<li>📍 Nottingham — Hong Kong Experience</li>
-				<li>📍 London — Global South PhD Students</li>
-				<li>📍 Mongolia-China-Japan — International Student Mobility</li>
-			</ul>
-			<Button href="/research-map">Explore the Map</Button>
-		</section>
-	</Container>
-</Layout>
+		<h1 class="landing__name">{displayName}</h1>
+	</div>
+</HomeLayout>
 
 <style>
-	.hero {
-		margin: 6rem 0 4rem;
-		max-width: 760px;
-	}
-	.eyebrow {
-		margin: 0;
-		font-size: var(--font-size-sm);
-		text-transform: uppercase;
-		letter-spacing: 0;
-		opacity: 0.7;
-	}
-	h1 {
-		margin: 0.5rem 0 1rem;
-	}
-	.intro {
-		font-size: var(--font-size-lg);
-		line-height: 1.6;
-	}
-	.hero-actions {
+	.landing {
+		position: relative;
 		display: flex;
-		gap: 0.75rem;
-		margin-top: 1.5rem;
-		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+		padding: 2rem 1.5rem 4rem;
+		text-align: center;
+		overflow: hidden;
+		background: #f8fafc;
 	}
-	.section {
-		margin: 2.5rem 0 4rem;
+
+	.landing__bg {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		overflow: hidden;
 	}
-	.section-intro {
-		margin-bottom: 1rem;
+
+	.landing__orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(72px);
+		opacity: 0.55;
+		will-change: transform;
 	}
-	.cards {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
+
+	.landing__orb--1 {
+		width: min(70vw, 520px);
+		height: min(70vw, 520px);
+		top: -12%;
+		left: -8%;
+		background: radial-gradient(circle, #dbeafe 0%, transparent 70%);
+		animation: drift-a 22s ease-in-out infinite;
 	}
-	.card {
-		padding: 1rem;
-		border: 1px solid var(--theme-outline);
-		border-radius: 8px;
-		background: var(--theme-surface-1);
+
+	.landing__orb--2 {
+		width: min(65vw, 480px);
+		height: min(65vw, 480px);
+		bottom: -18%;
+		right: -10%;
+		background: radial-gradient(circle, #e9d5ff 0%, transparent 70%);
+		animation: drift-b 26s ease-in-out infinite;
 	}
-	.card h3 {
-		margin-top: 0;
+
+	.landing__orb--3 {
+		width: min(50vw, 360px);
+		height: min(50vw, 360px);
+		top: 38%;
+		left: 42%;
+		background: radial-gradient(circle, #ccfbf1 0%, transparent 70%);
+		animation: drift-c 18s ease-in-out infinite;
 	}
-	.locations {
-		list-style: none;
-		padding: 0;
-		margin: 0 0 1.5rem;
-		line-height: 1.8;
-	}
-	.locations li {
-		padding: 0.35rem 0;
-	}
-	@media (max-width: 900px) {
-		.cards {
-			grid-template-columns: 1fr;
+
+	@keyframes drift-a {
+		0%,
+		100% {
+			transform: translate(0, 0) scale(1);
 		}
-		.hero {
-			margin-top: 4rem;
+		50% {
+			transform: translate(12%, 18%) scale(1.08);
+		}
+	}
+
+	@keyframes drift-b {
+		0%,
+		100% {
+			transform: translate(0, 0) scale(1);
+		}
+		50% {
+			transform: translate(-14%, -12%) scale(1.06);
+		}
+	}
+
+	@keyframes drift-c {
+		0%,
+		100% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+		33% {
+			transform: translate(-42%, -58%) scale(1.1);
+		}
+		66% {
+			transform: translate(-58%, -44%) scale(0.95);
+		}
+	}
+
+	.landing__avatar,
+	.landing__name {
+		position: relative;
+		z-index: 1;
+	}
+
+	.landing__avatar {
+		position: fixed;
+		top: 1.25rem;
+		right: 1.25rem;
+		display: block;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 1px solid rgba(15, 23, 42, 0.08);
+		background: #fff;
+		box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+		transition: transform 0.2s ease;
+	}
+
+	.landing__avatar:hover {
+		transform: scale(1.04);
+	}
+
+	.landing__avatar img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.landing__name {
+		margin: 0;
+		max-width: 12ch;
+		font-size: clamp(2.75rem, 13vw, 7.25rem);
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+		color: #0f172a;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.landing__orb {
+			animation: none;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.landing__avatar {
+			width: 3.5rem;
+			height: 3.5rem;
 		}
 	}
 </style>
