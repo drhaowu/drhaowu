@@ -1,0 +1,398 @@
+---
+import type { PortfolioDetail as PortfolioDetailData } from '../data/portfolio';
+
+interface Props {
+	page: PortfolioDetailData;
+	assetBase: string;
+	base: string;
+}
+
+const { page, assetBase, base } = Astro.props;
+const isVideo = page.slug === 'video-production';
+const motionAsset = `${base}assets/videos/background.gif`;
+---
+
+<section class={`practice-section practice-section--${page.slug}`} id={page.slug} aria-labelledby={`${page.slug}-title`}>
+	<header class="practice-section__header">
+		<div class="practice-section__label">
+			<span>{page.number}</span>
+			<span>{page.title}</span>
+		</div>
+		<a class="practice-section__deep-link" href={`${base}${page.slug}/`}>
+			Full page <span aria-hidden="true">↗</span>
+		</a>
+	</header>
+
+	<div class="practice-section__main">
+		<div class="practice-section__copy">
+			<p class="practice-section__eyebrow">{page.tagline}</p>
+			<h2 id={`${page.slug}-title`}>{page.title}<em>{page.chinese}</em></h2>
+			<p class="practice-section__intro">{page.intro}</p>
+
+			<ul class="practice-section__keywords" aria-label={`${page.title} themes`}>
+				{page.keywords.map((keyword, index) => (
+					<li><span>0{index + 1}</span>{keyword}</li>
+				))}
+			</ul>
+		</div>
+
+		<figure class="practice-section__media">
+			<div class="practice-section__media-bar">
+				<span class="practice-section__media-dot" aria-hidden="true"></span>
+				<span>{isVideo ? 'Motion preview' : 'Selected work'}</span>
+				<span class="practice-section__media-index">{page.number} / 03</span>
+			</div>
+			<div class="practice-section__media-frame">
+				{isVideo ? (
+					<img src={motionAsset} alt="Animated motion preview for video production" loading="lazy" decoding="async" />
+				) : (
+					<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="lazy" decoding="async" />
+				)}
+			</div>
+			{isVideo && <figcaption>Animated preview · GIF motion study</figcaption>}
+		</figure>
+	</div>
+
+	<div class="practice-section__stories">
+		{page.sections.map((section, index) => (
+			<article class="practice-story">
+				<p class="practice-story__eyebrow">0{index + 1} / {section.eyebrow}</p>
+				<h3>{section.title}</h3>
+				<p>{section.copy}</p>
+				{section.list && (
+					<ul>
+						{section.list.map((item) => <li>{item}</li>)}
+					</ul>
+				)}
+			</article>
+		))}
+	</div>
+</section>
+
+<style>
+	.practice-section {
+		--section-accent: #ffb273;
+		position: relative;
+		scroll-margin-top: 6.5rem;
+		padding: clamp(1.1rem, 2.2vw, 2rem);
+		border: 1px solid rgba(255, 255, 255, 0.72);
+		border-radius: clamp(1.35rem, 2.5vw, 2.2rem);
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.2) 58%, rgba(255, 255, 255, 0.38));
+		box-shadow: 0 1.6rem 4rem rgba(34, 49, 68, 0.09), inset 0 1px rgba(255, 255, 255, 0.82), inset 0 -1px rgba(255, 255, 255, 0.18);
+		backdrop-filter: blur(26px) saturate(145%);
+		-webkit-backdrop-filter: blur(26px) saturate(145%);
+	}
+
+	.practice-section + .practice-section {
+		margin-top: clamp(1.25rem, 3vw, 3rem);
+	}
+
+	.practice-section--video-production {
+		--section-accent: #ff8f70;
+	}
+
+	.practice-section--media-research {
+		--section-accent: #9bdccd;
+	}
+
+	.practice-section::before {
+		position: absolute;
+		top: -18%;
+		right: -8%;
+		width: clamp(12rem, 25vw, 23rem);
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--section-accent);
+		content: '';
+		filter: blur(60px);
+		opacity: 0.18;
+		pointer-events: none;
+	}
+
+	.practice-section__header,
+	.practice-section__main,
+	.practice-section__stories {
+		position: relative;
+		z-index: 1;
+	}
+
+	.practice-section__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-bottom: 1.1rem;
+		border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.65rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.practice-section__label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.practice-section__label span:first-child {
+		display: grid;
+		place-items: center;
+		width: 1.8rem;
+		height: 1.8rem;
+		border: 1px solid rgba(23, 23, 23, 0.16);
+		border-radius: 50%;
+	}
+
+	.practice-section__deep-link {
+		color: #171717;
+		text-decoration: none;
+		opacity: 0.62;
+		transition: opacity 180ms ease;
+	}
+
+	.practice-section__deep-link:hover,
+	.practice-section__deep-link:focus-visible {
+		opacity: 1;
+	}
+
+	.practice-section__deep-link span {
+		margin-left: 0.35rem;
+		font-size: 0.9rem;
+	}
+
+	.practice-section__main {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 1.15fr);
+		align-items: center;
+		gap: clamp(2rem, 6vw, 7rem);
+		padding: clamp(3rem, 6vw, 6rem) clamp(0.3rem, 2vw, 1.5rem);
+	}
+
+	.practice-section__copy {
+		max-width: 34rem;
+	}
+
+	.practice-section__eyebrow,
+	.practice-story__eyebrow {
+		margin: 0 0 1.1rem;
+		color: var(--section-accent);
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.practice-section h2 {
+		margin: 0;
+		font-size: clamp(2.7rem, 5.5vw, 6rem);
+		font-weight: 700;
+		letter-spacing: -0.08em;
+		line-height: 0.91;
+	}
+
+	.practice-section h2 em {
+		display: block;
+		margin-top: 0.25em;
+		color: var(--section-accent);
+		font-size: 0.5em;
+		font-style: normal;
+		letter-spacing: -0.04em;
+	}
+
+	.practice-section__intro {
+		max-width: 31rem;
+		margin: 1.8rem 0 0;
+		color: #344054;
+		font-size: 1rem;
+		line-height: 1.65;
+	}
+
+	.practice-section__keywords {
+		display: grid;
+		gap: 0.65rem;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.03em;
+	}
+
+	.practice-section__keywords li {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding-top: 0.65rem;
+		border-top: 1px solid rgba(23, 23, 23, 0.13);
+	}
+
+	.practice-section__keywords span {
+		color: #6b7178;
+	}
+
+	.practice-section__media {
+		min-width: 0;
+		margin: 0;
+		padding: 0.65rem;
+		border: 1px solid rgba(255, 255, 255, 0.72);
+		border-radius: clamp(1rem, 1.8vw, 1.6rem);
+		background: rgba(255, 255, 255, 0.27);
+		box-shadow: inset 0 1px rgba(255, 255, 255, 0.72), 0 1rem 2.5rem rgba(34, 49, 68, 0.08);
+		backdrop-filter: blur(12px) saturate(125%);
+		-webkit-backdrop-filter: blur(12px) saturate(125%);
+	}
+
+	.practice-section__media-bar {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+		padding: 0.45rem 0.45rem 0.65rem;
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.6rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.practice-section__media-dot {
+		width: 0.45rem;
+		height: 0.45rem;
+		border-radius: 50%;
+		background: var(--section-accent);
+		box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.34);
+	}
+
+	.practice-section__media-index {
+		margin-left: auto;
+		opacity: 0.65;
+	}
+
+	.practice-section__media-frame {
+		position: relative;
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		border-radius: calc(clamp(1rem, 1.8vw, 1.6rem) - 0.35rem);
+		background: rgba(255, 255, 255, 0.42);
+	}
+
+	.practice-section__media-frame img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 500ms ease;
+	}
+
+	.practice-section__media-frame img[src*='media-research'] {
+		object-fit: contain;
+		padding: 1.1rem;
+	}
+
+	.practice-section__media:hover img {
+		transform: scale(1.025);
+	}
+
+	.practice-section__media figcaption {
+		padding: 0.6rem 0.45rem 0.1rem;
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.practice-section__stories {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(1rem, 3vw, 3rem);
+		padding: 0 clamp(0.3rem, 2vw, 1.5rem) clamp(0.5rem, 2vw, 1.5rem);
+	}
+
+	.practice-story {
+		padding-top: 1.3rem;
+		border-top: 1px solid rgba(23, 23, 23, 0.13);
+	}
+
+	.practice-story__eyebrow {
+		margin-bottom: 1rem;
+		color: #6b7178;
+		font-size: 0.6rem;
+	}
+
+	.practice-story h3 {
+		max-width: 18ch;
+		margin: 0;
+		font-size: clamp(1.35rem, 2.2vw, 2.4rem);
+		letter-spacing: -0.055em;
+		line-height: 1;
+	}
+
+	.practice-story > p:not(.practice-story__eyebrow) {
+		max-width: 36rem;
+		margin: 1rem 0 0;
+		color: #344054;
+		font-size: 0.92rem;
+		line-height: 1.6;
+	}
+
+	.practice-story ul {
+		display: grid;
+		gap: 0.45rem;
+		margin: 1.15rem 0 0;
+		padding: 0;
+		list-style: none;
+		font-size: 0.78rem;
+		font-weight: 600;
+	}
+
+	.practice-story li {
+		position: relative;
+		padding-left: 1.1rem;
+	}
+
+	.practice-story li::before {
+		position: absolute;
+		left: 0;
+		color: var(--section-accent);
+		content: '↗';
+	}
+
+	@media (max-width: 800px) {
+		.practice-section__main {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			padding-block: 3.2rem;
+		}
+
+		.practice-section__copy {
+			max-width: 40rem;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.practice-section {
+			scroll-margin-top: 5.5rem;
+			padding: 0.8rem;
+		}
+
+		.practice-section__header {
+			font-size: 0.56rem;
+		}
+
+		.practice-section__deep-link {
+			font-size: 0.56rem;
+		}
+
+		.practice-section__stories {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.practice-section__media-frame img {
+			transition: none;
+		}
+	}
+</style>

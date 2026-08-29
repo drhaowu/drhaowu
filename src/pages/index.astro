@@ -1,7 +1,8 @@
 ---
 import PortfolioLayout from '../layouts/Portfolio.astro';
 import NavigationCard from '../components/NavigationCard.astro';
-import { portfolioCards } from '../data/portfolio';
+import PracticeSection from '../components/PracticeSection.astro';
+import { portfolioCards, portfolioDetails } from '../data/portfolio';
 import { settings } from '../config/settings';
 
 const displayName = 'DR HAO WU';
@@ -14,7 +15,7 @@ const seo = {
 };
 ---
 
-<PortfolioLayout {seo} showFooter={false}>
+<PortfolioLayout {seo}>
 	<section class="home-page" id="about" aria-labelledby="home-title">
 		<div class="home-page__intro">
 			<p class="home-page__eyebrow">Digital media / Research / Practice</p>
@@ -24,13 +25,19 @@ const seo = {
 
 		<div class="home-page__cards" id="practices">
 			{portfolioCards.map((card) => (
-				<NavigationCard {...card} href={`${base}${card.slug}/`} {assetBase} />
+				<NavigationCard {...card} href={`#${card.slug}`} {assetBase} />
 			))}
 		</div>
 
 		<div class="home-page__hint">
-			<span>Choose a practice to explore</span>
+			<span>Choose a practice to jump to its section</span>
 			<span aria-hidden="true">↓</span>
+		</div>
+
+		<div class="home-page__sections" aria-label="Practice details">
+			{portfolioCards.map((card) => (
+				<PracticeSection page={portfolioDetails[card.slug]} {assetBase} {base} />
+			))}
 		</div>
 	</section>
 </PortfolioLayout>
@@ -105,6 +112,10 @@ const seo = {
 		font-size: 0.65rem;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
+	}
+
+	.home-page__sections {
+		margin-top: clamp(4rem, 9vw, 9rem);
 	}
 
 	@media (max-width: 800px) {

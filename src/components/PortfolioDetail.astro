@@ -24,7 +24,11 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		</div>
 		<div class="detail-hero__media">
 			<div class="detail-hero__glow"></div>
-			<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="eager" decoding="async" />
+			{page.slug === 'video-production' ? (
+				<img class="detail-hero__motion" src={`${base}assets/videos/background.gif`} alt="Animated motion preview for video production" loading="eager" decoding="async" />
+			) : (
+				<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="eager" decoding="async" />
+			)}
 		</div>
 	</section>
 
@@ -163,6 +167,14 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 	.detail-hero__media img[src*='video-production'] {
 		object-fit: cover;
 		object-position: center 30%;
+	}
+
+	.detail-hero__media .detail-hero__motion {
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		mix-blend-mode: normal;
 	}
 
 	.detail-keywords {
