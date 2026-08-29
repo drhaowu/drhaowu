@@ -6,6 +6,7 @@ export type PortfolioCard = {
 	shortDescription: string;
 	image: string;
 	imageAlt: string;
+	icon?: string;
 	accent: string;
 };
 
@@ -33,6 +34,7 @@ export const portfolioCards: PortfolioCard[] = [
 		shortDescription: 'Platform-adaptive visuals',
 		image: 'visual-design.png',
 		imageAlt: 'A collage of visual design examples',
+		icon: 'visual-icon.svg',
 		accent: '#ffb273',
 	},
 	{
@@ -43,6 +45,7 @@ export const portfolioCards: PortfolioCard[] = [
 		shortDescription: 'Knowledge-driven short videos',
 		image: 'video-production.png',
 		imageAlt: 'A knowledge-driven short video example',
+		icon: 'video-icon.svg',
 		accent: '#ff8f70',
 	},
 	{
@@ -53,6 +56,7 @@ export const portfolioCards: PortfolioCard[] = [
 		shortDescription: 'Media–research integration',
 		image: 'media-research.png',
 		imageAlt: 'The Hong Kong Experience Project cover',
+		icon: 'visual-icon.svg',
 		accent: '#9bdccd',
 	},
 ];

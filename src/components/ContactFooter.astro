@@ -1,7 +1,15 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+
 <footer class="portfolio-footer" id="contact">
 	<div>
 		<p class="portfolio-footer__eyebrow">The End</p>
 		<h2>Thank you for reviewing<br /><em>my portfolio.</em></h2>
+	</div>
+	<div class="portfolio-footer__portrait" aria-hidden="true">
+		<div class="portfolio-footer__sun"></div>
+		<img src={`${base}assets/images/profile-photo.png`} alt="" width="680" height="681" loading="lazy" decoding="async" />
 	</div>
 	<div class="portfolio-footer__contact">
 		<p>Contact</p>
@@ -61,6 +69,35 @@
 	.portfolio-footer__contact {
 		width: min(100%, 42rem);
 		color: #344054;
+	}
+
+	.portfolio-footer__portrait {
+		position: relative;
+		width: min(100%, 19rem);
+		aspect-ratio: 1;
+		margin-left: 0;
+	}
+
+	.portfolio-footer__sun {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 78%;
+		aspect-ratio: 2 / 1;
+		border-radius: 999px 999px 0 0;
+		background: #ffb273;
+		transform: translateX(-50%);
+	}
+
+	.portfolio-footer__portrait img {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 82%;
+		height: 100%;
+		object-fit: contain;
+		object-position: bottom center;
+		transform: translateX(-50%);
 	}
 
 	.portfolio-footer__contact p {

@@ -1,0 +1,169 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const imageBase = `${base}assets/images/`;
+---
+
+<section class="profile-feature" aria-labelledby="profile-feature-title">
+	<div class="profile-feature__portrait">
+		<div class="profile-feature__sun" aria-hidden="true"></div>
+		<img src={`${imageBase}profile-photo.png`} alt="Dr Hao Wu" width="680" height="681" loading="eager" decoding="async" />
+	</div>
+
+	<div class="profile-feature__copy">
+		<p class="profile-feature__eyebrow">A profile in practice</p>
+		<h2 id="profile-feature-title">Theory, practice,<br /><em>public imagination.</em></h2>
+		<blockquote>
+			<p>Hao’s creative approach bridges <strong>theory and practice</strong>, supporting inclusive learning and fostering cross-cultural understanding through digital storytelling.</p>
+			<p lang="zh-CN">吴豪一直致力于将理论与实践结合起来，通过媒体叙事的方法支持课堂中的包容性学习，以及跨文化理解。</p>
+		</blockquote>
+	</div>
+
+	<div class="profile-feature__stats" aria-label="Profile highlights">
+		<div>
+			<strong>6 Years</strong>
+			<span>Media Industry<br />Experience</span>
+		</div>
+		<div>
+			<strong>3</strong>
+			<span>Connected<br />Practices</span>
+		</div>
+		<div>
+			<strong>1</strong>
+			<span>Research-to-public<br />Pipeline</span>
+		</div>
+	</div>
+</section>
+
+<style>
+	.profile-feature {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(1.75rem, 4vw, 3.5rem);
+		max-width: 58rem;
+		margin: clamp(3rem, 6vw, 6rem) auto 0;
+		padding: clamp(1rem, 2.4vw, 2rem);
+		border: 1px solid rgba(255, 255, 255, 0.72);
+		border-radius: clamp(1.4rem, 2.5vw, 2.2rem);
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.2) 62%, rgba(255, 255, 255, 0.4));
+		box-shadow: 0 1.6rem 4rem rgba(34, 49, 68, 0.09), inset 0 1px rgba(255, 255, 255, 0.82);
+		backdrop-filter: blur(24px) saturate(145%);
+		-webkit-backdrop-filter: blur(24px) saturate(145%);
+	}
+
+	.profile-feature__portrait {
+		position: relative;
+		width: min(100%, 30rem);
+		aspect-ratio: 1;
+		margin: 0 auto;
+	}
+
+	.profile-feature__sun {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 78%;
+		aspect-ratio: 2 / 1;
+		border-radius: 999px 999px 0 0;
+		background: #ffb273;
+		transform: translateX(-50%);
+	}
+
+	.profile-feature__portrait img {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 82%;
+		height: 100%;
+		object-fit: contain;
+		object-position: bottom center;
+		transform: translateX(-50%);
+	}
+
+	.profile-feature__copy {
+		max-width: 42rem;
+		margin: 0 auto;
+	}
+
+	.profile-feature__eyebrow {
+		margin: 0 0 0.85rem;
+		color: #ff9a00;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.profile-feature h2 {
+		margin: 0;
+		font-size: clamp(2rem, 5vw, 4.6rem);
+		font-weight: 700;
+		letter-spacing: -0.075em;
+		line-height: 0.93;
+	}
+
+	.profile-feature h2 em {
+		color: #ff9a00;
+		font-style: normal;
+	}
+
+	.profile-feature blockquote {
+		margin: 1.7rem 0 0;
+		padding-left: 1rem;
+		border-left: 2px solid #ffb273;
+		color: #344054;
+		font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+		line-height: 1.55;
+	}
+
+	.profile-feature blockquote p {
+		margin: 0;
+	}
+
+	.profile-feature blockquote p + p {
+		margin-top: 0.9rem;
+		font-size: 0.88em;
+	}
+
+	.profile-feature blockquote strong {
+		color: #ff7262;
+	}
+
+	.profile-feature__stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(23, 23, 23, 0.13);
+	}
+
+	.profile-feature__stats div {
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	.profile-feature__stats strong {
+		color: #ff9a00;
+		font-size: clamp(1.35rem, 2.5vw, 2.25rem);
+		line-height: 1;
+	}
+
+	.profile-feature__stats span {
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.6rem;
+		line-height: 1.35;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 560px) {
+		.profile-feature__stats {
+			grid-template-columns: 1fr;
+			gap: 0.8rem;
+		}
+
+		.profile-feature__stats div {
+			grid-template-columns: 7rem 1fr;
+			align-items: center;
+		}
+	}
+</style>
