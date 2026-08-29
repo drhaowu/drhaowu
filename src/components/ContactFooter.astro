@@ -5,7 +5,21 @@
 	</div>
 	<div class="portfolio-footer__contact">
 		<p>Contact</p>
-		<a href="mailto:ucfawuc@ucl.ac.uk">ucfawuc@ucl.ac.uk</a>
+		<a class="portfolio-footer__email" href="mailto:ucfawuc@gmail.com">ucfawuc@gmail.com</a>
+		<div class="portfolio-footer__socials" aria-label="Social links">
+			<a href="https://twitter.com/CasperWU6" target="_blank" rel="noreferrer">
+				<span>Twitter</span>
+				<span>@CasperWU6 <span aria-hidden="true">↗</span></span>
+			</a>
+			<a href="https://www.linkedin.com/in/hao-wu-digital-geographer/" target="_blank" rel="noreferrer">
+				<span>LinkedIn</span>
+				<span>hao-wu-digital-geographer <span aria-hidden="true">↗</span></span>
+			</a>
+		</div>
+	</div>
+	<div class="portfolio-footer__meta">
+		<span>Dr Hao Wu · Digital Geographer / Media Creator</span>
+		<span>© {new Date().getFullYear()} Dr Hao Wu</span>
 	</div>
 </footer>
 
@@ -13,9 +27,9 @@
 	.portfolio-footer {
 		position: relative;
 		z-index: 1;
-		display: flex;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.7fr);
 		align-items: end;
-		justify-content: space-between;
 		gap: 2rem;
 		width: min(100%, 1440px);
 		min-height: 25rem;
@@ -45,6 +59,7 @@
 	}
 
 	.portfolio-footer__contact {
+		align-self: end;
 		padding-bottom: 0.35rem;
 		color: #344054;
 	}
@@ -57,17 +72,72 @@
 		text-transform: uppercase;
 	}
 
-	.portfolio-footer__contact a {
+	.portfolio-footer__email {
 		color: inherit;
 		font-size: clamp(1rem, 1.8vw, 1.6rem);
 		text-decoration: none;
 	}
 
+	.portfolio-footer__socials {
+		display: grid;
+		gap: 0.55rem;
+		margin-top: 1.8rem;
+	}
+
+	.portfolio-footer__socials a {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.7rem 0;
+		border-top: 1px solid rgba(23, 23, 23, 0.14);
+		color: #344054;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+		transition: color 180ms ease, border-color 180ms ease;
+	}
+
+	.portfolio-footer__socials a > span:last-child {
+		text-align: right;
+	}
+
+	.portfolio-footer__socials a > span:last-child span {
+		margin-left: 0.25rem;
+		font-size: 0.9rem;
+	}
+
+	.portfolio-footer__socials a:hover,
+	.portfolio-footer__socials a:focus-visible {
+		border-color: #ff9a00;
+		color: #171717;
+	}
+
+	.portfolio-footer__meta {
+		display: flex;
+		grid-column: 1 / -1;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(23, 23, 23, 0.13);
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+	}
+
 	@media (max-width: 700px) {
 		.portfolio-footer {
 			align-items: start;
-			flex-direction: column;
+			grid-template-columns: 1fr;
 			min-height: 22rem;
+		}
+
+		.portfolio-footer__meta {
+			align-items: start;
+			flex-direction: column;
 		}
 	}
 </style>
