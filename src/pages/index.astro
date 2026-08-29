@@ -1,6 +1,5 @@
 ---
 import PortfolioLayout from '../layouts/Portfolio.astro';
-import NavigationCard from '../components/NavigationCard.astro';
 import PracticeSection from '../components/PracticeSection.astro';
 import ProfileFeature from '../components/ProfileFeature.astro';
 import FigmaArchive from '../components/FigmaArchive.astro';
@@ -28,16 +27,25 @@ const seo = {
 
 		<ProfileFeature />
 
-		<div class="home-page__cards" id="practices">
-			{portfolioCards.map((card) => (
-				<NavigationCard {...card} href={`#${card.slug}`} {assetBase} />
-			))}
-		</div>
-
-		<div class="home-page__hint">
-			<span>Choose a practice to jump to its section</span>
-			<span aria-hidden="true">↓</span>
-		</div>
+		<nav class="practice-index" id="practices" aria-labelledby="practice-index-title">
+			<div class="practice-index__intro">
+				<p class="practice-index__eyebrow">Ways of working</p>
+				<h2 id="practice-index-title">Three connected practices.</h2>
+				<p>Choose a thread and follow it down the page.</p>
+			</div>
+			<div class="practice-index__links">
+				{portfolioCards.map((card) => (
+					<a class="practice-index__link" href={`#${card.slug}`}>
+						<span class="practice-index__number">{card.number}</span>
+						<span class="practice-index__label">
+							<strong>{card.title}</strong>
+							<small>{card.chinese} · {card.shortDescription}</small>
+						</span>
+						<span class="practice-index__arrow" aria-hidden="true">↘</span>
+					</a>
+				))}
+			</div>
+		</nav>
 
 		<div class="home-page__sections" aria-label="Practice details">
 			{portfolioCards.map((card) => (
@@ -94,32 +102,115 @@ const seo = {
 		line-height: 1.55;
 	}
 
-	.home-page__cards {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: clamp(1rem, 2vw, 2rem);
-		margin-top: clamp(3rem, 6vw, 6.5rem);
+	.practice-index {
+		max-width: 58rem;
+		margin: clamp(3.5rem, 7vw, 7rem) auto 0;
+		padding: clamp(2rem, 4vw, 3.5rem) clamp(1.1rem, 4vw, 3.5rem) 0;
+		border: 1px solid rgba(255, 255, 255, 0.78);
+		border-radius: clamp(1.5rem, 3vw, 2.5rem);
+		background: linear-gradient(150deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.18));
+		box-shadow: 0 1.6rem 4rem rgba(34, 49, 68, 0.08), inset 0 1px rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(24px) saturate(145%);
+		-webkit-backdrop-filter: blur(24px) saturate(145%);
+		text-align: center;
 	}
 
-	.home-page__cards :global(.navigation-card:nth-child(2)) {
-		transform: translateY(clamp(1rem, 2vw, 2rem));
+	.practice-index__intro {
+		max-width: 30rem;
+		margin: 0 auto;
 	}
 
-	.home-page__cards :global(.navigation-card:nth-child(2):hover),
-	.home-page__cards :global(.navigation-card:nth-child(2):focus-visible) {
-		transform: translateY(clamp(0.5rem, 1vw, 1rem));
-	}
-
-	.home-page__hint {
-		display: flex;
-		justify-content: space-between;
-		max-width: 76rem;
-		margin: clamp(2rem, 5vw, 4rem) auto 0;
-		color: #6b7178;
+	.practice-index__eyebrow {
+		margin: 0 0 0.75rem;
+		color: #ff9a00;
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.65rem;
-		letter-spacing: 0.08em;
+		font-size: 0.66rem;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
+	}
+
+	.practice-index h2 {
+		margin: 0;
+		font-size: clamp(2rem, 4.2vw, 3.6rem);
+		font-weight: 700;
+		letter-spacing: -0.07em;
+		line-height: 0.96;
+	}
+
+	.practice-index__intro > p:last-child {
+		margin: 1rem 0 0;
+		color: #64707b;
+		font-size: 0.92rem;
+	}
+
+	.practice-index__links {
+		margin-top: clamp(2rem, 4vw, 3.5rem);
+	}
+
+	.practice-index__link {
+		position: relative;
+		display: grid;
+		grid-template-columns: 3rem 1fr 3rem;
+		align-items: center;
+		min-height: 7.5rem;
+		padding: 1.1rem 0;
+		border-top: 1px solid rgba(23, 23, 23, 0.13);
+		color: #171717;
+		text-decoration: none;
+		transition: color 180ms ease, padding 180ms ease;
+	}
+
+	.practice-index__number,
+	.practice-index__arrow,
+	.practice-index__label small {
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	}
+
+	.practice-index__number {
+		align-self: start;
+		padding-top: 0.2rem;
+		color: #7c858c;
+		font-size: 0.64rem;
+		letter-spacing: 0.06em;
+		text-align: left;
+	}
+
+	.practice-index__label {
+		display: grid;
+		justify-items: center;
+		gap: 0.45rem;
+	}
+
+	.practice-index__label strong {
+		font-size: clamp(1.3rem, 2.5vw, 2rem);
+		font-weight: 700;
+		letter-spacing: -0.055em;
+	}
+
+	.practice-index__label small {
+		color: #64707b;
+		font-size: 0.62rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.practice-index__arrow {
+		justify-self: end;
+		font-size: 1.1rem;
+		transition: transform 180ms ease, color 180ms ease;
+	}
+
+	.practice-index__link:hover,
+	.practice-index__link:focus-visible {
+		color: #ff7262;
+		padding-right: 0.35rem;
+		padding-left: 0.35rem;
+	}
+
+	.practice-index__link:hover .practice-index__arrow,
+	.practice-index__link:focus-visible .practice-index__arrow {
+		color: #ff9a00;
+		transform: translateY(0.2rem);
 	}
 
 	.home-page__sections {
@@ -131,20 +222,13 @@ const seo = {
 			padding-top: 4rem;
 		}
 
-		.home-page__cards {
-			grid-template-columns: 1fr;
-			max-width: 32rem;
-			margin-right: auto;
-			margin-left: auto;
+		.practice-index {
+			padding-right: 1rem;
+			padding-left: 1rem;
 		}
 
-		.home-page__cards :global(.navigation-card:nth-child(2)) {
-			transform: none;
-		}
-
-		.home-page__cards :global(.navigation-card:nth-child(2):hover),
-		.home-page__cards :global(.navigation-card:nth-child(2):focus-visible) {
-			transform: translateY(-8px);
+		.practice-index__link {
+			grid-template-columns: 2rem 1fr 2rem;
 		}
 	}
 </style>

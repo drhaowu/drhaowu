@@ -171,14 +171,14 @@
 	.figma-showcase {
 		position: relative;
 		z-index: 1;
-		width: min(1120px, 100%);
+		width: min(760px, 100%);
 		margin: clamp(2.5rem, 7vw, 5.5rem) auto 0;
-		text-align: left;
+		text-align: center;
 	}
 
 	.figma-showcase__header {
 		max-width: 38rem;
-		margin-bottom: 1.75rem;
+		margin: 0 auto 2rem;
 	}
 
 	.figma-showcase__eyebrow {
@@ -202,7 +202,7 @@
 
 	.figma-showcase__header p:last-child {
 		max-width: 32rem;
-		margin: 0.9rem 0 0;
+		margin: 0.9rem auto 0;
 		color: #64748b;
 		font-size: 1rem;
 		line-height: 1.65;
@@ -210,31 +210,28 @@
 
 	.figma-showcase__grid {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: clamp(1rem, 2.5vw, 1.5rem);
+		grid-template-columns: 1fr;
+		gap: clamp(2rem, 5vw, 3.5rem);
 	}
 
 	.figma-card {
 		min-width: 0;
 		margin: 0;
-		overflow: hidden;
-		border: 1px solid rgba(148, 163, 184, 0.2);
-		border-radius: 1.75rem;
-		background: rgba(255, 255, 255, 0.58);
-		box-shadow: 0 24px 70px rgba(85, 96, 137, 0.14);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
-		transition: transform 220ms ease, box-shadow 220ms ease;
-	}
-
-	.figma-card:hover {
-		box-shadow: 0 30px 82px rgba(85, 96, 137, 0.2);
-		transform: translateY(-6px);
 	}
 
 	.figma-card__canvas {
 		aspect-ratio: 840 / 890;
+		overflow: hidden;
+		border: 1px solid rgba(148, 163, 184, 0.22);
+		border-radius: clamp(1.2rem, 2.5vw, 1.8rem);
 		background: #fff;
+		box-shadow: 0 1.25rem 3rem rgba(85, 96, 137, 0.11);
+		transition: transform 220ms ease, box-shadow 220ms ease;
+	}
+
+	.figma-card:hover .figma-card__canvas {
+		box-shadow: 0 1.6rem 3.6rem rgba(85, 96, 137, 0.17);
+		transform: translateY(-5px);
 	}
 
 	.figma-card__canvas svg {
@@ -244,12 +241,11 @@
 	}
 
 	.figma-card__caption {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
+		display: grid;
 		gap: 1rem;
-		padding: 1rem 1.15rem 1.1rem;
+		padding: 0.9rem 0.5rem 0;
 		color: #172033;
+		text-align: center;
 	}
 
 	.figma-card__caption span {
@@ -260,25 +256,21 @@
 	.figma-card__caption small {
 		color: #64748b;
 		font-size: 0.72rem;
-		text-align: right;
+		text-align: center;
 	}
 
 	@media (max-width: 720px) {
-		.figma-showcase__grid {
-			grid-template-columns: 1fr;
-		}
-
 		.figma-card__caption {
 			padding-inline: 1rem;
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.figma-card {
+		.figma-card__canvas {
 			transition: none;
 		}
 
-		.figma-card:hover {
+		.figma-card:hover .figma-card__canvas {
 			transform: none;
 		}
 	}
