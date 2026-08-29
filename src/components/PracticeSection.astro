@@ -42,14 +42,14 @@ const motionAsset = `${base}assets/videos/background.gif`;
 				<span>{isVideo ? 'Motion preview' : 'Selected work'}</span>
 				<span class="practice-section__media-index">{page.number} / 03</span>
 			</div>
-			<div class="practice-section__media-frame">
+			<div class={`practice-section__media-frame ${isVideo ? 'practice-section__media-frame--motion' : ''}`}>
 				{isVideo ? (
-					<img src={motionAsset} alt="Animated motion preview for video production" loading="lazy" decoding="async" />
+					<img src={motionAsset} alt="Animated motion preview for video production" loading="eager" decoding="async" />
 				) : (
 					<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="lazy" decoding="async" />
 				)}
 			</div>
-			{isVideo && <figcaption>Animated preview · GIF motion study</figcaption>}
+			{isVideo && <figcaption>Auto-playing motion preview · GIF source</figcaption>}
 		</figure>
 	</div>
 
@@ -163,14 +163,13 @@ const motionAsset = `${base}assets/videos/background.gif`;
 
 	.practice-section__main {
 		display: grid;
-		grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 1.15fr);
-		align-items: center;
-		gap: clamp(2rem, 6vw, 7rem);
+		grid-template-columns: 1fr;
+		gap: clamp(2.5rem, 6vw, 6rem);
 		padding: clamp(3rem, 6vw, 6rem) clamp(0.3rem, 2vw, 1.5rem);
 	}
 
 	.practice-section__copy {
-		max-width: 34rem;
+		max-width: 52rem;
 	}
 
 	.practice-section__eyebrow,
@@ -233,8 +232,10 @@ const motionAsset = `${base}assets/videos/background.gif`;
 	}
 
 	.practice-section__media {
+		width: min(100%, 72rem);
 		min-width: 0;
-		margin: 0;
+		margin-right: auto;
+		margin-left: auto;
 		padding: 0.65rem;
 		border: 1px solid rgba(255, 255, 255, 0.72);
 		border-radius: clamp(1rem, 1.8vw, 1.6rem);
@@ -285,6 +286,10 @@ const motionAsset = `${base}assets/videos/background.gif`;
 		transition: transform 500ms ease;
 	}
 
+	.practice-section__media-frame--motion img {
+		object-fit: cover;
+	}
+
 	.practice-section__media-frame img[src*='media-research'] {
 		object-fit: contain;
 		padding: 1.1rem;
@@ -305,12 +310,13 @@ const motionAsset = `${base}assets/videos/background.gif`;
 
 	.practice-section__stories {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: clamp(1rem, 3vw, 3rem);
+		grid-template-columns: 1fr;
+		gap: clamp(2rem, 5vw, 4.5rem);
 		padding: 0 clamp(0.3rem, 2vw, 1.5rem) clamp(0.5rem, 2vw, 1.5rem);
 	}
 
 	.practice-story {
+		max-width: 52rem;
 		padding-top: 1.3rem;
 		border-top: 1px solid rgba(23, 23, 23, 0.13);
 	}
@@ -361,7 +367,6 @@ const motionAsset = `${base}assets/videos/background.gif`;
 
 	@media (max-width: 800px) {
 		.practice-section__main {
-			grid-template-columns: 1fr;
 			gap: 2.5rem;
 			padding-block: 3.2rem;
 		}
