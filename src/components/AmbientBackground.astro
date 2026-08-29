@@ -2,18 +2,38 @@
 	<span class="ambient-background__orb ambient-background__orb--orange"></span>
 	<span class="ambient-background__orb ambient-background__orb--blue"></span>
 	<span class="ambient-background__orb ambient-background__orb--mint"></span>
+	<span class="ambient-background__halo"></span>
+	<span class="ambient-background__grid"></span>
 	<span class="ambient-background__grain"></span>
 </div>
 
 <script is:inline>
 	const ambient = document.querySelector('[data-ambient]');
 	const canHover = window.matchMedia('(pointer: fine)').matches;
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-	if (ambient && canHover) {
+	if (ambient && canHover && !reducedMotion) {
+		let targetX = 0.5;
+		let targetY = 0.45;
+		let currentX = targetX;
+		let currentY = targetY;
+
+		const renderPointer = () => {
+			currentX += (targetX - currentX) * 0.065;
+			currentY += (targetY - currentY) * 0.065;
+			ambient.style.setProperty('--pointer-x', `${currentX * 100}%`);
+			ambient.style.setProperty('--pointer-y', `${currentY * 100}%`);
+			ambient.style.setProperty('--pointer-shift-x', `${(currentX - 0.5) * 150}px`);
+			ambient.style.setProperty('--pointer-shift-y', `${(currentY - 0.45) * 125}px`);
+			window.requestAnimationFrame(renderPointer);
+		};
+
 		window.addEventListener('pointermove', (event) => {
-			ambient.style.setProperty('--pointer-x', `${(event.clientX / window.innerWidth) * 100}%`);
-			ambient.style.setProperty('--pointer-y', `${(event.clientY / window.innerHeight) * 100}%`);
+			targetX = event.clientX / window.innerWidth;
+			targetY = event.clientY / window.innerHeight;
 		}, { passive: true });
+
+		renderPointer();
 	}
 </script>
 
@@ -27,6 +47,8 @@
 		background: #fbfbf8;
 		--pointer-x: 50%;
 		--pointer-y: 45%;
+		--pointer-shift-x: 0px;
+		--pointer-shift-y: 0px;
 	}
 
 	.ambient-background__orb {
@@ -37,7 +59,8 @@
 		border-radius: 50%;
 		filter: blur(clamp(3.5rem, 8vw, 9rem));
 		opacity: 0.28;
-		will-change: transform;
+		will-change: transform, translate;
+		translate: var(--pointer-shift-x) var(--pointer-shift-y);
 	}
 
 	.ambient-background__orb--orange {
@@ -64,12 +87,38 @@
 		animation: ambient-float-three 21s ease-in-out infinite;
 	}
 
+	.ambient-background__halo,
+	.ambient-background__grid {
+		position: absolute;
+		inset: -12%;
+		pointer-events: none;
+	}
+
+	.ambient-background__halo {
+		background:
+			radial-gradient(ellipse at var(--pointer-x) var(--pointer-y), rgba(255, 179, 104, 0.2), transparent 22rem),
+			radial-gradient(ellipse at 50% 34%, rgba(255, 255, 255, 0.74), transparent 42%);
+		mix-blend-mode: screen;
+		opacity: 0.9;
+		transform: translate3d(calc(var(--pointer-shift-x) * -0.12), calc(var(--pointer-shift-y) * -0.12), 0);
+		will-change: transform, background;
+	}
+
+	.ambient-background__grid {
+		background-image: linear-gradient(rgba(71, 95, 124, 0.065) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 95, 124, 0.065) 1px, transparent 1px);
+		background-size: clamp(3.5rem, 7vw, 6.5rem) clamp(3.5rem, 7vw, 6.5rem);
+		mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 74%, transparent 100%);
+		opacity: 0.48;
+		transform: translate3d(calc(var(--pointer-shift-x) * -0.2), calc(var(--pointer-shift-y) * -0.2), 0) rotate(-7deg) scale(1.1);
+		will-change: transform;
+	}
+
 	.ambient-background::after {
 		position: absolute;
 		inset: 0;
 		content: '';
-		background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 154, 0, 0.1), transparent 24rem);
-		transition: background-position 180ms ease-out;
+		background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 154, 0, 0.14), transparent 24rem);
+		mix-blend-mode: soft-light;
 	}
 
 	.ambient-background__grain {
@@ -97,10 +146,14 @@
 	@media (prefers-reduced-motion: reduce) {
 		.ambient-background__orb {
 			animation: none;
+			translate: none;
 		}
 
-		.ambient-background::after {
+		.ambient-background::after,
+		.ambient-background__halo,
+		.ambient-background__grid {
 			background: transparent;
+			transform: none;
 		}
 	}
 </style>
