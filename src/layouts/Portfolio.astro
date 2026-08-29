@@ -1,0 +1,50 @@
+---
+import Base from './Base.astro';
+import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
+import AmbientBackground from '../components/AmbientBackground.astro';
+import PortfolioNav from '../components/PortfolioNav.astro';
+import ContactFooter from '../components/ContactFooter.astro';
+
+export interface Props {
+	seo?: BaseHeadProps;
+	showFooter?: boolean;
+}
+
+const { seo, showFooter = true } = Astro.props;
+---
+
+<Base seo={seo}>
+	<div class="portfolio-app">
+		<AmbientBackground />
+		<PortfolioNav />
+		<div class="portfolio-app__content">
+			<slot />
+		</div>
+		{showFooter && <ContactFooter />}
+	</div>
+</Base>
+
+<style is:global>
+	.portfolio-app {
+		position: relative;
+		isolation: isolate;
+		min-height: 100vh;
+		overflow: clip;
+		color: #171717;
+		font-family: 'Inter Tight', Inter, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+	}
+
+	.portfolio-app__content {
+		position: relative;
+		z-index: 1;
+	}
+
+	.portfolio-app :is(h1, h2, h3, p) {
+		text-wrap: balance;
+	}
+
+	.portfolio-app :is(a, button):focus-visible {
+		outline: 3px solid rgba(255, 154, 0, 0.75);
+		outline-offset: 4px;
+	}
+</style>

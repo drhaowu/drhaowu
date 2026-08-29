@@ -1,0 +1,194 @@
+---
+import type { PortfolioCard } from '../data/portfolio';
+
+interface Props extends PortfolioCard {
+	href: string;
+	assetBase: string;
+}
+
+const { number, title, chinese, shortDescription, image, imageAlt, accent, href, assetBase } = Astro.props;
+---
+
+<a class="navigation-card" href={href} style={`--card-accent: ${accent}`}>
+	<div class="navigation-card__topline">
+		<span>{number}</span>
+		<span class="navigation-card__arrow" aria-hidden="true">↗</span>
+	</div>
+	<div class="navigation-card__copy">
+		<h2>{title}</h2>
+		<p>{chinese}</p>
+		<span>{shortDescription}</span>
+	</div>
+	<div class="navigation-card__image">
+		<img src={`${assetBase}${image}`} alt={imageAlt} loading="lazy" decoding="async" />
+	</div>
+	<span class="navigation-card__open">Explore <span aria-hidden="true">→</span></span>
+</a>
+
+<style>
+	.navigation-card {
+		position: relative;
+		display: flex;
+		min-height: clamp(21rem, 34vw, 30rem);
+		flex-direction: column;
+		overflow: hidden;
+		padding: clamp(1.2rem, 2.2vw, 2rem);
+		border: 1px solid rgba(23, 23, 23, 0.1);
+		border-radius: 1.5rem;
+		background: rgba(255, 255, 255, 0.66);
+		box-shadow: 0 1.2rem 3.5rem rgba(23, 23, 23, 0.06);
+		color: #171717;
+		text-decoration: none;
+		backdrop-filter: blur(20px);
+		transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+	}
+
+	.navigation-card::before {
+		position: absolute;
+		top: -18%;
+		right: -12%;
+		width: 58%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--card-accent);
+		content: '';
+		filter: blur(45px);
+		opacity: 0.22;
+		transition: transform 260ms ease, opacity 260ms ease;
+	}
+
+	.navigation-card:hover,
+	.navigation-card:focus-visible {
+		border-color: var(--card-accent);
+		box-shadow: 0 1.8rem 4.5rem rgba(23, 23, 23, 0.12);
+		transform: translateY(-8px);
+	}
+
+	.navigation-card:hover::before,
+	.navigation-card:focus-visible::before {
+		opacity: 0.4;
+		transform: scale(1.22);
+	}
+
+	.navigation-card__topline,
+	.navigation-card__copy,
+	.navigation-card__open {
+		position: relative;
+		z-index: 1;
+	}
+
+	.navigation-card__topline {
+		display: flex;
+		justify-content: space-between;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.05em;
+	}
+
+	.navigation-card__arrow {
+		display: grid;
+		place-items: center;
+		width: 2.15rem;
+		height: 2.15rem;
+		border: 1px solid rgba(23, 23, 23, 0.15);
+		border-radius: 50%;
+		font-size: 1rem;
+		transition: background 180ms ease, color 180ms ease;
+	}
+
+	.navigation-card:hover .navigation-card__arrow,
+	.navigation-card:focus-visible .navigation-card__arrow {
+		background: #171717;
+		color: #fff;
+	}
+
+	.navigation-card__copy {
+		margin-top: clamp(2.5rem, 5vw, 4.5rem);
+	}
+
+	.navigation-card__copy h2 {
+		margin: 0;
+		font-size: clamp(1.55rem, 2.35vw, 2.45rem);
+		font-weight: 700;
+		letter-spacing: -0.06em;
+		line-height: 0.98;
+	}
+
+	.navigation-card__copy p {
+		margin: 0.45rem 0 0;
+		color: #344054;
+		font-size: 0.88rem;
+	}
+
+	.navigation-card__copy > span {
+		display: block;
+		margin-top: 1rem;
+		font-size: 0.82rem;
+		font-weight: 600;
+	}
+
+	.navigation-card__image {
+		position: relative;
+		z-index: 1;
+		flex: 1;
+		min-height: 8rem;
+		margin: 2rem 0 1.5rem;
+		overflow: hidden;
+		border-radius: 1rem;
+		background: #eee;
+	}
+
+	.navigation-card__image::after {
+		position: absolute;
+		inset: 0;
+		border: 1px solid rgba(255, 255, 255, 0.35);
+		border-radius: inherit;
+		content: '';
+	}
+
+	.navigation-card__image img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 360ms ease;
+	}
+
+	.navigation-card:nth-child(2) .navigation-card__image img {
+		object-position: center 28%;
+	}
+
+	.navigation-card:nth-child(3) .navigation-card__image img {
+		object-position: center;
+	}
+
+	.navigation-card:hover .navigation-card__image img,
+	.navigation-card:focus-visible .navigation-card__image img {
+		transform: scale(1.04);
+	}
+
+	.navigation-card__open {
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.navigation-card__open span {
+		margin-left: 0.3rem;
+		font-size: 1rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.navigation-card,
+		.navigation-card::before,
+		.navigation-card__image img {
+			transition: none;
+		}
+
+		.navigation-card:hover,
+		.navigation-card:focus-visible {
+			transform: none;
+		}
+	}
+</style>

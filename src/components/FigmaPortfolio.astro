@@ -1,0 +1,34 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const portfolioImage = `${base}assets/figma/complete-portfolio.png`;
+---
+
+<main class="portfolio-preview" aria-label="Dr. Hao Wu portfolio">
+	<div class="portfolio-preview__canvas">
+		<img
+			src={portfolioImage}
+			alt="Dr. Hao Wu portfolio, including digital media, visual design, research, and contact information"
+			width="460"
+			height="4096"
+			decoding="async"
+		/>
+	</div>
+</main>
+
+<style>
+	.portfolio-preview {
+		min-height: 100vh;
+		background: #ffffff;
+	}
+
+	.portfolio-preview__canvas {
+		width: min(100%, 960px);
+		margin: 0 auto;
+	}
+
+	.portfolio-preview__canvas img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+</style>

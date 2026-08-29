@@ -1,0 +1,15 @@
+---
+import PortfolioLayout from '../layouts/Portfolio.astro';
+import PortfolioDetail from '../components/PortfolioDetail.astro';
+import { portfolioDetails } from '../data/portfolio';
+import { settings } from '../config/settings';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const assetBase = `${base}assets/figma/skills/`;
+const page = portfolioDetails['visual-design'];
+const seo = { title: `${page.title} — DR HAO WU`, description: page.intro };
+---
+
+<PortfolioLayout {seo}>
+	<PortfolioDetail {page} {assetBase} {base} />
+</PortfolioLayout>

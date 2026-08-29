@@ -1,10 +1,12 @@
 ---
-import HomeLayout from '../layouts/Home.astro';
+import PortfolioLayout from '../layouts/Portfolio.astro';
+import NavigationCard from '../components/NavigationCard.astro';
+import { portfolioCards } from '../data/portfolio';
 import { settings } from '../config/settings';
 
-const base = import.meta.env.BASE_URL;
-const avatarSrc = `${base}assets/images/avatar.png`;
 const displayName = 'DR HAO WU';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const assetBase = `${base}assets/figma/skills/`;
 
 const seo = {
 	title: displayName,
@@ -12,163 +14,118 @@ const seo = {
 };
 ---
 
-<HomeLayout {seo}>
-	<div class="landing" aria-label={displayName}>
-		<div class="landing__bg" aria-hidden="true">
-			<div class="landing__orb landing__orb--1"></div>
-			<div class="landing__orb landing__orb--2"></div>
-			<div class="landing__orb landing__orb--3"></div>
+<PortfolioLayout {seo} showFooter={false}>
+	<section class="home-page" id="about" aria-labelledby="home-title">
+		<div class="home-page__intro">
+			<p class="home-page__eyebrow">Digital media / Research / Practice</p>
+			<h1 id="home-title">Dr Hao Wu</h1>
+			<p class="home-page__lead">I’m Dr. Hao Wu — a digital media creator and researcher working between visual design, video production and public-facing research.</p>
 		</div>
 
-		<a class="landing__avatar" href={base} aria-label={displayName}>
-			<img src={avatarSrc} alt="" width="72" height="72" />
-		</a>
+		<div class="home-page__cards" id="practices">
+			{portfolioCards.map((card) => (
+				<NavigationCard {...card} href={`${base}${card.slug}/`} {assetBase} />
+			))}
+		</div>
 
-		<h1 class="landing__name">{displayName}</h1>
-	</div>
-</HomeLayout>
+		<div class="home-page__hint">
+			<span>Choose a practice to explore</span>
+			<span aria-hidden="true">↓</span>
+		</div>
+	</section>
+</PortfolioLayout>
 
 <style>
-	.landing {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		min-height: 100vh;
-		padding: 2rem 1.5rem 4rem;
+	.home-page {
+		width: min(100%, 1440px);
+		min-height: calc(100svh - 4.5rem);
+		margin: 0 auto;
+		padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 7vw, 8.5rem) clamp(3rem, 5vw, 5rem);
+	}
+
+	.home-page__intro {
+		max-width: 54rem;
+		margin: 0 auto;
 		text-align: center;
-		overflow: hidden;
-		background: #f8fafc;
 	}
 
-	.landing__bg {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		overflow: hidden;
+	.home-page__eyebrow {
+		margin: 0 0 1.2rem;
+		color: #ff9a00;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.7rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 	}
 
-	.landing__orb {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(72px);
-		opacity: 0.55;
-		will-change: transform;
-	}
-
-	.landing__orb--1 {
-		width: min(70vw, 520px);
-		height: min(70vw, 520px);
-		top: -12%;
-		left: -8%;
-		background: radial-gradient(circle, #dbeafe 0%, transparent 70%);
-		animation: drift-a 22s ease-in-out infinite;
-	}
-
-	.landing__orb--2 {
-		width: min(65vw, 480px);
-		height: min(65vw, 480px);
-		bottom: -18%;
-		right: -10%;
-		background: radial-gradient(circle, #e9d5ff 0%, transparent 70%);
-		animation: drift-b 26s ease-in-out infinite;
-	}
-
-	.landing__orb--3 {
-		width: min(50vw, 360px);
-		height: min(50vw, 360px);
-		top: 38%;
-		left: 42%;
-		background: radial-gradient(circle, #ccfbf1 0%, transparent 70%);
-		animation: drift-c 18s ease-in-out infinite;
-	}
-
-	@keyframes drift-a {
-		0%,
-		100% {
-			transform: translate(0, 0) scale(1);
-		}
-		50% {
-			transform: translate(12%, 18%) scale(1.08);
-		}
-	}
-
-	@keyframes drift-b {
-		0%,
-		100% {
-			transform: translate(0, 0) scale(1);
-		}
-		50% {
-			transform: translate(-14%, -12%) scale(1.06);
-		}
-	}
-
-	@keyframes drift-c {
-		0%,
-		100% {
-			transform: translate(-50%, -50%) scale(1);
-		}
-		33% {
-			transform: translate(-42%, -58%) scale(1.1);
-		}
-		66% {
-			transform: translate(-58%, -44%) scale(0.95);
-		}
-	}
-
-	.landing__avatar,
-	.landing__name {
-		position: relative;
-		z-index: 1;
-	}
-
-	.landing__avatar {
-		position: fixed;
-		top: 1.25rem;
-		right: 1.25rem;
-		display: block;
-		width: 4.5rem;
-		height: 4.5rem;
-		border-radius: 50%;
-		overflow: hidden;
-		border: 1px solid rgba(15, 23, 42, 0.08);
-		background: #fff;
-		box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
-		transition: transform 0.2s ease;
-	}
-
-	.landing__avatar:hover {
-		transform: scale(1.04);
-	}
-
-	.landing__avatar img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.landing__name {
+	.home-page h1 {
 		margin: 0;
-		max-width: 12ch;
-		font-size: clamp(2.75rem, 13vw, 7.25rem);
-		font-weight: 800;
-		line-height: 0.95;
-		letter-spacing: -0.02em;
-		color: #0f172a;
+		font-size: clamp(3.4rem, 7.4vw, 7.6rem);
+		font-weight: 700;
+		letter-spacing: -0.08em;
+		line-height: 0.9;
 	}
 
-	@media (prefers-reduced-motion: reduce) {
-		.landing__orb {
-			animation: none;
+	.home-page h1 em {
+		color: #ff9a00;
+		font-style: normal;
+	}
+
+	.home-page__lead {
+		max-width: 36rem;
+		margin: 1.8rem auto 0;
+		color: #344054;
+		font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+		line-height: 1.55;
+	}
+
+	.home-page__cards {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(1rem, 2vw, 2rem);
+		margin-top: clamp(3rem, 6vw, 6.5rem);
+	}
+
+	.home-page__cards :global(.navigation-card:nth-child(2)) {
+		transform: translateY(clamp(1rem, 2vw, 2rem));
+	}
+
+	.home-page__cards :global(.navigation-card:nth-child(2):hover),
+	.home-page__cards :global(.navigation-card:nth-child(2):focus-visible) {
+		transform: translateY(clamp(0.5rem, 1vw, 1rem));
+	}
+
+	.home-page__hint {
+		display: flex;
+		justify-content: space-between;
+		max-width: 76rem;
+		margin: clamp(2rem, 5vw, 4rem) auto 0;
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.65rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 800px) {
+		.home-page {
+			padding-top: 4rem;
 		}
-	}
 
-	@media (max-width: 640px) {
-		.landing__avatar {
-			width: 3.5rem;
-			height: 3.5rem;
+		.home-page__cards {
+			grid-template-columns: 1fr;
+			max-width: 32rem;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		.home-page__cards :global(.navigation-card:nth-child(2)) {
+			transform: none;
+		}
+
+		.home-page__cards :global(.navigation-card:nth-child(2):hover),
+		.home-page__cards :global(.navigation-card:nth-child(2):focus-visible) {
+			transform: translateY(-8px);
 		}
 	}
 </style>

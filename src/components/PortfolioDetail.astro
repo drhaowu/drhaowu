@@ -1,0 +1,363 @@
+---
+import type { PortfolioDetail as PortfolioDetailData } from '../data/portfolio';
+
+interface Props {
+	page: PortfolioDetailData;
+	assetBase: string;
+	base: string;
+}
+
+const { page, assetBase, base } = Astro.props;
+const nextPages = ['visual-design', 'video-production', 'media-research'];
+const currentIndex = nextPages.indexOf(page.slug);
+const nextSlug = nextPages[(currentIndex + 1) % nextPages.length];
+const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 'video-production' ? 'Video Production' : 'Media + Research';
+---
+
+<article class="detail-page" style={`--detail-accent: ${page.accent}`}>
+	<section class="detail-hero" aria-labelledby="detail-title">
+		<div class="detail-hero__copy">
+			<p class="detail-hero__eyebrow">{page.number} / {page.title}</p>
+			<h1 id="detail-title">{page.title}<br /><em>{page.chinese}</em></h1>
+			<p class="detail-hero__tagline">{page.tagline}</p>
+			<p class="detail-hero__intro">{page.intro}</p>
+		</div>
+		<div class="detail-hero__media">
+			<div class="detail-hero__glow"></div>
+			<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="eager" decoding="async" />
+		</div>
+	</section>
+
+	<section class="detail-keywords" aria-label="Key themes">
+		{page.keywords.map((keyword, index) => (
+			<div>
+				<span>0{index + 1}</span>
+				<strong>{keyword}</strong>
+			</div>
+		))}
+	</section>
+
+	<div class="detail-sections">
+		{page.sections.map((section, index) => (
+			<section class={`detail-story ${index % 2 === 1 ? 'detail-story--reverse' : ''}`}>
+				<div class="detail-story__copy">
+					<p class="detail-story__eyebrow">{section.eyebrow}</p>
+					<h2>{section.title}</h2>
+					<p class="detail-story__body">{section.copy}</p>
+					{section.list && (
+						<ul>
+							{section.list.map((item) => <li>{item}</li>)}
+						</ul>
+					)}
+				</div>
+				{section.image && (
+					<div class={`detail-story__media ${section.imageClass ?? ''}`}>
+						<img src={`${assetBase}${section.image}`} alt={section.imageAlt ?? ''} loading="lazy" decoding="async" />
+					</div>
+				)}
+			</section>
+		))}
+	</div>
+
+	<section class="detail-next">
+		<p class="detail-story__eyebrow">Next practice</p>
+		<a href={`${base}${nextSlug}/`}>
+			<span>{nextTitle}</span>
+			<strong aria-hidden="true">↗</strong>
+		</a>
+	</section>
+</article>
+
+<style>
+	.detail-page {
+		--detail-accent: #ffb273;
+		width: min(100%, 1440px);
+		margin: 0 auto;
+		padding: 0 clamp(1.25rem, 7vw, 8.5rem) clamp(2rem, 8vw, 8rem);
+	}
+
+	.detail-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 1.05fr);
+		align-items: center;
+		min-height: min(720px, calc(100svh - 5rem));
+		gap: clamp(2rem, 6vw, 7rem);
+		padding: clamp(4rem, 8vw, 8rem) 0 clamp(4rem, 8vw, 8rem);
+	}
+
+	.detail-hero__copy {
+		position: relative;
+		z-index: 1;
+	}
+
+	.detail-hero__eyebrow,
+	.detail-story__eyebrow {
+		margin: 0 0 1.2rem;
+		color: #ff9a00;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.7rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.detail-hero h1 {
+		margin: 0;
+		font-size: clamp(3.5rem, 7vw, 7.4rem);
+		font-weight: 700;
+		letter-spacing: -0.08em;
+		line-height: 0.9;
+	}
+
+	.detail-hero h1 em {
+		color: var(--detail-accent);
+		font-style: normal;
+	}
+
+	.detail-hero__tagline {
+		margin: 2rem 0 0;
+		font-size: clamp(1.1rem, 1.8vw, 1.65rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+	}
+
+	.detail-hero__intro {
+		max-width: 37rem;
+		margin: 1rem 0 0;
+		color: #344054;
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.detail-hero__media {
+		position: relative;
+		min-height: 28rem;
+		overflow: hidden;
+		border: 1px solid rgba(23, 23, 23, 0.1);
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.56);
+		box-shadow: 0 2rem 5rem rgba(23, 23, 23, 0.09);
+		backdrop-filter: blur(18px);
+	}
+
+	.detail-hero__glow {
+		position: absolute;
+		top: -18%;
+		right: -12%;
+		width: 70%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--detail-accent);
+		filter: blur(55px);
+		opacity: 0.4;
+	}
+
+	.detail-hero__media img {
+		position: absolute;
+		inset: 8%;
+		width: 84%;
+		height: 84%;
+		object-fit: contain;
+		mix-blend-mode: multiply;
+	}
+
+	.detail-hero__media img[src*='video-production'] {
+		object-fit: cover;
+		object-position: center 30%;
+	}
+
+	.detail-keywords {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		padding: 1.4rem 0;
+		border-top: 1px solid rgba(23, 23, 23, 0.13);
+		border-bottom: 1px solid rgba(23, 23, 23, 0.13);
+	}
+
+	.detail-keywords div {
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.detail-keywords span {
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.62rem;
+	}
+
+	.detail-keywords strong {
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.detail-sections {
+		padding-top: clamp(4rem, 10vw, 10rem);
+	}
+
+	.detail-story {
+		display: grid;
+		grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+		align-items: center;
+		gap: clamp(2rem, 8vw, 9rem);
+		min-height: 32rem;
+		padding: clamp(3rem, 8vw, 8rem) 0;
+	}
+
+	.detail-story--reverse {
+		grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+	}
+
+	.detail-story--reverse .detail-story__copy {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.detail-story--reverse .detail-story__media {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.detail-story__copy {
+		max-width: 32rem;
+	}
+
+	.detail-story h2 {
+		margin: 0;
+		font-size: clamp(2.5rem, 4.6vw, 5rem);
+		font-weight: 700;
+		letter-spacing: -0.07em;
+		line-height: 0.95;
+	}
+
+	.detail-story__body {
+		margin: 1.75rem 0 0;
+		color: #344054;
+		font-size: 1.05rem;
+		line-height: 1.65;
+	}
+
+	.detail-story ul {
+		margin: 1.7rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.detail-story li {
+		position: relative;
+		padding: 0.65rem 0 0.65rem 1.4rem;
+		border-top: 1px solid rgba(23, 23, 23, 0.12);
+		font-size: 0.9rem;
+	}
+
+	.detail-story li::before {
+		position: absolute;
+		left: 0;
+		color: var(--detail-accent);
+		content: '↗';
+	}
+
+	.detail-story__media {
+		position: relative;
+		min-height: 24rem;
+		overflow: hidden;
+		border-radius: 1.5rem;
+		background: rgba(255, 255, 255, 0.72);
+		box-shadow: 0 1.5rem 4rem rgba(23, 23, 23, 0.08);
+	}
+
+	.detail-story__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 24rem;
+		object-fit: cover;
+	}
+
+	.detail-media--visual img {
+		object-position: center;
+	}
+
+	.detail-media--video {
+		min-height: 30rem;
+	}
+
+	.detail-media--video img {
+		object-position: center 28%;
+	}
+
+	.detail-media--research img {
+		object-fit: contain;
+		padding: 1.25rem;
+	}
+
+	.detail-next {
+		padding: clamp(4rem, 8vw, 8rem) 0 0;
+	}
+
+	.detail-next a {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1.2rem 0;
+		border-top: 1px solid rgba(23, 23, 23, 0.15);
+		color: #171717;
+		font-size: clamp(2rem, 4vw, 4rem);
+		font-weight: 700;
+		letter-spacing: -0.06em;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.detail-next strong {
+		display: grid;
+		place-items: center;
+		width: 3.2rem;
+		height: 3.2rem;
+		border: 1px solid rgba(23, 23, 23, 0.18);
+		border-radius: 50%;
+		font-size: 1.4rem;
+		transition: background 180ms ease, color 180ms ease;
+	}
+
+	.detail-next a:hover strong,
+	.detail-next a:focus-visible strong {
+		background: #171717;
+		color: #fff;
+	}
+
+	@media (max-width: 800px) {
+		.detail-hero {
+			grid-template-columns: 1fr;
+			min-height: auto;
+			padding-top: 4rem;
+		}
+
+		.detail-hero__media {
+			min-height: 22rem;
+		}
+
+		.detail-story,
+		.detail-story--reverse {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+		}
+
+		.detail-story--reverse .detail-story__copy,
+		.detail-story--reverse .detail-story__media {
+			grid-column: auto;
+			grid-row: auto;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.detail-keywords {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.detail-hero h1 {
+			font-size: clamp(3.2rem, 15vw, 5rem);
+		}
+	}
+</style>

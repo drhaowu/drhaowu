@@ -1,0 +1,294 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const assetBase = `${base}assets/figma/skills/`;
+
+const cards = [
+	{
+		number: '01',
+		title: 'Visual Design',
+		subtitle: '视觉设计',
+		icon: 'visual-icon.svg',
+		image: 'visual-design.png',
+		imageAlt: 'Platform-adaptive visual design examples',
+		items: [
+			['Platform-adaptive visuals', '平台自适应视觉效果'],
+			['Cross-platform user engagement', '跨平台用户参与'],
+		],
+	},
+	{
+		number: '02',
+		title: 'Video Production',
+		subtitle: '视频生产',
+		icon: 'visual-icon.svg',
+		image: 'video-production.png',
+		imageAlt: 'Knowledge-driven short video example',
+		items: [
+			['Knowledge-driven short videos', '以知识为导向的短视频生产'],
+			['High engagement on trending charts', '多次登上热门日榜'],
+		],
+	},
+	{
+		number: '03',
+		title: 'Media + Research',
+		subtitle: '媒体与研究',
+		icon: 'video-icon.svg',
+		image: 'media-research.png',
+		imageAlt: 'The Hong Kong Experience Project cover',
+		items: [
+			['Media–research integration', '媒体与研究整合'],
+			['AHRC-funded documentary production', 'AHRC资助的纪录片制作'],
+		],
+	},
+];
+---
+
+<section class="skills-page" aria-labelledby="skills-title">
+	<header class="skills-page__header">
+		<h1 id="skills-title">Core Skills Overview: Three Key Areas</h1>
+		<p class="skills-page__label">核心技能总览：三个关键领域</p>
+	</header>
+
+	<div class="skills-grid">
+		{cards.map((card) => (
+			<article class="skill-card">
+				<img
+					class="skill-card__icon"
+					src={`${assetBase}${card.icon}`}
+					alt=""
+					aria-hidden="true"
+				/>
+				<img
+					class="skill-card__more"
+					src={`${assetBase}more-icon.svg`}
+					alt=""
+					aria-hidden="true"
+				/>
+
+				<div class="skill-card__heading">
+					<h2>{card.number} {card.title}</h2>
+					<p>{card.subtitle}</p>
+				</div>
+
+				<ul class="skill-card__list">
+					{card.items.map(([english, chinese]) => (
+						<li>
+							<span class="skill-card__item-en">{english}</span>
+							<span class="skill-card__item-zh">{chinese}</span>
+						</li>
+					))}
+				</ul>
+
+				<div class="skill-card__image-wrap">
+					<img
+						class={`skill-card__image skill-card__image--${card.number}`}
+						src={`${assetBase}${card.image}`}
+						alt={card.imageAlt}
+						loading={card.number === '01' ? 'eager' : 'lazy'}
+						decoding="async"
+					/>
+				</div>
+			</article>
+		))}
+	</div>
+</section>
+
+<style>
+	.skills-page {
+		--ink: #080f1a;
+		--muted: #6b7178;
+		position: relative;
+		min-height: 100vh;
+		overflow: hidden;
+		padding: clamp(2rem, 3.2vw, 3.8rem) clamp(1.25rem, 3.65vw, 4.375rem) clamp(3rem, 5vw, 5.5rem);
+		background: #ffffff;
+		color: var(--ink);
+		font-family: OPPOSans, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	}
+
+	.skills-page__header {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+	}
+
+	.skills-page__header h1 {
+		margin: 0;
+		font-size: clamp(1.2rem, 1.56vw, 1.875rem);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+	}
+
+	.skills-page__label {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.8rem;
+		margin: 0.9rem 0 0;
+		padding: 0.55rem 2.4rem;
+		border-radius: 999px;
+		background: #ff9a00;
+		color: #ffffff;
+		font-size: clamp(0.68rem, 0.73vw, 0.875rem);
+		line-height: 1.5;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(1.25rem, 5.9vw, 7.1rem);
+		width: min(100%, 1779px);
+		margin: clamp(2.2rem, 3.4vw, 4.2rem) auto 0;
+	}
+
+	.skill-card {
+		position: relative;
+		aspect-ratio: 508 / 760;
+		min-width: 0;
+		overflow: hidden;
+		border-radius: clamp(1.25rem, 1.33vw, 1.6rem);
+		background: rgba(207, 207, 207, 0.3);
+		box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.01), 0 0.625rem 1.125rem rgba(0, 0, 0, 0.02), 0 1.1rem 3.5rem rgba(0, 0, 0, 0.03);
+	}
+
+	.skill-card__icon {
+		position: absolute;
+		top: 5.85%;
+		left: 8.75%;
+		z-index: 1;
+		width: 25%;
+		height: auto;
+	}
+
+	.skill-card__more {
+		position: absolute;
+		top: 4.8%;
+		right: 4.2%;
+		z-index: 2;
+		width: 5.2%;
+		height: auto;
+	}
+
+	.skill-card__heading {
+		position: absolute;
+		top: 11.25%;
+		left: 17.9%;
+		z-index: 1;
+	}
+
+	.skill-card__heading h2 {
+		margin: 0;
+		white-space: nowrap;
+		font-size: clamp(1rem, 1.56vw, 1.875rem);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+	}
+
+	.skill-card__heading p {
+		margin: 0.2rem 0 0 0.7rem;
+		font-size: clamp(0.7rem, 1.04vw, 1.25rem);
+		line-height: 1.5;
+	}
+
+	.skill-card__list {
+		position: absolute;
+		top: 29.8%;
+		left: 8.85%;
+		right: 7.5%;
+		z-index: 1;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.skill-card__list li {
+		position: relative;
+		margin: 0 0 0.45rem;
+		padding-left: 0.95em;
+	}
+
+	.skill-card__list li::before {
+		position: absolute;
+		left: 0;
+		content: '•';
+	}
+
+	.skill-card__item-en,
+	.skill-card__item-zh {
+		display: block;
+	}
+
+	.skill-card__item-en {
+		font-size: clamp(0.67rem, 1.04vw, 1.25rem);
+		line-height: 1.5;
+	}
+
+	.skill-card__item-zh {
+		margin-left: 0.85em;
+		color: rgba(8, 15, 26, 0.62);
+		font-size: clamp(0.5rem, 0.78vw, 0.9375rem);
+		line-height: 1.4;
+	}
+
+	.skill-card__image-wrap {
+		position: absolute;
+		bottom: 4.5%;
+		left: 5.1%;
+		width: 89.6%;
+		height: 40.8%;
+		overflow: hidden;
+		border-radius: clamp(0.9rem, 1.3vw, 1.6rem);
+		background: #eeeeee;
+	}
+
+	.skill-card__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.skill-card__image--02 {
+		object-position: center;
+	}
+
+	.skill-card__image--03 {
+		object-position: center;
+	}
+
+	@media (max-width: 900px) {
+		.skills-grid {
+			gap: clamp(1rem, 4vw, 3rem);
+		}
+
+		.skill-card__heading h2 {
+			font-size: clamp(0.9rem, 1.75vw, 1.3rem);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.skills-page {
+			padding-top: 2rem;
+		}
+
+		.skills-grid {
+			grid-template-columns: 1fr;
+			width: min(100%, 31rem);
+			margin-top: 2.5rem;
+		}
+
+		.skill-card__heading h2 {
+			font-size: clamp(1rem, 5.3vw, 1.55rem);
+		}
+
+		.skill-card__heading p,
+		.skill-card__item-en {
+			font-size: clamp(0.75rem, 3.4vw, 1rem);
+		}
+
+		.skill-card__item-zh {
+			font-size: clamp(0.58rem, 2.5vw, 0.8rem);
+		}
+	}
+</style>

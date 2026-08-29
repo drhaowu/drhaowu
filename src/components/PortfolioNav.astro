@@ -1,0 +1,64 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+
+<header class="portfolio-nav">
+	<a class="portfolio-nav__brand" href={base} aria-label="Dr Hao Wu home">DR HAO WU</a>
+	<nav aria-label="Primary navigation">
+		<a href={`${base}#about`}>About</a>
+		<a href={`${base}#practices`}>Practices</a>
+		<a href={`${base}#contact`}>Contact</a>
+	</nav>
+</header>
+
+<style>
+	.portfolio-nav {
+		position: relative;
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: min(100%, 1440px);
+		margin: 0 auto;
+		padding: 1.5rem clamp(1.25rem, 4vw, 4.5rem);
+	}
+
+	.portfolio-nav a {
+		color: #171717;
+		text-decoration: none;
+	}
+
+	.portfolio-nav__brand {
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+	}
+
+	.portfolio-nav nav {
+		display: flex;
+		gap: clamp(1.1rem, 3vw, 3.2rem);
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.04em;
+	}
+
+	.portfolio-nav nav a {
+		opacity: 0.62;
+		transition: opacity 180ms ease;
+	}
+
+	.portfolio-nav nav a:hover,
+	.portfolio-nav nav a:focus-visible {
+		opacity: 1;
+	}
+
+	@media (max-width: 560px) {
+		.portfolio-nav {
+			padding-inline: 1.25rem;
+		}
+
+		.portfolio-nav nav a:nth-child(2) {
+			display: none;
+		}
+	}
+</style>
