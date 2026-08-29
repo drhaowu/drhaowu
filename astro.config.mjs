@@ -7,8 +7,8 @@ import path from 'node:path';
 const root = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://drhaowu.github.io',
-  base: '/drhaowu',
+  site: 'https://www.drhaowu.com',
+  base: '/',
   integrations: [tailwind()],
   vite: {
     resolve: {
