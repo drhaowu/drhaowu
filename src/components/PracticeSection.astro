@@ -8,8 +8,6 @@ interface Props {
 }
 
 const { page, assetBase, base } = Astro.props;
-const isVideo = page.slug === 'video-production';
-const motionAsset = `${base}assets/videos/background.gif`;
 ---
 
 <section class={`practice-section practice-section--${page.slug}`} id={page.slug} aria-labelledby={`${page.slug}-title`}>
@@ -39,17 +37,12 @@ const motionAsset = `${base}assets/videos/background.gif`;
 		<figure class="practice-section__media">
 			<div class="practice-section__media-bar">
 				<span class="practice-section__media-dot" aria-hidden="true"></span>
-				<span>{isVideo ? 'Motion preview' : 'Selected work'}</span>
+				<span>Selected work</span>
 				<span class="practice-section__media-index">{page.number} / 03</span>
 			</div>
-			<div class={`practice-section__media-frame ${isVideo ? 'practice-section__media-frame--motion' : ''}`}>
-				{isVideo ? (
-					<img src={motionAsset} alt="Animated motion preview for video production" loading="eager" decoding="async" />
-				) : (
-					<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="lazy" decoding="async" />
-				)}
+			<div class="practice-section__media-frame">
+				<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="lazy" decoding="async" />
 			</div>
-			{isVideo && <figcaption>Auto-playing motion preview · GIF source</figcaption>}
 		</figure>
 	</div>
 
@@ -286,10 +279,6 @@ const motionAsset = `${base}assets/videos/background.gif`;
 		height: 100%;
 		object-fit: cover;
 		transition: transform 500ms ease;
-	}
-
-	.practice-section__media-frame--motion img {
-		object-fit: cover;
 	}
 
 	.practice-section__media-frame img[src*='media-research'] {

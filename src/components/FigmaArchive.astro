@@ -25,6 +25,7 @@ const archiveImage = `${base}assets/figma/complete-portfolio.png`;
 	.figma-archive {
 		position: relative;
 		z-index: 1;
+		scroll-margin-top: 6.5rem;
 		display: grid;
 		gap: clamp(2rem, 5vw, 3.5rem);
 		width: min(100%, 72rem);
@@ -108,9 +109,15 @@ const archiveImage = `${base}assets/figma/complete-portfolio.png`;
 		box-shadow: 0 0.4rem 1rem rgba(34, 49, 68, 0.1);
 	}
 
-	.figma-archive__frame img {
+	.figma-archive__frame img:not(.figma-archive__more) {
 		display: block;
 		width: min(100%, 460px);
 		height: auto;
+	}
+
+	.figma-archive__frame .figma-archive__more {
+		display: block;
+		width: 1.4rem;
+		height: 1.4rem;
 	}
 </style>
