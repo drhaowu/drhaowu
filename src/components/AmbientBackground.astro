@@ -44,7 +44,7 @@
 		z-index: 0;
 		overflow: hidden;
 		pointer-events: none;
-		background: linear-gradient(135deg, #eaf3ff 0%, #ffffff 48%, #f3f8ff 100%);
+		background: #eaf3ff url('/assets/images/hao/hao-wu-ambient-background.png') center / cover no-repeat;
 		--pointer-x: 50%;
 		--pointer-y: 45%;
 		--pointer-shift-x: 0px;
@@ -52,15 +52,7 @@
 	}
 
 	.ambient-background__orb {
-		position: absolute;
-		display: block;
-		width: clamp(18rem, 42vw, 52rem);
-		aspect-ratio: 1;
-		border-radius: 50%;
-		filter: blur(clamp(3.5rem, 8vw, 9rem));
-		opacity: 0.28;
-		will-change: transform, translate;
-		translate: var(--pointer-shift-x) var(--pointer-shift-y);
+		display: none;
 	}
 
 	.ambient-background__orb--sky {
@@ -95,13 +87,7 @@
 	}
 
 	.ambient-background__halo {
-		background:
-			radial-gradient(ellipse at var(--pointer-x) var(--pointer-y), rgba(91, 174, 255, 0.2), transparent 22rem),
-			radial-gradient(ellipse at 50% 34%, rgba(255, 255, 255, 0.74), transparent 42%);
-		mix-blend-mode: screen;
-		opacity: 0.9;
-		transform: translate3d(calc(var(--pointer-shift-x) * -0.12), calc(var(--pointer-shift-y) * -0.12), 0);
-		will-change: transform, background;
+		display: none;
 	}
 
 	.ambient-background__grid {
@@ -109,11 +95,7 @@
 	}
 
 	.ambient-background::after {
-		position: absolute;
-		inset: 0;
-		content: '';
-		background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(57, 194, 232, 0.14), transparent 24rem);
-		mix-blend-mode: soft-light;
+		display: none;
 	}
 
 	.ambient-background__grain {

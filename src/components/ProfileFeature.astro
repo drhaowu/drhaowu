@@ -94,7 +94,7 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 		margin: 0 auto;
 		margin-left: calc(50% - 50vw);
 		padding: 0 0 clamp(2rem, 5vw, 4rem);
-		background: linear-gradient(135deg, rgba(234, 243, 255, 0.78) 0%, rgba(255, 255, 255, 0.56) 48%, rgba(243, 248, 255, 0.78) 100%);
+		background: transparent;
 	}
 
 	.profile-feature__stage {
@@ -110,6 +110,7 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 
 	.profile-feature__stage::before,
 	.profile-feature__stage::after {
+		display: none;
 		position: absolute;
 		border-radius: 50%;
 		content: '';
