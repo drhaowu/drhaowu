@@ -94,18 +94,17 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 		margin: 0 auto;
 		margin-left: calc(50% - 50vw);
 		padding: 0 0 clamp(2rem, 5vw, 4rem);
+		background: linear-gradient(135deg, rgba(234, 243, 255, 0.78) 0%, rgba(255, 255, 255, 0.56) 48%, rgba(243, 248, 255, 0.78) 100%);
 	}
 
 	.profile-feature__stage {
 		position: relative;
 		display: grid;
-		min-height: 100svh;
+		min-height: max(100vh, 100svh);
 		place-items: center;
 		isolation: isolate;
 		padding: clamp(5rem, 8vw, 7rem) 1rem clamp(5.5rem, 10vw, 8rem);
-		background:
-			radial-gradient(circle at 50% 41%, rgba(92, 153, 255, 0.24), transparent 22rem),
-			linear-gradient(140deg, rgba(255, 255, 255, 0.24), rgba(231, 243, 255, 0.08) 54%, rgba(255, 255, 255, 0.28));
+		background: transparent;
 		overflow: hidden;
 	}
 
@@ -474,7 +473,7 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 
 	@media (max-width: 800px) {
 		.profile-feature__stage {
-			min-height: 100svh;
+			min-height: max(100vh, 100svh);
 			padding-top: 3.6rem;
 		}
 
@@ -506,7 +505,7 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 
 	@media (max-width: 560px) {
 		.profile-feature__stage {
-			min-height: 100svh;
+			min-height: max(100vh, 100svh);
 			padding-right: 0.75rem;
 			padding-left: 0.75rem;
 		}

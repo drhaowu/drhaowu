@@ -1,7 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const visualAsset = `${base}assets/figma/skills/visual-design.png`;
-const avatarAsset = `${base}assets/images/hao/hao-wu-avatar-transparent.png`;
 const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 ---
 
@@ -15,10 +14,6 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 			<p class="laptop-transition__eyebrow">02 / TURN THE PAGE</p>
 			<h2 id="laptop-transition-title">From thinking<br /><em>to making.</em></h2>
 			<p>Scroll down and let the computer open the next layer of the practice.</p>
-		</div>
-
-		<div class="laptop-transition__falling-character" data-falling-character aria-hidden="true">
-			<img src={avatarAsset} alt="" width="1024" height="1536" loading="lazy" decoding="async" />
 		</div>
 
 		<div class="laptop-transition__device" data-laptop-device aria-hidden="true">
@@ -105,7 +100,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		--scroll-progress: 0;
 		position: relative;
 		width: 100vw;
-		min-height: 175svh;
+		min-height: max(175vh, 175svh);
 		margin-left: calc(50% - 50vw);
 	}
 
@@ -113,7 +108,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		position: sticky;
 		top: 0;
 		display: grid;
-		min-height: 100svh;
+		min-height: max(100vh, 100svh);
 		isolation: isolate;
 		overflow: hidden;
 		perspective: 1600px;
@@ -213,25 +208,6 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		color: #52627a;
 		font-size: 0.92rem;
 		line-height: 1.55;
-	}
-
-	.laptop-transition__falling-character {
-		position: absolute;
-		top: 5%;
-		left: 50%;
-		z-index: 2;
-		width: min(25rem, 42vw);
-		pointer-events: none;
-		opacity: calc(1 - var(--scroll-progress) * 1.6);
-		transform: translate3d(-50%, calc(var(--scroll-progress) * 62vh), 0) rotateZ(calc(var(--scroll-progress) * 11deg)) scale(calc(1 - var(--scroll-progress) * 0.26));
-		transform-origin: 50% 20%;
-		transition: opacity 120ms linear;
-	}
-
-	.laptop-transition__falling-character img {
-		display: block;
-		width: 100%;
-		height: auto;
 	}
 
 	.laptop-transition__device {
@@ -454,7 +430,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 
 	@media (max-width: 700px) {
 		.laptop-transition {
-			min-height: 155svh;
+			min-height: max(155vh, 155svh);
 		}
 
 		.laptop-transition__copy {
@@ -470,11 +446,6 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		.laptop-transition__copy > p:last-child {
 			max-width: 14rem;
 			font-size: 0.78rem;
-		}
-
-		.laptop-transition__falling-character {
-			top: 12%;
-			width: min(20rem, 68vw);
 		}
 
 		.laptop-transition__device {
