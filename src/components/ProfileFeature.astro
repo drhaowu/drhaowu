@@ -5,8 +5,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 const avatarBase = `${base}assets/images/hao/`;
 ---
 
-<section class="profile-feature" data-profile-feature aria-labelledby="profile-feature-title">
-	<div class="profile-feature__stage" data-gaze-stage>
+<section class="profile-feature" aria-labelledby="profile-feature-title">
+	<div class="profile-feature__stage">
 		<p class="profile-feature__eyebrow">Research · Media · Design</p>
 		<h1 class="profile-feature__title" id="profile-feature-title">Hao Wu</h1>
 		<p class="profile-feature__stage-note">A curious practice moving between questions, screens and places.</p>
@@ -23,8 +23,6 @@ const avatarBase = `${base}assets/images/hao/`;
 					loading="eager"
 					decoding="async"
 				/>
-				<span class="profile-feature__lens-glint profile-feature__lens-glint--left" aria-hidden="true"></span>
-				<span class="profile-feature__lens-glint profile-feature__lens-glint--right" aria-hidden="true"></span>
 			</div>
 		</div>
 
@@ -44,10 +42,6 @@ const avatarBase = `${base}assets/images/hao/`;
 				<span>Design</span>
 				<span class="profile-feature__card-line" aria-hidden="true"></span>
 			</a>
-		</div>
-
-		<div class="profile-feature__controls">
-			<p><span class="profile-feature__state-dot" aria-hidden="true"></span>Move your cursor to follow the thought.</p>
 		</div>
 
 		<a class="profile-feature__scroll" href="#practices" aria-label="Scroll to connected practices">
@@ -81,36 +75,8 @@ const avatarBase = `${base}assets/images/hao/`;
 	</div>
 </section>
 
-<script is:inline>
-	const profileFeature = document.querySelector('[data-profile-feature]');
-
-	if (profileFeature) {
-		const stage = profileFeature.querySelector('[data-gaze-stage]');
-		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		const setGaze = (x, y) => {
-			profileFeature.style.setProperty('--gaze-x', `${x}`);
-			profileFeature.style.setProperty('--gaze-y', `${y}`);
-		};
-
-		if (stage && !reducedMotion && window.matchMedia('(pointer: fine)').matches) {
-			stage.addEventListener('pointermove', (event) => {
-				const rect = stage.getBoundingClientRect();
-				const x = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width - 0.5) * 2));
-				const y = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height - 0.4) * 2));
-				setGaze(x, y);
-			}, { passive: true });
-
-			stage.addEventListener('pointerleave', () => setGaze(0, 0), { passive: true });
-		}
-
-	}
-</script>
-
 <style>
 	.profile-feature {
-		--gaze-x: 0;
-		--gaze-y: 0;
 		position: relative;
 		z-index: 1;
 		width: 100vw;
@@ -221,8 +187,6 @@ const avatarBase = `${base}assets/images/hao/`;
 		width: min(37rem, 58vw);
 		margin-top: 1.5rem;
 		filter: drop-shadow(0 2rem 2.4rem rgba(25, 82, 160, 0.18));
-		transform: translate3d(calc(var(--gaze-x) * 0.18rem), calc(var(--gaze-y) * 0.12rem), 0);
-		transition: transform 180ms ease-out;
 	}
 
 	.profile-feature__character-glow {
@@ -253,30 +217,6 @@ const avatarBase = `${base}assets/images/hao/`;
 	.profile-feature__character-image img.is-switching {
 		opacity: 0.2;
 		filter: blur(7px);
-	}
-
-	.profile-feature__lens-glint {
-		position: absolute;
-		z-index: 3;
-		width: clamp(0.48rem, 1vw, 0.75rem);
-		aspect-ratio: 1;
-		border: 2px solid rgba(255, 255, 255, 0.88);
-		border-radius: 50%;
-		background: radial-gradient(circle at 35% 30%, #ffffff 0 18%, #77c9ff 40%, rgba(23, 105, 232, 0.08) 70%);
-		box-shadow: 0 0 1.2rem rgba(75, 180, 255, 0.85);
-		transform: translate3d(calc(var(--gaze-x) * 0.45rem), calc(var(--gaze-y) * 0.3rem), 0);
-		transition: transform 90ms linear;
-		pointer-events: none;
-	}
-
-	.profile-feature__lens-glint--left {
-		top: 31.5%;
-		left: 37%;
-	}
-
-	.profile-feature__lens-glint--right {
-		top: 31.5%;
-		left: 59%;
 	}
 
 	.profile-feature__cards {
@@ -628,8 +568,6 @@ const avatarBase = `${base}assets/images/hao/`;
 			animation: none;
 		}
 
-		.profile-feature__character,
-		.profile-feature__lens-glint,
 		.profile-feature__character-image img {
 			transition: none;
 		}
