@@ -50,6 +50,14 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 								<img src={visualAsset} alt="" loading="lazy" decoding="async" />
 								<figcaption>01 / China Tel · CTExcel</figcaption>
 							</figure>
+							<figure class="laptop-transition__case-card laptop-transition__case-card--two" aria-hidden="true">
+								<img src={visualAsset} alt="" loading="lazy" decoding="async" />
+								<figcaption>02 / Platform adaptation</figcaption>
+							</figure>
+							<figure class="laptop-transition__case-card laptop-transition__case-card--three" aria-hidden="true">
+								<img src={visualAsset} alt="" loading="lazy" decoding="async" />
+								<figcaption>03 / Public-facing design</figcaption>
+							</figure>
 						</div>
 					</div>
 					<div class="laptop-transition__screen-footer">
@@ -172,6 +180,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		left: clamp(1.2rem, 7vw, 8.5rem);
 		z-index: 4;
 		max-width: 24rem;
+		opacity: max(0, calc(1 - var(--scroll-progress) * 1.6));
 		transition: opacity 300ms ease, transform 500ms ease;
 		transform: translateY(calc(var(--scroll-progress) * -5rem));
 	}
@@ -413,7 +422,9 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		font-size: 0.6rem;
 		letter-spacing: 0.07em;
 		text-transform: uppercase;
+		opacity: max(0, calc(1 - var(--scroll-progress) * 1.6));
 		transform: translateX(-50%);
+		transition: opacity 240ms ease;
 	}
 
 	.laptop-transition__guide span {
