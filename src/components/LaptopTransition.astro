@@ -2,6 +2,7 @@
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const visualAsset = `${base}assets/figma/skills/visual-design.png`;
 const avatarAsset = `${base}assets/images/hao/hao-wu-avatar-transparent.png`;
+const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 ---
 
 <section class="laptop-transition" id="laptop-transition" data-laptop-transition aria-labelledby="laptop-transition-title">
@@ -57,7 +58,9 @@ const avatarAsset = `${base}assets/images/hao/hao-wu-avatar-transparent.png`;
 					</div>
 				</div>
 			</div>
-			<div class="laptop-transition__base"></div>
+			<div class="laptop-transition__base">
+				<img class="laptop-transition__lid-mark" src={avatarLogo} alt="" width="1254" height="1254" aria-hidden="true" />
+			</div>
 		</div>
 
 		<p class="laptop-transition__guide">Scroll to reveal the work <span aria-hidden="true">↓</span></p>
@@ -381,6 +384,18 @@ const avatarAsset = `${base}assets/images/hao/hao-wu-avatar-transparent.png`;
 		border-radius: 999px;
 		background: rgba(81, 112, 151, 0.28);
 		content: '';
+		transform: translateX(-50%);
+	}
+
+	.laptop-transition__lid-mark {
+		position: absolute;
+		top: 0.42rem;
+		left: 50%;
+		z-index: 1;
+		width: clamp(2rem, 4.3vw, 4.2rem);
+		height: auto;
+		opacity: 0.9;
+		filter: brightness(0) invert(1) drop-shadow(0 0.1rem 0.14rem rgba(55, 85, 130, 0.28));
 		transform: translateX(-50%);
 	}
 
