@@ -1,4 +1,6 @@
 ---
+import LaptopTransition from './LaptopTransition.astro';
+
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const avatarBase = `${base}assets/images/hao/`;
 ---
@@ -14,7 +16,7 @@ const avatarBase = `${base}assets/images/hao/`;
 			<div class="profile-feature__character-image">
 				<img
 					data-avatar-image
-					src={`${avatarBase}hao-wu-avatar-nohat-v2.png`}
+					src={`${avatarBase}hao-wu-avatar-transparent.png`}
 					alt="A 3D illustrated avatar of Hao Wu thinking with a silver laptop"
 					width="1024"
 					height="1536"
@@ -52,6 +54,8 @@ const avatarBase = `${base}assets/images/hao/`;
 			<span>Scroll to explore</span><span aria-hidden="true">↓</span>
 		</a>
 	</div>
+
+	<LaptopTransition />
 
 	<div class="profile-feature__support">
 		<div class="profile-feature__copy">
@@ -237,15 +241,12 @@ const avatarBase = `${base}assets/images/hao/`;
 	.profile-feature__character-image {
 		position: relative;
 		width: 100%;
-		-webkit-mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0, 0, 0, 0.94) 68%, transparent 100%);
-		mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0, 0, 0, 0.94) 68%, transparent 100%);
 	}
 
 	.profile-feature__character-image img {
 		display: block;
 		width: 100%;
 		height: auto;
-		mix-blend-mode: multiply;
 		transition: opacity 170ms ease, filter 170ms ease;
 	}
 
