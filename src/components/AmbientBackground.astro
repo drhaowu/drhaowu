@@ -1,7 +1,7 @@
 <div class="ambient-background" data-ambient aria-hidden="true">
-	<span class="ambient-background__orb ambient-background__orb--orange"></span>
-	<span class="ambient-background__orb ambient-background__orb--blue"></span>
-	<span class="ambient-background__orb ambient-background__orb--mint"></span>
+	<span class="ambient-background__orb ambient-background__orb--sky"></span>
+	<span class="ambient-background__orb ambient-background__orb--cobalt"></span>
+	<span class="ambient-background__orb ambient-background__orb--ice"></span>
 	<span class="ambient-background__halo"></span>
 	<span class="ambient-background__grid"></span>
 	<span class="ambient-background__grain"></span>
@@ -44,7 +44,7 @@
 		z-index: 0;
 		overflow: hidden;
 		pointer-events: none;
-		background: #fbfbf8;
+		background: linear-gradient(135deg, #f8fbff 0%, #ffffff 52%, #eff7ff 100%);
 		--pointer-x: 50%;
 		--pointer-y: 45%;
 		--pointer-shift-x: 0px;
@@ -63,26 +63,26 @@
 		translate: var(--pointer-shift-x) var(--pointer-shift-y);
 	}
 
-	.ambient-background__orb--orange {
+	.ambient-background__orb--sky {
 		top: -22%;
 		left: -10%;
-		background: #ffc28d;
+		background: #9dcdff;
 		animation: ambient-float-one 24s ease-in-out infinite;
 	}
 
-	.ambient-background__orb--blue {
+	.ambient-background__orb--cobalt {
 		right: -20%;
 		bottom: -27%;
 		width: clamp(20rem, 45vw, 56rem);
-		background: #c5dcff;
+		background: #8b9cff;
 		animation: ambient-float-two 29s ease-in-out infinite;
 	}
 
-	.ambient-background__orb--mint {
+	.ambient-background__orb--ice {
 		top: 37%;
 		left: 39%;
 		width: clamp(14rem, 30vw, 38rem);
-		background: #bcecdf;
+		background: #b9efff;
 		opacity: 0.2;
 		animation: ambient-float-three 21s ease-in-out infinite;
 	}
@@ -96,7 +96,7 @@
 
 	.ambient-background__halo {
 		background:
-			radial-gradient(ellipse at var(--pointer-x) var(--pointer-y), rgba(255, 179, 104, 0.2), transparent 22rem),
+			radial-gradient(ellipse at var(--pointer-x) var(--pointer-y), rgba(91, 174, 255, 0.2), transparent 22rem),
 			radial-gradient(ellipse at 50% 34%, rgba(255, 255, 255, 0.74), transparent 42%);
 		mix-blend-mode: screen;
 		opacity: 0.9;
@@ -117,7 +117,7 @@
 		position: absolute;
 		inset: 0;
 		content: '';
-		background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 154, 0, 0.14), transparent 24rem);
+		background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(57, 194, 232, 0.14), transparent 24rem);
 		mix-blend-mode: soft-light;
 	}
 

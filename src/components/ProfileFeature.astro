@@ -1,144 +1,452 @@
 ---
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const imageBase = `${base}assets/images/`;
+const avatarBase = `${base}assets/images/hao/`;
 ---
 
-<section class="profile-feature" aria-labelledby="profile-feature-title">
-	<div class="profile-feature__portrait">
-		<div class="profile-feature__sun" aria-hidden="true"></div>
-		<img src={`${imageBase}profile-photo.png`} alt="Dr Hao Wu" width="680" height="681" loading="eager" decoding="async" />
+<section class="profile-feature" data-profile-feature aria-labelledby="profile-feature-title">
+	<div class="profile-feature__stage" data-gaze-stage>
+		<p class="profile-feature__eyebrow">Research · Media · Design</p>
+		<h1 class="profile-feature__title" id="profile-feature-title">Hao Wu</h1>
+		<p class="profile-feature__stage-note">A curious practice moving between questions, screens and places.</p>
+
+		<div class="profile-feature__character" data-character>
+			<div class="profile-feature__character-glow" aria-hidden="true"></div>
+			<div class="profile-feature__character-image">
+				<img
+					data-avatar-image
+					src={`${avatarBase}hao-wu-avatar-nohat-v2.png`}
+					alt="A 3D illustrated avatar of Hao Wu thinking with a silver laptop"
+					width="1024"
+					height="1536"
+					loading="eager"
+					decoding="async"
+				/>
+				<span class="profile-feature__lens-glint profile-feature__lens-glint--left" aria-hidden="true"></span>
+				<span class="profile-feature__lens-glint profile-feature__lens-glint--right" aria-hidden="true"></span>
+			</div>
+		</div>
+
+		<div class="profile-feature__cards" aria-label="Explore Hao Wu's connected practices">
+			<a class="profile-feature__card profile-feature__card--research" href="#media-research">
+				<span class="profile-feature__card-icon" aria-hidden="true">⌬</span>
+				<span>Research</span>
+				<span class="profile-feature__card-line" aria-hidden="true"></span>
+			</a>
+			<a class="profile-feature__card profile-feature__card--media" href="#video-production">
+				<span class="profile-feature__card-icon" aria-hidden="true">▷</span>
+				<span>Media</span>
+				<span class="profile-feature__card-line" aria-hidden="true"></span>
+			</a>
+			<a class="profile-feature__card profile-feature__card--design" href="#visual-design">
+				<span class="profile-feature__card-icon" aria-hidden="true">✦</span>
+				<span>Design</span>
+				<span class="profile-feature__card-line" aria-hidden="true"></span>
+			</a>
+		</div>
+
+		<div class="profile-feature__controls">
+			<p><span class="profile-feature__state-dot" aria-hidden="true"></span>Move your cursor to follow the thought.</p>
+		</div>
+
+		<a class="profile-feature__scroll" href="#practices" aria-label="Scroll to connected practices">
+			<span>Scroll to explore</span><span aria-hidden="true">↓</span>
+		</a>
 	</div>
 
-	<div class="profile-feature__copy">
-		<p class="profile-feature__eyebrow">A profile in practice</p>
-		<h2 id="profile-feature-title">Dr Hao Wu</h2>
-		<blockquote>
-			<p>Hao’s creative approach bridges <strong>theory and practice</strong>, supporting inclusive learning and fostering cross-cultural understanding through digital storytelling.</p>
-			<p lang="zh-CN">吴豪一直致力于将理论与实践结合起来，通过媒体叙事的方法支持课堂中的包容性学习，以及跨文化理解。</p>
-		</blockquote>
-	</div>
+	<div class="profile-feature__support">
+		<div class="profile-feature__copy">
+			<p class="profile-feature__support-eyebrow">A profile in practice</p>
+			<p class="profile-feature__lead">Hao’s creative approach bridges <strong>theory and practice</strong>, supporting inclusive learning and fostering cross-cultural understanding through digital storytelling.</p>
+			<p class="profile-feature__zh" lang="zh-CN">吴豪一直致力于将理论与实践结合起来，通过媒体叙事的方法支持课堂中的包容性学习，以及跨文化理解。</p>
+		</div>
 
-	<div class="profile-feature__stats" aria-label="Profile highlights">
-		<div>
-			<strong>6 Years</strong>
-			<span>Media Industry<br />Experience</span>
-		</div>
-		<div>
-			<strong>3</strong>
-			<span>Connected<br />Practices</span>
-		</div>
-		<div>
-			<strong>1</strong>
-			<span>Research-to-public<br />Pipeline</span>
+		<div class="profile-feature__stats" aria-label="Profile highlights">
+			<div>
+				<strong>6 Years</strong>
+				<span>Media Industry<br />Experience</span>
+			</div>
+			<div>
+				<strong>3</strong>
+				<span>Connected<br />Practices</span>
+			</div>
+			<div>
+				<strong>1</strong>
+				<span>Research-to-public<br />Pipeline</span>
+			</div>
 		</div>
 	</div>
 </section>
 
+<script is:inline>
+	const profileFeature = document.querySelector('[data-profile-feature]');
+
+	if (profileFeature) {
+		const stage = profileFeature.querySelector('[data-gaze-stage]');
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		const setGaze = (x, y) => {
+			profileFeature.style.setProperty('--gaze-x', `${x}`);
+			profileFeature.style.setProperty('--gaze-y', `${y}`);
+		};
+
+		if (stage && !reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+			stage.addEventListener('pointermove', (event) => {
+				const rect = stage.getBoundingClientRect();
+				const x = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width - 0.5) * 2));
+				const y = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height - 0.4) * 2));
+				setGaze(x, y);
+			}, { passive: true });
+
+			stage.addEventListener('pointerleave', () => setGaze(0, 0), { passive: true });
+		}
+
+	}
+</script>
+
 <style>
 	.profile-feature {
-		display: flex;
-		flex-direction: column;
-		gap: clamp(1.5rem, 3vw, 2.6rem);
-		max-width: 60rem;
-		margin: 0 auto;
-		padding: clamp(1rem, 2.5vw, 2.25rem) 0 clamp(1.5rem, 3vw, 2.5rem);
-		text-align: center;
-	}
-
-	.profile-feature__portrait {
+		--gaze-x: 0;
+		--gaze-y: 0;
 		position: relative;
-		width: min(100%, 19rem);
+		z-index: 1;
+		width: 100%;
+		margin: 0 auto;
+		padding: clamp(1rem, 3vw, 2.5rem) 0 clamp(2rem, 5vw, 4rem);
+	}
+
+	.profile-feature__stage {
+		position: relative;
+		display: grid;
+		min-height: min(53rem, calc(100svh - 4rem));
+		place-items: center;
+		isolation: isolate;
+		padding: clamp(4rem, 7vw, 6.5rem) 1rem clamp(7rem, 11vw, 9rem);
+		border: 1px solid rgba(255, 255, 255, 0.82);
+		border-radius: clamp(1.8rem, 4vw, 3.2rem);
+		background:
+			radial-gradient(circle at 50% 41%, rgba(92, 153, 255, 0.24), transparent 22rem),
+			linear-gradient(140deg, rgba(255, 255, 255, 0.58), rgba(231, 243, 255, 0.24) 54%, rgba(255, 255, 255, 0.66));
+		box-shadow: 0 2rem 5rem rgba(24, 85, 168, 0.1), inset 0 1px rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(24px) saturate(140%);
+		-webkit-backdrop-filter: blur(24px) saturate(140%);
+		overflow: hidden;
+	}
+
+	.profile-feature__stage::before,
+	.profile-feature__stage::after {
+		position: absolute;
+		border-radius: 50%;
+		content: '';
+		pointer-events: none;
+	}
+
+	.profile-feature__stage::before {
+		top: -20%;
+		left: -12%;
+		width: 38rem;
 		aspect-ratio: 1;
-		margin: 0 auto;
+		background: rgba(157, 205, 255, 0.34);
+		filter: blur(22px);
+		animation: profile-orb-one 16s ease-in-out infinite;
 	}
 
-	.profile-feature__sun {
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		width: 74%;
-		aspect-ratio: 2 / 1;
-		border-radius: 999px 999px 0 0;
-		background: linear-gradient(180deg, #ffc18b, #ff9a63);
-		transform: translateX(-50%);
+	.profile-feature__stage::after {
+		right: -14%;
+		bottom: -28%;
+		width: 34rem;
+		aspect-ratio: 1;
+		background: rgba(107, 124, 255, 0.22);
+		filter: blur(30px);
+		animation: profile-orb-two 19s ease-in-out infinite;
 	}
 
-	.profile-feature__portrait img {
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		width: 82%;
-		height: 100%;
-		object-fit: contain;
-		object-position: bottom center;
-		transform: translateX(-50%);
-	}
-
-	.profile-feature__copy {
-		max-width: 45rem;
-		margin: 0 auto;
-	}
-
-	.profile-feature__eyebrow {
-		margin: 0 0 0.85rem;
-		color: #ff8f61;
+	.profile-feature__eyebrow,
+	.profile-feature__support-eyebrow {
+		position: relative;
+		z-index: 4;
+		margin: 0;
+		color: #1769e8;
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: 0.68rem;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
 	}
 
-	.profile-feature h2 {
+	.profile-feature__eyebrow {
+		position: absolute;
+		top: 2rem;
+		left: clamp(1.2rem, 4vw, 3rem);
+	}
+
+	.profile-feature__title {
+		position: absolute;
+		top: 19%;
+		left: 50%;
+		z-index: 0;
+		width: 100%;
 		margin: 0;
-		font-size: clamp(3.4rem, 8vw, 7.5rem);
-		font-weight: 700;
-		letter-spacing: -0.085em;
-		line-height: 0.9;
+		color: rgba(47, 118, 237, 0.16);
+		font-size: clamp(7rem, 23vw, 20rem);
+		font-weight: 800;
+		letter-spacing: -0.12em;
+		line-height: 0.78;
+		text-align: center;
+		pointer-events: none;
+		transform: translateX(-50%);
+		white-space: nowrap;
 	}
 
-	.profile-feature h2 em {
-		color: #ff8f61;
-		font-style: normal;
-	}
-
-	.profile-feature blockquote {
-		max-width: 37rem;
-		margin: 1.8rem auto 0;
-		padding: 1.35rem 0;
-		border-top: 1px solid rgba(23, 23, 23, 0.14);
-		border-bottom: 1px solid rgba(23, 23, 23, 0.14);
-		color: #344054;
-		font-size: clamp(0.95rem, 1.4vw, 1.12rem);
-		line-height: 1.55;
-	}
-
-	.profile-feature blockquote p {
+	.profile-feature__stage-note {
+		position: absolute;
+		top: 2rem;
+		right: clamp(1.2rem, 4vw, 3rem);
+		z-index: 4;
+		max-width: 18rem;
 		margin: 0;
+		color: #52627a;
+		font-size: 0.76rem;
+		line-height: 1.45;
+		text-align: right;
 	}
 
-	.profile-feature blockquote p + p {
-		margin-top: 0.9rem;
-		font-size: 0.88em;
+	.profile-feature__character {
+		position: relative;
+		z-index: 2;
+		align-self: end;
+		width: min(37rem, 58vw);
+		margin-top: 1.5rem;
+		filter: drop-shadow(0 2rem 2.4rem rgba(25, 82, 160, 0.18));
+		transform: translate3d(calc(var(--gaze-x) * 0.18rem), calc(var(--gaze-y) * 0.12rem), 0);
+		transition: transform 180ms ease-out;
 	}
 
-	.profile-feature blockquote strong {
-		color: #ff7262;
+	.profile-feature__character-glow {
+		position: absolute;
+		right: 7%;
+		bottom: 2%;
+		left: 7%;
+		z-index: -1;
+		aspect-ratio: 1.55 / 1;
+		border-radius: 999px 999px 0 0;
+		background: linear-gradient(180deg, rgba(112, 190, 255, 0.52), rgba(123, 112, 255, 0.26));
+		filter: blur(0.5px);
+		transform: translateY(2%);
+	}
+
+	.profile-feature__character-image {
+		position: relative;
+		width: 100%;
+	}
+
+	.profile-feature__character-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: opacity 170ms ease, filter 170ms ease;
+	}
+
+	.profile-feature__character-image img.is-switching {
+		opacity: 0.2;
+		filter: blur(7px);
+	}
+
+	.profile-feature__lens-glint {
+		position: absolute;
+		z-index: 3;
+		width: clamp(0.48rem, 1vw, 0.75rem);
+		aspect-ratio: 1;
+		border: 2px solid rgba(255, 255, 255, 0.88);
+		border-radius: 50%;
+		background: radial-gradient(circle at 35% 30%, #ffffff 0 18%, #77c9ff 40%, rgba(23, 105, 232, 0.08) 70%);
+		box-shadow: 0 0 1.2rem rgba(75, 180, 255, 0.85);
+		transform: translate3d(calc(var(--gaze-x) * 0.45rem), calc(var(--gaze-y) * 0.3rem), 0);
+		transition: transform 90ms linear;
+		pointer-events: none;
+	}
+
+	.profile-feature__lens-glint--left {
+		top: 31.5%;
+		left: 37%;
+	}
+
+	.profile-feature__lens-glint--right {
+		top: 31.5%;
+		left: 59%;
+	}
+
+	.profile-feature__cards {
+		position: absolute;
+		bottom: 4.3rem;
+		left: 50%;
+		z-index: 4;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.7rem;
+		width: min(50rem, 76%);
+		pointer-events: none;
+		transform: translateX(-50%);
+	}
+
+	.profile-feature__card {
+		display: grid;
+		place-items: center;
+		gap: 0.55rem;
+		min-height: 7.5rem;
+		padding: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.48);
+		box-shadow: 0 1.2rem 2.4rem rgba(25, 82, 160, 0.1), inset 0 1px rgba(255, 255, 255, 0.86);
+		backdrop-filter: blur(16px) saturate(150%);
+		-webkit-backdrop-filter: blur(16px) saturate(150%);
+		color: #173d83;
+		font-size: 0.82rem;
+		font-weight: 650;
+		text-decoration: none;
+		pointer-events: auto;
+		transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+	}
+
+	.profile-feature__card:hover,
+	.profile-feature__card:focus-visible {
+		background: rgba(255, 255, 255, 0.78);
+		box-shadow: 0 1.5rem 2.8rem rgba(25, 82, 160, 0.2), inset 0 1px rgba(255, 255, 255, 0.96);
+		transform: translateY(-7px);
+	}
+
+	.profile-feature__card-icon {
+		display: grid;
+		place-items: center;
+		width: 2.6rem;
+		height: 2.6rem;
+		border: 2px solid rgba(47, 118, 237, 0.75);
+		border-radius: 0.7rem;
+		color: #2f76ed;
+		font-size: 1.4rem;
+		line-height: 1;
+	}
+
+	.profile-feature__card-line {
+		width: 1.5rem;
+		height: 2px;
+		border-radius: 999px;
+		background: rgba(47, 118, 237, 0.42);
+	}
+
+	.profile-feature__card--research {
+		animation: profile-bounce-one 5.6s ease-in-out infinite;
+	}
+
+	.profile-feature__card--media {
+		animation: profile-bounce-two 6.4s ease-in-out infinite;
+	}
+
+	.profile-feature__card--design {
+		animation: profile-bounce-three 5.9s ease-in-out infinite;
+	}
+
+	.profile-feature__controls {
+		position: absolute;
+		bottom: 1.25rem;
+		left: clamp(1.2rem, 4vw, 4rem);
+		z-index: 5;
+		display: grid;
+		gap: 0.55rem;
+		justify-items: start;
+	}
+
+	.profile-feature__state-dot {
+		width: 0.55rem;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: #2f76ed;
+		box-shadow: 0 0 0 4px rgba(47, 118, 237, 0.12);
+	}
+
+	.profile-feature__controls p {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		margin: 0;
+		color: #637795;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.02em;
+	}
+
+	.profile-feature__scroll {
+		position: absolute;
+		right: clamp(1.2rem, 4vw, 4rem);
+		bottom: 1.25rem;
+		z-index: 4;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7rem;
+		color: #2f5fae;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.62rem;
+		letter-spacing: 0.05em;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	.profile-feature__scroll span:last-child {
+		display: grid;
+		place-items: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border: 1px solid rgba(47, 118, 237, 0.28);
+		border-radius: 50%;
+		font-size: 1rem;
+		animation: profile-scroll-bob 2.4s ease-in-out infinite;
+	}
+
+	.profile-feature__support {
+		display: grid;
+		grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+		gap: clamp(2rem, 6vw, 6rem);
+		align-items: end;
+		max-width: 62rem;
+		margin: clamp(2rem, 5vw, 4rem) auto 0;
+		padding: clamp(1rem, 4vw, 2rem) clamp(0.5rem, 3vw, 2rem);
+	}
+
+	.profile-feature__copy {
+		max-width: 43rem;
+	}
+
+	.profile-feature__support-eyebrow {
+		margin-bottom: 1rem;
+	}
+
+	.profile-feature__lead,
+	.profile-feature__zh {
+		margin: 0;
+		color: #344d70;
+		font-size: clamp(1rem, 1.4vw, 1.15rem);
+		line-height: 1.6;
+	}
+
+	.profile-feature__lead strong {
+		color: #1769e8;
+	}
+
+	.profile-feature__zh {
+		margin-top: 1rem;
+		font-size: 0.9rem;
 	}
 
 	.profile-feature__stats {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 0;
-		max-width: 44rem;
-		margin: 0 auto;
-		padding-top: clamp(0.5rem, 1.5vw, 1rem);
 	}
 
 	.profile-feature__stats div {
 		display: grid;
-		gap: 0.35rem;
+		gap: 0.5rem;
 		padding: 0 1rem;
-		border-left: 1px solid rgba(23, 23, 23, 0.14);
+		border-left: 1px solid rgba(47, 118, 237, 0.18);
 	}
 
 	.profile-feature__stats div:first-child {
@@ -146,20 +454,144 @@ const imageBase = `${base}assets/images/`;
 	}
 
 	.profile-feature__stats strong {
-		color: #ff8f61;
-		font-size: clamp(1.35rem, 2.5vw, 2.25rem);
+		color: #1769e8;
+		font-size: clamp(1.2rem, 2.4vw, 2rem);
 		line-height: 1;
 	}
 
 	.profile-feature__stats span {
-		color: #6b7178;
+		color: #667995;
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.6rem;
+		font-size: 0.58rem;
 		line-height: 1.35;
 		text-transform: uppercase;
 	}
 
+	@keyframes profile-orb-one {
+		0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+		50% { transform: translate3d(10%, 8%, 0) scale(1.12); }
+	}
+
+	@keyframes profile-orb-two {
+		0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+		50% { transform: translate3d(-9%, -8%, 0) scale(1.1); }
+	}
+
+	@keyframes profile-bounce-one {
+		0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+		50% { transform: translate3d(0, -0.65rem, 0) rotate(3deg); }
+	}
+
+	@keyframes profile-bounce-two {
+		0%, 100% { transform: translate3d(0, 0, 0) rotate(4deg); }
+		50% { transform: translate3d(0, -0.85rem, 0) rotate(-3deg); }
+	}
+
+	@keyframes profile-bounce-three {
+		0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+		50% { transform: translate3d(0, -0.55rem, 0) rotate(4deg); }
+	}
+
+	@keyframes profile-scroll-bob {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(0.25rem); }
+	}
+
+	@media (max-width: 800px) {
+		.profile-feature__stage {
+			min-height: min(43rem, calc(100svh - 4.2rem));
+			padding-top: 3.6rem;
+		}
+
+		.profile-feature__title {
+			top: 22%;
+			font-size: clamp(5.5rem, 25vw, 10rem);
+		}
+
+		.profile-feature__character {
+			width: min(29rem, 72vw);
+		}
+
+		.profile-feature__cards {
+			bottom: 4.25rem;
+			width: 82%;
+			gap: 0.45rem;
+		}
+
+		.profile-feature__card {
+			min-height: 6.5rem;
+			padding: 0.8rem 0.4rem;
+		}
+
+		.profile-feature__support {
+			grid-template-columns: 1fr;
+			gap: 2.25rem;
+		}
+	}
+
 	@media (max-width: 560px) {
+		.profile-feature__stage {
+			min-height: 40rem;
+			border-radius: 1.6rem;
+			padding-right: 0.75rem;
+			padding-left: 0.75rem;
+		}
+
+		.profile-feature__title {
+			font-size: clamp(3.2rem, 18vw, 6rem);
+		}
+
+		.profile-feature__stage-note {
+			max-width: 17rem;
+			font-size: 0.82rem;
+		}
+
+		.profile-feature__character {
+			width: min(24rem, 92vw);
+			margin-top: 0;
+		}
+
+		.profile-feature__cards {
+			bottom: 4.15rem;
+			width: calc(100% - 1.1rem);
+			gap: 0.3rem;
+		}
+
+		.profile-feature__card {
+			min-height: 5.35rem;
+			padding: 0.6rem 0.25rem;
+			border-radius: 0.75rem;
+			font-size: 0.62rem;
+		}
+
+		.profile-feature__card-icon {
+			width: 2rem;
+			height: 2rem;
+			font-size: 1.05rem;
+		}
+
+		.profile-feature__card-line {
+			width: 1.1rem;
+		}
+
+		.profile-feature__controls {
+			bottom: 3.7rem;
+			left: 1rem;
+		}
+
+		.profile-feature__controls p {
+			display: none;
+		}
+
+		.profile-feature__scroll {
+			right: 1rem;
+			bottom: 1rem;
+		}
+
+		.profile-feature__scroll span:first-child {
+			display: none;
+		}
+
 		.profile-feature__stats {
 			grid-template-columns: 1fr;
 			gap: 0;
@@ -169,13 +601,27 @@ const imageBase = `${base}assets/images/`;
 			grid-template-columns: 1fr 1fr;
 			align-items: center;
 			padding: 0.8rem 0;
-			border-top: 1px solid rgba(23, 23, 23, 0.14);
+			border-top: 1px solid rgba(47, 118, 237, 0.18);
 			border-left: 0;
-			text-align: left;
 		}
 
 		.profile-feature__stats div:first-child {
 			border-top: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.profile-feature__stage::before,
+		.profile-feature__stage::after,
+		.profile-feature__card,
+		.profile-feature__scroll span:last-child {
+			animation: none;
+		}
+
+		.profile-feature__character,
+		.profile-feature__lens-glint,
+		.profile-feature__character-image img {
+			transition: none;
 		}
 	}
 </style>
