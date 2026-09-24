@@ -44,7 +44,7 @@
 		z-index: 0;
 		overflow: hidden;
 		pointer-events: none;
-		background: linear-gradient(135deg, #f8fbff 0%, #ffffff 52%, #eff7ff 100%);
+		background: linear-gradient(135deg, #eaf3ff 0%, #ffffff 48%, #f3f8ff 100%);
 		--pointer-x: 50%;
 		--pointer-y: 45%;
 		--pointer-shift-x: 0px;
@@ -105,12 +105,7 @@
 	}
 
 	.ambient-background__grid {
-		background-image: linear-gradient(rgba(71, 95, 124, 0.065) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 95, 124, 0.065) 1px, transparent 1px);
-		background-size: clamp(3.5rem, 7vw, 6.5rem) clamp(3.5rem, 7vw, 6.5rem);
-		mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 74%, transparent 100%);
-		opacity: 0.48;
-		transform: translate3d(calc(var(--pointer-shift-x) * -0.2), calc(var(--pointer-shift-y) * -0.2), 0) rotate(-7deg) scale(1.1);
-		will-change: transform;
+		display: none;
 	}
 
 	.ambient-background::after {

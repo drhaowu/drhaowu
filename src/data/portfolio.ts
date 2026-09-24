@@ -35,7 +35,7 @@ export const portfolioCards: PortfolioCard[] = [
 		image: 'visual-design.png',
 		imageAlt: 'A collage of visual design examples',
 		icon: 'visual-icon.svg',
-		accent: '#ffb273',
+	accent: '#1769e8',
 	},
 	{
 		slug: 'video-production',
@@ -46,7 +46,7 @@ export const portfolioCards: PortfolioCard[] = [
 		image: 'video-production.png',
 		imageAlt: 'A knowledge-driven short video example',
 		icon: 'video-icon.svg',
-		accent: '#ff8f70',
+	accent: '#2fb7e8',
 	},
 	{
 		slug: 'media-research',
@@ -57,7 +57,7 @@ export const portfolioCards: PortfolioCard[] = [
 		image: 'media-research.png',
 		imageAlt: 'The Hong Kong Experience Project cover',
 		icon: 'visual-icon.svg',
-		accent: '#9bdccd',
+	accent: '#727bff',
 	},
 ];
 

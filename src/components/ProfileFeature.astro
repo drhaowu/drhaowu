@@ -109,26 +109,22 @@ const avatarBase = `${base}assets/images/hao/`;
 		--gaze-y: 0;
 		position: relative;
 		z-index: 1;
-		width: 100%;
+		width: 100vw;
 		margin: 0 auto;
-		padding: clamp(1rem, 3vw, 2.5rem) 0 clamp(2rem, 5vw, 4rem);
+		margin-left: calc(50% - 50vw);
+		padding: 0 0 clamp(2rem, 5vw, 4rem);
 	}
 
 	.profile-feature__stage {
 		position: relative;
 		display: grid;
-		min-height: min(53rem, calc(100svh - 4rem));
+		min-height: 100svh;
 		place-items: center;
 		isolation: isolate;
-		padding: clamp(4rem, 7vw, 6.5rem) 1rem clamp(7rem, 11vw, 9rem);
-		border: 1px solid rgba(255, 255, 255, 0.82);
-		border-radius: clamp(1.8rem, 4vw, 3.2rem);
+		padding: clamp(5rem, 8vw, 7rem) 1rem clamp(5.5rem, 10vw, 8rem);
 		background:
 			radial-gradient(circle at 50% 41%, rgba(92, 153, 255, 0.24), transparent 22rem),
-			linear-gradient(140deg, rgba(255, 255, 255, 0.58), rgba(231, 243, 255, 0.24) 54%, rgba(255, 255, 255, 0.66));
-		box-shadow: 0 2rem 5rem rgba(24, 85, 168, 0.1), inset 0 1px rgba(255, 255, 255, 0.95);
-		backdrop-filter: blur(24px) saturate(140%);
-		-webkit-backdrop-filter: blur(24px) saturate(140%);
+			linear-gradient(140deg, rgba(255, 255, 255, 0.24), rgba(231, 243, 255, 0.08) 54%, rgba(255, 255, 255, 0.28));
 		overflow: hidden;
 	}
 
@@ -170,6 +166,11 @@ const avatarBase = `${base}assets/images/hao/`;
 		font-size: 0.68rem;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
+	}
+
+	.profile-feature__eyebrow,
+	.profile-feature__stage-note {
+		display: none;
 	}
 
 	.profile-feature__eyebrow {
@@ -236,12 +237,15 @@ const avatarBase = `${base}assets/images/hao/`;
 	.profile-feature__character-image {
 		position: relative;
 		width: 100%;
+		-webkit-mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0, 0, 0, 0.94) 68%, transparent 100%);
+		mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0, 0, 0, 0.94) 68%, transparent 100%);
 	}
 
 	.profile-feature__character-image img {
 		display: block;
 		width: 100%;
 		height: auto;
+		mix-blend-mode: multiply;
 		transition: opacity 170ms ease, filter 170ms ease;
 	}
 
@@ -353,6 +357,7 @@ const avatarBase = `${base}assets/images/hao/`;
 		display: grid;
 		gap: 0.55rem;
 		justify-items: start;
+		display: none;
 	}
 
 	.profile-feature__state-dot {
@@ -376,18 +381,23 @@ const avatarBase = `${base}assets/images/hao/`;
 
 	.profile-feature__scroll {
 		position: absolute;
-		right: clamp(1.2rem, 4vw, 4rem);
+		left: 50%;
 		bottom: 1.25rem;
 		z-index: 4;
 		display: inline-flex;
 		align-items: center;
-		gap: 0.7rem;
+		gap: 0.45rem;
 		color: #2f5fae;
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: 0.62rem;
 		letter-spacing: 0.05em;
 		text-decoration: none;
 		text-transform: uppercase;
+		transform: translateX(-50%);
+	}
+
+	.profile-feature__scroll span:first-child {
+		display: none;
 	}
 
 	.profile-feature__scroll span:last-child {
@@ -499,7 +509,7 @@ const avatarBase = `${base}assets/images/hao/`;
 
 	@media (max-width: 800px) {
 		.profile-feature__stage {
-			min-height: min(43rem, calc(100svh - 4.2rem));
+			min-height: 100svh;
 			padding-top: 3.6rem;
 		}
 
@@ -531,8 +541,7 @@ const avatarBase = `${base}assets/images/hao/`;
 
 	@media (max-width: 560px) {
 		.profile-feature__stage {
-			min-height: 40rem;
-			border-radius: 1.6rem;
+			min-height: 100svh;
 			padding-right: 0.75rem;
 			padding-left: 0.75rem;
 		}

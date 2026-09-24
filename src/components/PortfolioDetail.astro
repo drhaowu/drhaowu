@@ -70,10 +70,10 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 
 <style>
 	.detail-page {
-		--detail-accent: #ffb273;
-		width: min(100%, 1120px);
+		--detail-accent: #1769e8;
+		width: min(100%, 1280px);
 		margin: 0 auto;
-		padding: 0 clamp(1.25rem, 5vw, 4rem) clamp(2rem, 8vw, 8rem);
+		padding: 0 clamp(1.25rem, 7vw, 8.5rem) clamp(2rem, 8vw, 8rem);
 	}
 
 	.detail-hero {
@@ -96,7 +96,7 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 	.detail-hero__eyebrow,
 	.detail-story__eyebrow {
 		margin: 0 0 1.2rem;
-		color: #ff9a00;
+		color: var(--detail-accent);
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: 0.7rem;
 		letter-spacing: 0.12em;
@@ -136,13 +136,9 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		width: min(100%, 60rem);
 		margin: 0 auto;
 		margin: 0 auto;
-		min-height: 28rem;
+		min-height: 32rem;
 		overflow: hidden;
-		border: 1px solid rgba(23, 23, 23, 0.1);
-		border-radius: 2rem;
-		background: rgba(255, 255, 255, 0.56);
-		box-shadow: 0 2rem 5rem rgba(23, 23, 23, 0.09);
-		backdrop-filter: blur(18px);
+		background: transparent;
 	}
 
 	.detail-hero__glow {
@@ -176,8 +172,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		grid-template-columns: repeat(3, 1fr);
 		gap: 1rem;
 		padding: 1.4rem 0;
-		border-top: 1px solid rgba(23, 23, 23, 0.13);
-		border-bottom: 1px solid rgba(23, 23, 23, 0.13);
 		text-align: center;
 	}
 
@@ -256,7 +250,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 	.detail-story li {
 		position: relative;
 		padding: 0.65rem 0 0.65rem 1.4rem;
-		border-top: 1px solid rgba(23, 23, 23, 0.12);
 		font-size: 0.9rem;
 		text-align: left;
 	}
@@ -274,9 +267,7 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		min-height: 24rem;
 		margin: 0 auto;
 		overflow: hidden;
-		border-radius: 1.5rem;
-		background: rgba(255, 255, 255, 0.72);
-		box-shadow: 0 1.5rem 4rem rgba(23, 23, 23, 0.08);
+		background: transparent;
 	}
 
 	.detail-story__media img {
@@ -315,7 +306,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		justify-content: space-between;
 		gap: 1rem;
 		padding: 1.2rem 0;
-		border-top: 1px solid rgba(23, 23, 23, 0.15);
 		color: #171717;
 		font-size: clamp(2rem, 4vw, 4rem);
 		font-weight: 700;
@@ -330,8 +320,9 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		place-items: center;
 		width: 3.2rem;
 		height: 3.2rem;
-		border: 1px solid rgba(23, 23, 23, 0.18);
+		border: 0;
 		border-radius: 50%;
+		background: rgba(23, 105, 232, 0.08);
 		font-size: 1.4rem;
 		transition: background 180ms ease, color 180ms ease;
 	}
