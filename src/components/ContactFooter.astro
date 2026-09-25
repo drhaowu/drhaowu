@@ -7,11 +7,7 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 	<div class="portfolio-footer__background-title" aria-hidden="true">Bye Bye</div>
 
 	<div class="portfolio-footer__portrait" aria-hidden="true">
-		<div class="portfolio-footer__wave-frames">
-			<img class="portfolio-footer__wave-frame portfolio-footer__wave-frame--one" src={waveSrc} alt="" width="1024" height="1536" loading="lazy" decoding="async" />
-			<img class="portfolio-footer__wave-frame portfolio-footer__wave-frame--two" src={waveSrc} alt="" width="1024" height="1536" loading="lazy" decoding="async" />
-			<img class="portfolio-footer__wave-frame portfolio-footer__wave-frame--three" src={waveSrc} alt="" width="1024" height="1536" loading="lazy" decoding="async" />
-		</div>
+		<img class="portfolio-footer__wave-frame" src={waveSrc} alt="" width="1024" height="1536" loading="lazy" decoding="async" />
 	</div>
 
 	<nav class="portfolio-footer__contact" aria-label="Contact Hao Wu">
@@ -75,11 +71,6 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 		transform: translateY(-1.5rem);
 	}
 
-	.portfolio-footer__wave-frames {
-		position: absolute;
-		inset: 0;
-	}
-
 	.portfolio-footer__wave-frame {
 		position: absolute;
 		bottom: 0;
@@ -89,36 +80,7 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 		object-fit: contain;
 		object-position: bottom center;
 		filter: drop-shadow(0 1.5rem 1.5rem rgba(34, 92, 176, 0.15));
-		opacity: 0;
-		transform-origin: 19% 54%;
-		animation: footer-wave-frames 1.8s steps(1, end) infinite;
-		will-change: opacity, transform;
-	}
-
-	.portfolio-footer__wave-frame--one {
-		transform: translateX(-50%) rotate(-0.6deg);
-	}
-
-	.portfolio-footer__wave-frame--two {
-		transform: translateX(-50%) translateY(-0.15rem) rotate(0.8deg);
-		animation-delay: -0.6s;
-	}
-
-	.portfolio-footer__wave-frame--three {
-		transform: translateX(-50%) translateY(0.1rem) rotate(-0.4deg);
-		animation-delay: -1.2s;
-	}
-
-	@keyframes footer-wave-frames {
-		0%,
-		31% {
-			opacity: 1;
-		}
-
-		32%,
-		100% {
-			opacity: 0;
-		}
+		transform: translateX(-50%);
 	}
 
 	.portfolio-footer__contact {
@@ -144,18 +106,21 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 
 	.portfolio-footer__sticker--email {
 		top: 46%;
-		left: clamp(1rem, 8vw, 8rem);
+		left: clamp(5.75rem, 20vw, 17rem);
+		z-index: 3;
 	}
 
 	.portfolio-footer__sticker--twitter {
-		top: 27%;
-		right: clamp(1rem, 10vw, 11rem);
+		top: 29%;
+		right: clamp(7rem, 21vw, 18rem);
+		z-index: 2;
 		animation-delay: -2.2s;
 	}
 
 	.portfolio-footer__sticker--linkedin {
-		right: clamp(1rem, 7vw, 8rem);
-		bottom: 19%;
+		right: clamp(8rem, 23vw, 20rem);
+		bottom: 35%;
+		z-index: 1;
 		animation-delay: -4.1s;
 	}
 
@@ -165,6 +130,18 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 		height: auto;
 		filter: drop-shadow(0 1.2rem 1rem rgba(44, 101, 185, 0.2));
 		transition: filter 220ms ease, transform 220ms ease;
+	}
+
+	.portfolio-footer__sticker--email .portfolio-footer__sticker-art {
+		width: clamp(6rem, 10vw, 10.5rem);
+	}
+
+	.portfolio-footer__sticker--twitter .portfolio-footer__sticker-art {
+		width: clamp(5.4rem, 8.2vw, 8.8rem);
+	}
+
+	.portfolio-footer__sticker--linkedin .portfolio-footer__sticker-art {
+		width: clamp(4.8rem, 7vw, 7.6rem);
 	}
 
 	.portfolio-footer__sticker:hover .portfolio-footer__sticker-art,
@@ -279,18 +256,31 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 		}
 
 		.portfolio-footer__sticker--email {
-			top: 48%;
-			left: 0.3rem;
+			top: 44%;
+			left: 8%;
 		}
 
 		.portfolio-footer__sticker--twitter {
 			top: 32%;
-			right: 0.25rem;
+			right: 8%;
 		}
 
 		.portfolio-footer__sticker--linkedin {
-			right: 0.35rem;
-			bottom: 20%;
+			right: 8%;
+			top: 52%;
+			bottom: auto;
+		}
+
+		.portfolio-footer__sticker--email .portfolio-footer__sticker-art {
+			width: clamp(5.8rem, 22vw, 7.4rem);
+		}
+
+		.portfolio-footer__sticker--twitter .portfolio-footer__sticker-art {
+			width: clamp(5.1rem, 19vw, 6.6rem);
+		}
+
+		.portfolio-footer__sticker--linkedin .portfolio-footer__sticker-art {
+			width: clamp(4.6rem, 17vw, 5.8rem);
 		}
 
 		.portfolio-footer__sticker-tooltip {
@@ -310,12 +300,7 @@ const waveSrc = base + 'assets/images/hao/hao-wu-avatar-wave-transparent.png';
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.portfolio-footer__wave-frame {
-			animation: none;
-			opacity: 0;
-		}
-
-		.portfolio-footer__wave-frame--one,
+		.portfolio-footer__wave-frame,
 		.portfolio-footer__sticker {
 			opacity: 1;
 			animation: none;

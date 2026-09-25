@@ -4,108 +4,97 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 const cards = [
 	{
 		src: `${base}assets/projects/china-telecom/ctexcel-v2_9069.jpg`,
-		alt: 'CTExcel 5G launch visual with illustrated people and blue, yellow and white graphics',
-		label: '01 / CHINA TEL · CTEXCEL',
+		alt: 'Visual design with illustrated people, blue and yellow graphics',
 	},
 	{
 		src: `${base}assets/projects/china-telecom/ctexcel-v2_9110.jpg`,
-		alt: 'China Telecom and CTExcel travel promotion visual featuring London',
-		label: '02 / PLATFORM ADAPTATION',
+		alt: 'Visual design featuring London and travel storytelling',
 	},
 	{
 		src: `${base}assets/projects/china-telecom/ctexcel-referral-campaign.jpg`,
-		alt: 'CTExcel referral campaign visual with blue, white and yellow information panels',
-		label: '03 / PUBLIC-FACING DESIGN',
+		alt: 'Visual design for a referral campaign',
 	},
 	{
 		src: `${base}assets/projects/china-telecom/ctexcel-v2_9049.jpg`,
-		alt: 'CTExcel social campaign visual featuring a pink concert promotion',
-		label: '04 / SOCIAL CAMPAIGN',
+		alt: 'Visual design for a social campaign',
 	},
+	{
+		src: `${base}assets/projects/china-telecom/ctexcel-v2_9140.jpg`,
+		alt: 'Visual design for a mobile content system',
+	},
+];
+
+const columns = [
+	{ direction: 'up', cards: cards.slice(0, 3) },
+	{ direction: 'down', cards: cards.slice(2, 5) },
 ];
 ---
 
-<section class="laptop-transition" id="laptop-transition" aria-labelledby="laptop-transition-title">
-	<div class="laptop-transition__scene">
-		<div class="laptop-transition__bubble laptop-transition__bubble--one" aria-hidden="true"></div>
-		<div class="laptop-transition__bubble laptop-transition__bubble--two" aria-hidden="true"></div>
-		<div class="laptop-transition__bubble laptop-transition__bubble--three" aria-hidden="true"></div>
+<section class="visual-design-showcase" id="visual-design-showcase" aria-labelledby="visual-design-showcase-title">
+	<div class="visual-design-showcase__scene">
+		<div class="visual-design-showcase__bubble visual-design-showcase__bubble--one" aria-hidden="true"></div>
+		<div class="visual-design-showcase__bubble visual-design-showcase__bubble--two" aria-hidden="true"></div>
 
-		<h2 class="laptop-transition__company" id="laptop-transition-title" aria-label="China Telecom Europe Limited">
-			<span>china telecom</span>
-			<span>(europe) ltd</span>
-		</h2>
+		<h2 id="visual-design-showcase-title"><span>Visual</span><em>Design</em></h2>
 
-		<div class="laptop-transition__device">
-			<div class="laptop-transition__screen" role="img" aria-label="China Telecom Europe visual design work">
-				<div class="laptop-transition__screen-inner">
-					<div class="laptop-transition__screen-topline">
-						<span>CHINA TEL · VISUAL DESIGN</span>
-						<span>01 / 04</span>
-					</div>
-
-					<div class="laptop-transition__screen-title">
-						<span>Social visuals</span>
-						<strong>CTExcel / platform system</strong>
-					</div>
-
-					<div class="laptop-transition__case-window">
-						<div class="laptop-transition__case-track">
-							{[0, 1].map((set) => (
-								<div class="laptop-transition__case-set" aria-hidden={set === 1 ? 'true' : undefined}>
-									{cards.map((card) => (
-										<figure class="laptop-transition__case-card">
-											<img src={card.src} alt={set === 1 ? '' : card.alt} loading="lazy" decoding="async" />
-											{set === 0 && <figcaption>{card.label}</figcaption>}
-										</figure>
+		<div class="visual-design-showcase__television" role="img" aria-label="A small television showing a looping selection of Hao Wu's visual design work">
+			<span class="visual-design-showcase__antenna" aria-hidden="true"></span>
+			<span class="visual-design-showcase__body">
+				<span class="visual-design-showcase__screen">
+					<span class="visual-design-showcase__marquee" aria-hidden="true">
+						{columns.map(({ direction, cards: columnCards }) => (
+							<span class={`visual-design-showcase__column visual-design-showcase__column--${direction}`}>
+								<span class="visual-design-showcase__track">
+									{[0, 1].map(() => (
+										<span class="visual-design-showcase__set">
+											{columnCards.map((card) => (
+												<img src={card.src} alt="" loading="lazy" decoding="async" />
+											))}
+										</span>
 									))}
-								</div>
-							))}
-						</div>
-					</div>
-
-					<div class="laptop-transition__screen-footer">
-						<span>CHINA TELECOM · SOCIAL CONTENT SYSTEM</span>
-						<span>LOOPING CASE STUDY ↗</span>
-					</div>
-				</div>
-			</div>
+								</span>
+							</span>
+						))}
+					</span>
+				</span>
+				<span class="visual-design-showcase__controls" aria-hidden="true"><i></i><i></i><i></i></span>
+			</span>
+			<span class="visual-design-showcase__stand" aria-hidden="true"></span>
 		</div>
 	</div>
 </section>
 
 <style>
-	.laptop-transition {
+	.visual-design-showcase {
 		position: relative;
 		width: 100vw;
-		min-height: max(46rem, 100svh);
+		min-height: max(42rem, 88svh);
 		margin-left: calc(50% - 50vw);
 		overflow: hidden;
+		scroll-margin-top: 5rem;
 	}
 
-	.laptop-transition__scene {
+	.visual-design-showcase__scene {
 		position: relative;
-		display: grid;
-		min-height: max(46rem, 100svh);
-		place-items: center;
-		padding: clamp(5rem, 10vh, 7rem) clamp(1rem, 5vw, 5rem) clamp(3rem, 7vh, 5rem);
+		display: flex;
+		min-height: max(42rem, 88svh);
+		flex-direction: column;
+		align-items: center;
+		padding: var(--section-space) clamp(1rem, 5vw, 5rem) clamp(3.5rem, 7vw, 6rem);
 		isolation: isolate;
 		overflow: hidden;
-		background:
-			radial-gradient(circle at 12% 28%, rgba(113, 178, 255, 0.2), transparent 28%),
-			radial-gradient(circle at 90% 76%, rgba(119, 127, 255, 0.18), transparent 34%),
-			linear-gradient(135deg, rgba(247, 251, 255, 0.82), rgba(229, 242, 255, 0.56));
+		background: transparent;
 	}
 
-	.laptop-transition__scene::before,
-	.laptop-transition__scene::after {
+	.visual-design-showcase__scene::before,
+	.visual-design-showcase__scene::after {
 		position: absolute;
 		border-radius: 50%;
 		content: '';
 		pointer-events: none;
 	}
 
-	.laptop-transition__scene::before {
+	.visual-design-showcase__scene::before {
 		top: -12%;
 		left: -14%;
 		width: min(43rem, 58vw);
@@ -113,7 +102,7 @@ const cards = [
 		background: radial-gradient(circle at 52% 48%, rgba(117, 177, 255, 0.18), transparent 69%);
 	}
 
-	.laptop-transition__scene::after {
+	.visual-design-showcase__scene::after {
 		right: -12%;
 		bottom: -26%;
 		width: min(45rem, 60vw);
@@ -121,7 +110,7 @@ const cards = [
 		background: radial-gradient(circle at 46% 42%, rgba(128, 134, 255, 0.18), transparent 69%);
 	}
 
-	.laptop-transition__bubble {
+	.visual-design-showcase__bubble {
 		position: absolute;
 		z-index: 0;
 		border-radius: 50%;
@@ -129,243 +118,223 @@ const cards = [
 		box-shadow: inset 0.15rem 0.15rem 0.6rem rgba(255, 255, 255, 0.92), 0 1.5rem 4rem rgba(54, 119, 226, 0.08);
 	}
 
-	.laptop-transition__bubble--one {
-		top: 20%;
+	.visual-design-showcase__bubble--one {
+		top: 22%;
 		left: 8%;
 		width: clamp(3rem, 6vw, 6rem);
 	}
 
-	.laptop-transition__bubble--two {
-		top: 15%;
+	.visual-design-showcase__bubble--two {
+		top: 14%;
 		right: 12%;
 		width: clamp(1.8rem, 3vw, 3.2rem);
 	}
 
-	.laptop-transition__bubble--three {
-		right: 7%;
-		bottom: 16%;
-		width: clamp(4rem, 8vw, 8rem);
-	}
-
-	.laptop-transition__company {
-		position: absolute;
-		top: 5.5%;
-		left: 50%;
-		z-index: 0;
-		display: grid;
-		justify-items: center;
-		width: max-content;
+	.visual-design-showcase h2 {
+		position: relative;
+		z-index: 1;
 		margin: 0;
-		color: rgba(47, 105, 214, 0.15);
+		color: #171717;
 		font-family: var(--font-display);
-		font-size: clamp(3.4rem, 7.5vw, 7rem);
-		font-weight: 760;
-		letter-spacing: -0.09em;
+		font-size: clamp(4.8rem, 11.5vw, 11rem);
+		font-weight: 800;
+		letter-spacing: -0.105em;
 		line-height: 0.8;
 		text-align: center;
-		transform: translateX(-50%);
-		text-transform: lowercase;
-		white-space: nowrap;
-		pointer-events: none;
 	}
 
-	.laptop-transition__company span:last-child {
-		margin-top: 0.12em;
-		color: rgba(47, 105, 214, 0.12);
-		font-size: 0.58em;
-		letter-spacing: -0.075em;
+	.visual-design-showcase h2 span,
+	.visual-design-showcase h2 em {
+		display: block;
 	}
 
-	.laptop-transition__device {
+	.visual-design-showcase h2 em {
+		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-style: normal;
+	}
+
+	.visual-design-showcase__television {
 		position: relative;
 		z-index: 2;
-		width: min(79rem, 93vw);
-		margin-top: clamp(3rem, 8vh, 6rem);
-		transform: translateY(clamp(3.5rem, 8vh, 5.5rem));
+		width: min(52rem, 78vw);
+		margin-top: clamp(3rem, 5vw, 5rem);
+		padding: clamp(0.7rem, 1.3vw, 1.1rem) clamp(0.7rem, 1.3vw, 1.1rem) clamp(1rem, 1.8vw, 1.5rem);
+		border-radius: clamp(1.6rem, 3vw, 3rem) clamp(1.6rem, 3vw, 3rem) clamp(1.1rem, 2vw, 2rem) clamp(1.1rem, 2vw, 2rem);
+		background: linear-gradient(145deg, #e8f1ff, #9bbdff 52%, #6e84f3);
+		box-shadow: 1.4rem 1.8rem 2.8rem rgba(38, 82, 148, 0.2), inset 0.2rem 0.2rem 0.35rem rgba(255, 255, 255, 0.75);
+		transform: rotate(-2deg);
 	}
 
-	.laptop-transition__screen {
-		position: relative;
-		width: 100%;
-		aspect-ratio: 16 / 10;
-		padding: clamp(0.55rem, 1vw, 1rem);
-		border: 1px solid rgba(255, 255, 255, 0.9);
-		border-radius: clamp(1.1rem, 2vw, 2rem);
-		background: linear-gradient(145deg, #eef4fc, #bac9db 58%, #91a5c0);
-		box-shadow:
-			0 2rem 4rem rgba(40, 78, 138, 0.2),
-			inset 0 0 0 0.12rem rgba(255, 255, 255, 0.82);
+	.visual-design-showcase__antenna {
+		position: absolute;
+		top: -1.4rem;
+		left: 50%;
+		width: 4.5rem;
+		height: 1.65rem;
+		border-top: 0.2rem solid #6078d8;
+		transform: translateX(-50%);
 	}
 
-	.laptop-transition__screen-inner {
+	.visual-design-showcase__antenna::before,
+	.visual-design-showcase__antenna::after {
+		position: absolute;
+		top: -0.5rem;
+		width: 0.2rem;
+		height: 1.1rem;
+		border-radius: 999px;
+		background: #6078d8;
+		content: '';
+	}
+
+	.visual-design-showcase__antenna::before {
+		left: 0.2rem;
+		transform: rotate(-35deg);
+	}
+
+	.visual-design-showcase__antenna::after {
+		right: 0.2rem;
+		transform: rotate(35deg);
+	}
+
+	.visual-design-showcase__body {
+		display: block;
+		padding: clamp(0.55rem, 1vw, 0.85rem);
+		border-radius: clamp(1rem, 2vw, 1.8rem);
+		background: linear-gradient(145deg, #f8fbff, #c1d4ff);
+	}
+
+	.visual-design-showcase__screen {
+		display: block;
+		height: clamp(20rem, 38vw, 31rem);
+		overflow: hidden;
+		border-radius: clamp(0.8rem, 1.5vw, 1.4rem);
+		background: #17243f;
+		box-shadow: inset 0 0 0 0.25rem rgba(24, 45, 89, 0.5), inset 0 0.4rem 1.1rem rgba(0, 0, 0, 0.22);
+	}
+
+	.visual-design-showcase__marquee {
 		display: grid;
-		grid-template-rows: auto auto minmax(0, 1fr) auto;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(0.5rem, 1vw, 0.8rem);
 		width: 100%;
 		height: 100%;
-		overflow: hidden;
-		border-radius: clamp(0.65rem, 1.2vw, 1.1rem);
-		background: linear-gradient(145deg, #f9fcff, #eaf3ff);
-		box-shadow: inset 0 0 0 1px rgba(37, 92, 170, 0.14);
+		padding: clamp(0.55rem, 1vw, 0.9rem);
 	}
 
-	.laptop-transition__screen-topline,
-	.laptop-transition__screen-footer {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: clamp(0.7rem, 1.1vw, 1.05rem) clamp(0.85rem, 1.6vw, 1.5rem) 0;
-		color: #355581;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.5rem, 0.7vw, 0.72rem);
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-	}
-
-	.laptop-transition__screen-title {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: clamp(0.55rem, 1.1vw, 1rem) clamp(0.85rem, 1.6vw, 1.5rem);
-		color: #536b8b;
-		font-size: clamp(0.65rem, 1.25vw, 1.1rem);
-	}
-
-	.laptop-transition__screen-title strong {
-		color: #1769e8;
-		font-size: 1.2em;
-		font-weight: 650;
-	}
-
-	.laptop-transition__case-window {
-		min-height: 0;
-		overflow: hidden;
-		padding: 0 clamp(0.65rem, 1vw, 1rem);
-	}
-
-	.laptop-transition__case-track {
-		--card-width: clamp(7rem, 12.5vw, 12rem);
-		--card-gap: clamp(0.55rem, 1.2vw, 1rem);
-		display: flex;
-		width: max-content;
+	.visual-design-showcase__column {
+		display: block;
 		height: 100%;
-		animation: laptop-case-loop 28s linear infinite;
-		will-change: transform;
-	}
-
-	.laptop-transition__case-set {
-		display: flex;
-		gap: var(--card-gap);
-		height: 100%;
-		padding-right: var(--card-gap);
-	}
-
-	.laptop-transition__case-card {
-		position: relative;
-		flex: 0 0 var(--card-width);
-		height: 100%;
-		min-height: 0;
-		margin: 0;
 		overflow: hidden;
-		border: 1px solid rgba(255, 255, 255, 0.75);
-		border-radius: clamp(0.45rem, 0.8vw, 0.8rem);
-		background: #fff;
-		box-shadow: 0 0.75rem 1.8rem rgba(50, 94, 163, 0.12);
+		border-radius: clamp(0.4rem, 0.8vw, 0.75rem);
 	}
 
-	.laptop-transition__case-card img {
+	.visual-design-showcase__track {
+		display: block;
+		height: 200%;
+	}
+
+	.visual-design-showcase__column--up .visual-design-showcase__track {
+		animation: visual-design-scroll-up 24s linear infinite;
+	}
+
+	.visual-design-showcase__column--down .visual-design-showcase__track {
+		animation: visual-design-scroll-down 27s linear infinite;
+	}
+
+	.visual-design-showcase__set {
+		display: grid;
+		grid-template-rows: repeat(3, minmax(0, 1fr));
+		gap: clamp(0.45rem, 0.9vw, 0.75rem);
+		height: 50%;
+	}
+
+	.visual-design-showcase__set img {
 		display: block;
 		width: 100%;
 		height: 100%;
+		min-height: 0;
+		border-radius: clamp(0.35rem, 0.7vw, 0.65rem);
 		object-fit: cover;
-		object-position: center top;
+		object-position: center;
+		box-shadow: 0 0.4rem 1rem rgba(15, 34, 68, 0.22);
 	}
 
-	.laptop-transition__case-card figcaption {
-		position: absolute;
-		right: 0.55rem;
-		bottom: 0.55rem;
-		left: 0.55rem;
-		color: rgba(255, 255, 255, 0.96);
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.46rem, 0.6vw, 0.62rem);
-		letter-spacing: 0.04em;
-		text-shadow: 0 1px 0 rgba(18, 42, 76, 0.5);
+	.visual-design-showcase__controls {
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.45rem;
+		padding: 0.7rem 0.3rem 0.1rem;
 	}
 
-	.laptop-transition__screen-footer {
-		padding-top: clamp(0.65rem, 1vw, 0.95rem);
-		padding-bottom: clamp(0.7rem, 1.1vw, 1.05rem);
-		color: #607695;
-		font-size: clamp(0.46rem, 0.62vw, 0.62rem);
+	.visual-design-showcase__controls i {
+		display: block;
+		width: 0.52rem;
+		height: 0.52rem;
+		border-radius: 50%;
+		background: #5474db;
+		box-shadow: inset 0 0.08rem 0.12rem rgba(255, 255, 255, 0.75);
 	}
 
-	@keyframes laptop-case-loop {
+	.visual-design-showcase__stand {
+		display: block;
+		width: 38%;
+		height: clamp(0.55rem, 1vw, 0.85rem);
+		margin: -0.02rem auto 0;
+		border-radius: 0 0 999px 999px;
+		background: linear-gradient(180deg, #8ca9f2, #6078d8);
+	}
+
+	@keyframes visual-design-scroll-up {
 		from {
-			transform: translate3d(0, 0, 0);
+			transform: translateY(0);
 		}
 
 		to {
-			transform: translate3d(-50%, 0, 0);
+			transform: translateY(-50%);
+		}
+	}
+
+	@keyframes visual-design-scroll-down {
+		from {
+			transform: translateY(-50%);
+		}
+
+		to {
+			transform: translateY(0);
 		}
 	}
 
 	@media (max-width: 700px) {
-		.laptop-transition,
-		.laptop-transition__scene {
-			min-height: max(32rem, 76svh);
+		.visual-design-showcase,
+		.visual-design-showcase__scene {
+			min-height: max(34rem, 74svh);
 		}
 
-		.laptop-transition__scene {
-			padding: 4.5rem 0.8rem 2.5rem;
+		.visual-design-showcase__scene {
+			padding: 5rem 0.8rem 3rem;
 		}
 
-		.laptop-transition__company {
-			top: 5.5%;
-			font-size: clamp(2.25rem, 10vw, 4rem);
+		.visual-design-showcase h2 {
+			font-size: clamp(4.5rem, 20vw, 7rem);
 		}
 
-		.laptop-transition__device {
-			width: 96vw;
+		.visual-design-showcase__television {
+			width: min(94vw, 35rem);
 			margin-top: 3rem;
+			transform: rotate(-1deg);
 		}
 
-		.laptop-transition__screen {
-			padding: 0.42rem;
-			border-radius: 0.9rem;
-		}
-
-		.laptop-transition__screen-topline,
-		.laptop-transition__screen-footer {
-			gap: 0.5rem;
-			padding-right: 0.6rem;
-			padding-left: 0.6rem;
-			font-size: 0.38rem;
-		}
-
-		.laptop-transition__screen-title {
-			gap: 0.5rem;
-			padding: 0.38rem 0.6rem 0.55rem;
-			font-size: 0.5rem;
-		}
-
-		.laptop-transition__case-track {
-			--card-width: clamp(5.4rem, 22vw, 8rem);
-			--card-gap: 0.4rem;
-			animation-duration: 22s;
-		}
-
-		.laptop-transition__case-card figcaption {
-			right: 0.3rem;
-			bottom: 0.3rem;
-			left: 0.3rem;
-			font-size: 0.34rem;
+		.visual-design-showcase__screen {
+			height: clamp(17rem, 65vw, 24rem);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.laptop-transition__case-track {
+		.visual-design-showcase__column--up .visual-design-showcase__track,
+		.visual-design-showcase__column--down .visual-design-showcase__track {
 			animation-play-state: paused;
 		}
 	}

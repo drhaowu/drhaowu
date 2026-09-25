@@ -8,17 +8,6 @@ const { base } = Astro.props;
 
 <section class="publication-shelf" id="research" aria-labelledby="publication-shelf-title">
 	<div class="publication-shelf__inner">
-		<div class="publication-shelf__identity" aria-labelledby="research-identity-title">
-			<span class="publication-shelf__quote" aria-hidden="true">“</span>
-			<h2 id="research-identity-title">
-				Digital geography is really about <em>people</em>, place and public life.
-			</h2>
-			<div class="publication-shelf__identity-credit">
-				<strong>Dr Hao Wu</strong>
-				<span>Digital Geographer · Researcher · Media Creator</span>
-			</div>
-		</div>
-
 		<div class="publication-shelf__heading">
 			<h2 id="publication-shelf-title"><span>Research</span><br /><em>On The Page.</em></h2>
 		</div>
@@ -71,31 +60,23 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>Early Career<br />Editorial Board</strong></span>
 			</a>
 
-			<div class="publication-shelf__object publication-shelf__object--public" role="group" aria-label="Research in public through the Hong Kong Experience film">
-				<a
-					class="publication-shelf__television"
-					href="https://www.youtube.com/watch?v=RSIHUVj4IS4"
-					target="_blank"
-					rel="noreferrer"
-					aria-label="Play The Hong Kong Experience film on YouTube"
-				>
-					<span class="publication-shelf__tv-antenna" aria-hidden="true"></span>
-					<span class="publication-shelf__tv-body">
-						<span class="publication-shelf__tv-screen">
-							<img
-								src="https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg"
-								alt="The Hong Kong Experience film preview"
-								loading="lazy"
-								decoding="async"
-							/>
-							<span class="publication-shelf__tv-play" aria-hidden="true"></span>
-						</span>
-						<span class="publication-shelf__tv-controls" aria-hidden="true"><i></i><i></i><i></i></span>
-					</span>
-					<span class="publication-shelf__tv-stand" aria-hidden="true"></span>
-				</a>
-				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>Research<br />in public</strong></span>
-			</div>
+			<a
+				class="publication-shelf__object publication-shelf__object--public"
+				href="https://www.ucl.ac.uk/social-historical-sciences/news/2024/jun/exploring-hybrid-queer-spaces-china-study-hao-wu"
+				target="_blank"
+				rel="noreferrer"
+				aria-label="Read UCL's article about Hao Wu's research on hybrid queer spaces in China"
+			>
+				<span class="publication-shelf__frame publication-shelf__frame--public">
+					<img
+						src="https://www.ucl.ac.uk/social-historical-sciences/sites/social_historical_sciences/files/styles/marketing_hero_xl/public/hao_news_articles.jpg.jpg?itok=b29Zjiwx"
+						alt="UCL research news article about Hao Wu's study of hybrid queer spaces in China"
+						loading="lazy"
+						decoding="async"
+					/>
+				</span>
+				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>UCL Research<br />News</strong></span>
+			</a>
 		</div>
 
 		<div class="publication-shelf__details">
@@ -110,70 +91,15 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		position: relative;
 		width: 100vw;
 		margin-left: calc(50% - 50vw);
-		padding: clamp(5rem, 10vw, 10rem) clamp(1.25rem, 7vw, 8.5rem) clamp(6rem, 11vw, 11rem);
+		padding: var(--section-space) clamp(1.25rem, 7vw, 8.5rem);
 		overflow: hidden;
-		background: linear-gradient(145deg, rgba(225, 239, 255, 0.46), rgba(255, 255, 255, 0.16) 54%, rgba(195, 215, 255, 0.28));
+		background: transparent;
 		scroll-margin-top: 5rem;
 	}
 
 	.publication-shelf__inner {
 		width: min(100%, 90rem);
 		margin: 0 auto;
-	}
-
-	.publication-shelf__identity {
-		max-width: 74rem;
-		margin: 0 auto clamp(6rem, 12vw, 11rem);
-		text-align: center;
-	}
-
-	.publication-shelf__quote {
-		display: block;
-		height: 3.5rem;
-		color: #687dff;
-		font-family: Georgia, serif;
-		font-size: clamp(5rem, 9vw, 9rem);
-		line-height: 0.72;
-	}
-
-	.publication-shelf__identity h2 {
-		margin: 0;
-		color: #171717;
-		font-family: var(--font-display);
-		font-size: clamp(3rem, 6.6vw, 6.9rem);
-		font-weight: 800;
-		letter-spacing: -0.095em;
-		line-height: 0.9;
-	}
-
-	.publication-shelf__identity h2 em {
-		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-		font-style: normal;
-	}
-
-	.publication-shelf__identity-credit {
-		display: grid;
-		gap: 0.5rem;
-		margin-top: 2.5rem;
-		color: #344d70;
-	}
-
-	.publication-shelf__identity-credit strong {
-		color: #1769e8;
-		font-family: var(--font-display);
-		font-size: clamp(1.2rem, 1.8vw, 1.65rem);
-		font-style: italic;
-		letter-spacing: -0.04em;
-	}
-
-	.publication-shelf__identity-credit span {
-		font-family: var(--font-body);
-		font-size: clamp(0.78rem, 1vw, 0.95rem);
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
 	}
 
 	.publication-shelf__heading {
@@ -205,7 +131,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		align-items: end;
 		width: min(100%, 72rem);
-		margin: clamp(4rem, 8vw, 8rem) auto 0;
+		margin: clamp(3.5rem, 6vw, 6rem) auto 0;
 	}
 
 	.publication-shelf__object {
@@ -225,17 +151,17 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 	}
 
 	.publication-shelf__object--journal {
-		justify-self: end;
+		justify-self: start;
 		margin-top: -3.7rem;
-		transform: translateX(1rem) rotate(-8deg);
+		transform: translateX(-1rem) rotate(8deg);
 		z-index: 2;
 	}
 
 	.publication-shelf__object--public {
-		justify-self: start;
+		justify-self: end;
 		width: min(100%, 27rem);
 		margin-top: -3.7rem;
-		transform: translateX(-1rem) rotate(8deg);
+		transform: translateX(1rem) rotate(-8deg);
 		z-index: 2;
 	}
 
@@ -246,12 +172,12 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	.publication-shelf__object--journal:hover,
 	.publication-shelf__object--journal:focus-visible {
-		transform: translate(1rem, -0.7rem) rotate(-3deg);
+		transform: translate(-1rem, -0.7rem) rotate(3deg);
 	}
 
 	.publication-shelf__object--public:hover,
 	.publication-shelf__object--public:focus-visible {
-		transform: translate(-1rem, -0.7rem) rotate(3deg);
+		transform: translate(1rem, -0.7rem) rotate(-3deg);
 	}
 
 	.publication-shelf__frame {
@@ -267,7 +193,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		position: absolute;
 		bottom: 80%;
 		left: 20%;
-		z-index: 3;
+		z-index: 1;
 		display: block;
 		width: clamp(8rem, 13vw, 11rem);
 		aspect-ratio: 2 / 3;
@@ -504,9 +430,9 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 	}
 
 	.publication-shelf__object--public .publication-shelf__hover-label {
-		right: auto;
-		left: -12%;
-		transform: translateY(0.8rem) rotate(-3deg);
+		right: -12%;
+		left: auto;
+		transform: translateY(0.8rem) rotate(3deg);
 	}
 
 	.publication-shelf__object:hover .publication-shelf__hover-label,
@@ -517,7 +443,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	.publication-shelf__object--public:hover .publication-shelf__hover-label,
 	.publication-shelf__object--public:focus-visible .publication-shelf__hover-label {
-		transform: translateY(0) rotate(-3deg);
+		transform: translateY(0) rotate(3deg);
 	}
 
 	.publication-shelf__details {
@@ -602,19 +528,6 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		.publication-shelf {
 			padding-right: 1rem;
 			padding-left: 1rem;
-		}
-
-		.publication-shelf__identity h2 {
-			font-size: clamp(2.8rem, 11vw, 4rem);
-		}
-
-		.publication-shelf__identity-credit {
-			margin-top: 2rem;
-		}
-
-		.publication-shelf__identity-credit span {
-			font-size: 0.68rem;
-			letter-spacing: 0.04em;
 		}
 
 		.publication-shelf__heading h2 {

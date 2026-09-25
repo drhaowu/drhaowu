@@ -2,6 +2,7 @@
 import PortfolioLayout from '../layouts/Portfolio.astro';
 import LaptopTransition from '../components/LaptopTransition.astro';
 import PublicationShelf from '../components/PublicationShelf.astro';
+import HongKongExperience from '../components/HongKongExperience.astro';
 import PracticeSection from '../components/PracticeSection.astro';
 import PracticeOverview from '../components/PracticeOverview.astro';
 import ProfileFeature from '../components/ProfileFeature.astro';
@@ -19,15 +20,16 @@ const seo = {
 ---
 
 <PortfolioLayout {seo}>
-	<section class="home-page" id="about" aria-labelledby="profile-feature-title">
+	<section class="home-page" aria-label="Hao Wu portfolio">
 		<ProfileFeature />
 
 		<PracticeOverview />
 		<PublicationShelf base={base} />
+		<HongKongExperience base={base} />
 		<LaptopTransition />
 
 		<div class="home-page__sections" aria-label="Practice details">
-			{portfolioCards.map((card) => (
+			{portfolioCards.filter((card) => card.slug !== 'media-research' && card.slug !== 'visual-design').map((card) => (
 				<PracticeSection page={portfolioDetails[card.slug]} {assetBase} {base} />
 			))}
 		</div>
@@ -44,7 +46,7 @@ const seo = {
 	}
 
 	.home-page__sections {
-		margin-top: clamp(4rem, 9vw, 9rem);
+		margin-top: clamp(2rem, 4vw, 4rem);
 	}
 
 	@media (max-width: 800px) {

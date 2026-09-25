@@ -29,11 +29,11 @@ const { page, assetBase, base } = Astro.props;
 		--section-accent: #1769e8;
 		position: relative;
 		scroll-margin-top: 5rem;
-		padding: clamp(6rem, 12vw, 12rem) clamp(0.25rem, 3vw, 2rem);
+		padding: var(--section-space) clamp(0.25rem, 3vw, 2rem);
 	}
 
 	.practice-section + .practice-section {
-		margin-top: clamp(1.25rem, 3vw, 3rem);
+		margin-top: var(--section-gap);
 	}
 
 	.practice-section--video-production {
@@ -375,8 +375,8 @@ const { page, assetBase, base } = Astro.props;
 	/* On the single-page home, each practice is carried by one large title and one visual. */
 	.practice-section {
 		scroll-margin-top: 5rem;
-		padding-top: clamp(6rem, 12vw, 12rem);
-		padding-bottom: clamp(6rem, 12vw, 12rem);
+		padding-top: var(--section-space);
+		padding-bottom: var(--section-space);
 	}
 
 	.practice-section__header,
@@ -409,8 +409,8 @@ const { page, assetBase, base } = Astro.props;
 
 	@media (max-width: 560px) {
 		.practice-section {
-			padding-top: 6rem;
-			padding-bottom: 6rem;
+			padding-top: 5rem;
+			padding-bottom: 5rem;
 		}
 
 		.practice-section h2 {

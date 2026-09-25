@@ -1,0 +1,425 @@
+---
+interface Props {
+	base: string;
+}
+
+const { base } = Astro.props;
+const videoUrl = 'https://www.youtube.com/watch?v=RSIHUVj4IS4';
+const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
+---
+
+<section class="hong-kong-experience" id="hk-experience" aria-labelledby="hong-kong-experience-title">
+	<div class="hong-kong-experience__inner">
+		<div class="hong-kong-experience__heading">
+			<p class="hong-kong-experience__eyebrow">Media + Research · 01</p>
+			<h2 id="hong-kong-experience-title">The Hong Kong<br /><em>Experience.</em></h2>
+			<p class="hong-kong-experience__intro">
+				A filmed research project about how a city is encountered, remembered and shared through everyday experience.
+			</p>
+		</div>
+
+		<div class="hong-kong-experience__stage">
+			<div class="hong-kong-experience__wordmark" aria-hidden="true">HK / FIELD NOTES</div>
+			<div class="hong-kong-experience__person" aria-hidden="true">
+				<img
+					src={`${base}assets/images/profile-photo.png`}
+					alt=""
+					width="2302"
+					height="2304"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+
+			<a
+				class="hong-kong-experience__television"
+				href={videoUrl}
+				target="_blank"
+				rel="noreferrer"
+				aria-label="Play The Hong Kong Experience film on YouTube"
+			>
+				<span class="hong-kong-experience__tv-antenna" aria-hidden="true"></span>
+				<span class="hong-kong-experience__tv-body">
+					<span class="hong-kong-experience__tv-screen">
+						<img src={videoThumbnail} alt="The Hong Kong Experience film preview" loading="lazy" decoding="async" />
+						<span class="hong-kong-experience__tv-play" aria-hidden="true"></span>
+					</span>
+					<span class="hong-kong-experience__tv-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+				</span>
+				<span class="hong-kong-experience__tv-stand" aria-hidden="true"></span>
+			</a>
+
+			<div class="hong-kong-experience__caption">
+				<strong>Research in public</strong>
+				<span>Click the screen to watch ↗</span>
+			</div>
+		</div>
+
+		<div class="hong-kong-experience__keywords" aria-label="Hong Kong Experience project themes">
+			<span>Fieldwork</span>
+			<span>Cross-cultural storytelling</span>
+			<span>Public research</span>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hong-kong-experience {
+		position: relative;
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		padding: var(--section-space) clamp(1.25rem, 7vw, 8.5rem);
+		overflow: hidden;
+		background: transparent;
+		scroll-margin-top: 5rem;
+	}
+
+	.hong-kong-experience__inner {
+		width: min(100%, 90rem);
+		margin: 0 auto;
+	}
+
+	.hong-kong-experience__heading {
+		position: relative;
+		z-index: 2;
+		max-width: 62rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hong-kong-experience__eyebrow {
+		margin: 0 0 1.15rem;
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.62rem, 0.8vw, 0.76rem);
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+	}
+
+	.hong-kong-experience h2 {
+		margin: 0;
+		color: #171717;
+		font-family: var(--font-display);
+		font-size: clamp(4rem, 9.6vw, 9rem);
+		font-weight: 800;
+		letter-spacing: -0.105em;
+		line-height: 0.82;
+	}
+
+	.hong-kong-experience h2 em {
+		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-style: normal;
+	}
+
+	.hong-kong-experience__intro {
+		max-width: 31rem;
+		margin: 1.7rem auto 0;
+		color: #52627a;
+		font-size: clamp(0.92rem, 1.2vw, 1.08rem);
+		line-height: 1.55;
+	}
+
+	.hong-kong-experience__stage {
+		position: relative;
+		min-height: clamp(29rem, 52vw, 45rem);
+		margin: clamp(2.5rem, 5vw, 5rem) auto 0;
+		isolation: isolate;
+	}
+
+	.hong-kong-experience__stage::before {
+		position: absolute;
+		bottom: -12%;
+		left: 50%;
+		width: min(58rem, 82vw);
+		aspect-ratio: 1.8 / 1;
+		border-radius: 50%;
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.76), rgba(112, 158, 255, 0.16));
+		box-shadow: inset 0 0.15rem 0.8rem rgba(255, 255, 255, 0.7);
+		content: '';
+		filter: blur(0.2px);
+		transform: translateX(-50%);
+	}
+
+	.hong-kong-experience__wordmark {
+		position: absolute;
+		top: 8%;
+		left: 50%;
+		z-index: 0;
+		color: rgba(47, 118, 237, 0.12);
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 10vw, 10rem);
+		font-weight: 800;
+		letter-spacing: -0.1em;
+		line-height: 0.82;
+		white-space: nowrap;
+		transform: translateX(-50%);
+	}
+
+	.hong-kong-experience__person {
+		position: absolute;
+		right: 2%;
+		bottom: 0;
+		z-index: 1;
+		width: min(29rem, 40vw);
+		filter: drop-shadow(0 1.7rem 1.6rem rgba(37, 82, 150, 0.16));
+	}
+
+	.hong-kong-experience__person img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.hong-kong-experience__television {
+		position: absolute;
+		top: 12%;
+		left: 3%;
+		z-index: 2;
+		display: block;
+		width: min(67rem, 72vw);
+		padding: clamp(0.7rem, 1.3vw, 1.1rem) clamp(0.7rem, 1.3vw, 1.1rem) clamp(1rem, 1.8vw, 1.5rem);
+		border-radius: clamp(1.6rem, 3vw, 3rem) clamp(1.6rem, 3vw, 3rem) clamp(1.1rem, 2vw, 2rem) clamp(1.1rem, 2vw, 2rem);
+		background: linear-gradient(145deg, #e8f1ff, #9bbdff 52%, #6e84f3);
+		box-shadow: 1.4rem 1.8rem 2.8rem rgba(38, 82, 148, 0.2), inset 0.2rem 0.2rem 0.35rem rgba(255, 255, 255, 0.75);
+		color: inherit;
+		text-decoration: none;
+		transform: rotate(-3deg);
+		transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 360ms ease;
+	}
+
+	.hong-kong-experience__television:hover,
+	.hong-kong-experience__television:focus-visible {
+		box-shadow: 1.6rem 2rem 3rem rgba(38, 82, 148, 0.25), inset 0.2rem 0.2rem 0.35rem rgba(255, 255, 255, 0.82);
+		transform: translateY(-0.55rem) rotate(-1deg);
+	}
+
+	.hong-kong-experience__tv-antenna {
+		position: absolute;
+		top: -1.4rem;
+		left: 50%;
+		width: 4.5rem;
+		height: 1.65rem;
+		border-top: 0.2rem solid #6078d8;
+		transform: translateX(-50%);
+	}
+
+	.hong-kong-experience__tv-antenna::before,
+	.hong-kong-experience__tv-antenna::after {
+		position: absolute;
+		top: -0.5rem;
+		width: 0.2rem;
+		height: 1.1rem;
+		border-radius: 999px;
+		background: #6078d8;
+		content: '';
+	}
+
+	.hong-kong-experience__tv-antenna::before {
+		left: 0.2rem;
+		transform: rotate(-35deg);
+	}
+
+	.hong-kong-experience__tv-antenna::after {
+		right: 0.2rem;
+		transform: rotate(35deg);
+	}
+
+	.hong-kong-experience__tv-body {
+		display: block;
+		padding: clamp(0.55rem, 1vw, 0.85rem);
+		border-radius: clamp(1rem, 2vw, 1.8rem);
+		background: linear-gradient(145deg, #f8fbff, #c1d4ff);
+	}
+
+	.hong-kong-experience__tv-screen {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		aspect-ratio: 16 / 10;
+		border-radius: clamp(0.8rem, 1.5vw, 1.4rem);
+		background: #17243f;
+		box-shadow: inset 0 0 0 0.25rem rgba(24, 45, 89, 0.5), inset 0 0.4rem 1.1rem rgba(0, 0, 0, 0.22);
+	}
+
+	.hong-kong-experience__tv-screen img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 300ms ease;
+	}
+
+	.hong-kong-experience__television:hover .hong-kong-experience__tv-screen img,
+	.hong-kong-experience__television:focus-visible .hong-kong-experience__tv-screen img {
+		filter: saturate(1.12) brightness(1.04);
+		transform: scale(1.035);
+	}
+
+	.hong-kong-experience__tv-play {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: grid;
+		width: clamp(3.6rem, 6vw, 5.8rem);
+		height: clamp(3.6rem, 6vw, 5.8rem);
+		border-radius: 50%;
+		background: #fbfcf5;
+		box-shadow: 0.4rem 0.6rem 1rem rgba(23, 42, 82, 0.28);
+		place-items: center;
+		transform: translate(-50%, -50%);
+		transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background 300ms ease;
+	}
+
+	.hong-kong-experience__tv-play::after {
+		width: 0;
+		height: 0;
+		margin-left: 0.25rem;
+		border-top: 0.75rem solid transparent;
+		border-bottom: 0.75rem solid transparent;
+		border-left: 1rem solid #1769e8;
+		content: '';
+	}
+
+	.hong-kong-experience__television:hover .hong-kong-experience__tv-play,
+	.hong-kong-experience__television:focus-visible .hong-kong-experience__tv-play {
+		background: #fff;
+		transform: translate(-50%, -50%) scale(1.12);
+	}
+
+	.hong-kong-experience__tv-controls {
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.45rem;
+		padding: 0.7rem 0.3rem 0.1rem;
+	}
+
+	.hong-kong-experience__tv-controls i {
+		display: block;
+		width: 0.52rem;
+		height: 0.52rem;
+		border-radius: 50%;
+		background: #5474db;
+		box-shadow: inset 0 0.08rem 0.12rem rgba(255, 255, 255, 0.75);
+	}
+
+	.hong-kong-experience__tv-stand {
+		display: block;
+		width: 38%;
+		height: clamp(0.55rem, 1vw, 0.85rem);
+		margin: -0.02rem auto 0;
+		border-radius: 0 0 999px 999px;
+		background: linear-gradient(180deg, #8ca9f2, #6078d8);
+	}
+
+	.hong-kong-experience__caption {
+		position: absolute;
+		right: 2%;
+		bottom: 11%;
+		z-index: 3;
+		display: grid;
+		gap: 0.45rem;
+		max-width: 14rem;
+		padding: 1rem 1.15rem;
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.7);
+		box-shadow: 0 1rem 2rem rgba(37, 82, 150, 0.12);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		color: #1d2b54;
+		transform: rotate(3deg);
+	}
+
+	.hong-kong-experience__caption strong {
+		font-family: var(--font-display);
+		font-size: clamp(1rem, 1.5vw, 1.3rem);
+		letter-spacing: -0.04em;
+	}
+
+	.hong-kong-experience__caption span {
+		color: #52627a;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.hong-kong-experience__keywords {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin: clamp(1.5rem, 3vw, 3rem) auto 0;
+		border-top: 1px solid rgba(47, 118, 237, 0.18);
+		border-bottom: 1px solid rgba(47, 118, 237, 0.18);
+	}
+
+	.hong-kong-experience__keywords span {
+		padding: 1rem;
+		color: #52627a;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.58rem, 0.8vw, 0.72rem);
+		letter-spacing: 0.08em;
+		text-align: center;
+		text-transform: uppercase;
+}
+
+	.hong-kong-experience__keywords span + span {
+		border-left: 1px solid rgba(47, 118, 237, 0.18);
+	}
+
+	@media (max-width: 700px) {
+		.hong-kong-experience {
+			padding-right: 1rem;
+			padding-left: 1rem;
+		}
+
+		.hong-kong-experience h2 {
+			font-size: clamp(3.5rem, 17vw, 6.2rem);
+		}
+
+		.hong-kong-experience__stage {
+			min-height: 37rem;
+			margin-top: 2.5rem;
+		}
+
+		.hong-kong-experience__wordmark {
+			top: 8%;
+			font-size: clamp(2.8rem, 15vw, 5rem);
+		}
+
+		.hong-kong-experience__person {
+			right: 4%;
+			width: min(18rem, 54vw);
+		}
+
+		.hong-kong-experience__television {
+			top: 17%;
+			left: 2%;
+			width: 94%;
+		}
+
+		.hong-kong-experience__caption {
+			right: 3%;
+			bottom: 5%;
+			padding: 0.75rem 0.9rem;
+		}
+
+		.hong-kong-experience__keywords {
+			grid-template-columns: 1fr;
+		}
+
+		.hong-kong-experience__keywords span + span {
+			border-top: 1px solid rgba(47, 118, 237, 0.18);
+			border-left: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hong-kong-experience__television,
+		.hong-kong-experience__tv-screen img,
+		.hong-kong-experience__tv-play {
+			transition: none;
+		}
+	}
+</style>

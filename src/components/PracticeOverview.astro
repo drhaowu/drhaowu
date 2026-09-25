@@ -1,25 +1,34 @@
 ---
 ---
 
-<section class="practice-overview" id="practices" aria-labelledby="practice-overview-title">
+
+<section class="practice-overview" id="about" aria-labelledby="practice-overview-title">
 	<div class="practice-overview__inner">
+		<div class="practice-overview__heading">
+			<p class="practice-overview__eyebrow">About me</p>
+			<h2 id="practice-overview-title">Digital geography is really about <em>people</em>, place and public life.</h2>
+		</div>
+
 		<div class="practice-overview__profile">
 			<div class="practice-overview__copy">
 				<p class="practice-overview__lead">
-					Hao’s creative approach bridges <strong>theory and practice</strong>, supporting inclusive learning and fostering cross-cultural understanding through digital storytelling.
+					My practice bridges <strong>theory and practice</strong>, moving between research, media and design to make complex ideas feel public, human and shareable.
 				</p>
-				<p class="practice-overview__zh" lang="zh-CN">吴豪一直致力于将理论与实践结合起来，通过媒体叙事的方法支持课堂中的包容性学习，以及跨文化理解。</p>
+				<p class="practice-overview__credit">Dr Hao Wu · Digital Geographer · Researcher · Media Creator</p>
 			</div>
 
 			<div class="practice-overview__stats" aria-label="Profile highlights">
 				<div>
 					<strong>6 Years</strong>
+					<span>Media industry experience</span>
 				</div>
 				<div>
 					<strong>3 Practices</strong>
+					<span>Research · media · design</span>
 				</div>
 				<div>
 					<strong>1 Pipeline</strong>
+					<span>Research to public</span>
 				</div>
 			</div>
 		</div>
@@ -31,10 +40,10 @@
 	.practice-overview {
 		position: relative;
 		width: 100vw;
-		min-height: max(100vh, 46rem);
 		margin-left: calc(50% - 50vw);
-		padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 7vw, 8.5rem) clamp(6rem, 11vw, 11rem);
+		padding: var(--section-space) clamp(1.25rem, 7vw, 8.5rem);
 		background: transparent;
+		scroll-margin-top: 5rem;
 	}
 
 	.practice-overview__inner {
@@ -42,15 +51,23 @@
 		margin: 0 auto;
 	}
 
+	.practice-overview__heading {
+		max-width: 70rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
 	.practice-overview__profile {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: clamp(4rem, 9vw, 8rem);
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: clamp(3rem, 7vw, 8rem);
 		align-items: start;
+		max-width: 80rem;
+		margin: clamp(3.5rem, 6vw, 6rem) auto 0;
 	}
 
 	.practice-overview__eyebrow {
-		margin: 0 0 1.35rem;
+		margin: 0 0 1rem;
 		color: #1769e8;
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: clamp(0.65rem, 0.8vw, 0.78rem);
@@ -58,17 +75,35 @@
 		text-transform: uppercase;
 	}
 
+	.practice-overview__heading h2 {
+		margin: 0;
+		color: #171717;
+		font-family: var(--font-display);
+		font-size: clamp(3.35rem, 6.3vw, 6.8rem);
+		font-weight: 800;
+		letter-spacing: -0.095em;
+		line-height: 0.88;
+	}
+
+	.practice-overview__heading h2 em {
+		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-style: normal;
+	}
+
 	.practice-overview__copy {
 		max-width: 48rem;
 	}
 
 	.practice-overview__lead {
-		max-width: 44rem;
+		max-width: 42rem;
 		margin: 0;
 		color: #344d70;
-		font-size: clamp(1.35rem, 2.15vw, 2.25rem);
+		font-size: clamp(1.18rem, 1.8vw, 1.8rem);
 		letter-spacing: -0.045em;
-		line-height: 1.2;
+		line-height: 1.28;
 	}
 
 	.practice-overview__lead strong {
@@ -76,24 +111,27 @@
 		font-weight: 700;
 	}
 
-	.practice-overview__zh {
-		max-width: 34rem;
-		margin: 1.5rem 0 0;
-		color: #52627a;
-		font-size: clamp(0.92rem, 1.1vw, 1.08rem);
-		line-height: 1.75;
+	.practice-overview__credit {
+		margin: 1.45rem 0 0;
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.62rem, 0.8vw, 0.76rem);
+		letter-spacing: 0.08em;
+		line-height: 1.5;
+		text-transform: uppercase;
 	}
 
 	.practice-overview__stats {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 0;
+		align-self: stretch;
 	}
 
 	.practice-overview__stats div {
 		display: grid;
 		gap: 0.7rem;
-		min-height: 8rem;
+		min-height: 9rem;
 		padding: 0 1.25rem;
 		border-left: 1px solid rgba(47, 118, 237, 0.2);
 	}
@@ -105,9 +143,10 @@
 
 	.practice-overview__stats strong {
 		color: #1769e8;
-		font-size: clamp(1.8rem, 3.3vw, 3.6rem);
+		font-size: clamp(1.45rem, 2.15vw, 2.6rem);
 		letter-spacing: -0.08em;
 		line-height: 0.9;
+		white-space: nowrap;
 	}
 
 	.practice-overview__stats span {
@@ -119,6 +158,17 @@
 		text-transform: uppercase;
 	}
 
+	@media (max-width: 900px) {
+		.practice-overview__profile {
+			grid-template-columns: 1fr;
+			gap: 2.8rem;
+		}
+
+		.practice-overview__stats {
+			max-width: 52rem;
+		}
+	}
+
 	@media (max-width: 560px) {
 		.practice-overview {
 			padding-right: 1rem;
@@ -126,15 +176,21 @@
 		}
 
 		.practice-overview__profile {
-			gap: 3.5rem;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			margin-top: 3rem;
 		}
 
 		.practice-overview__lead {
-			font-size: 1.42rem;
+			font-size: 1.35rem;
 		}
 
-		.practice-overview__zh {
-			font-size: 0.9rem;
+		.practice-overview__heading h2 {
+			font-size: clamp(2.8rem, 11vw, 4.4rem);
+		}
+
+		.practice-overview__credit {
+			font-size: 0.56rem;
 		}
 
 		.practice-overview__stats div {
