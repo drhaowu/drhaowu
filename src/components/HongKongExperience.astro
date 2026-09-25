@@ -4,8 +4,7 @@ interface Props {
 }
 
 const { base } = Astro.props;
-const videoUrl = 'https://www.youtube.com/watch?v=RSIHUVj4IS4';
-const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
+const projectUrl = 'https://www.nottinghamcitylibraries.co.uk/the-hong-kong-experience/';
 ---
 
 <section class="hong-kong-experience" id="hk-experience" aria-labelledby="hong-kong-experience-title">
@@ -14,16 +13,16 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 			<p class="hong-kong-experience__eyebrow">Media + Research · 01</p>
 			<h2 id="hong-kong-experience-title">The Hong Kong<br /><em>Experience.</em></h2>
 			<p class="hong-kong-experience__intro">
-				A filmed research project about how a city is encountered, remembered and shared through everyday experience. I developed the research concept and translated the fieldwork into a public-facing film.
+				The Hong Kong Experience: My Nottingham celebrates the experiences of Hong Kong families who have moved to Nottingham through workshops, a public exhibition and a short film. I shaped the research story and translated the fieldwork into a public-facing film.
 			</p>
 			<div class="hong-kong-experience__project-meta" aria-label="Hong Kong Experience project details">
 				<div>
-					<span>Project</span>
-					<strong>Hong Kong · research film</strong>
+					<span>Context</span>
+					<strong>AHRC-funded · Nottingham</strong>
 				</div>
 				<div>
 					<span>My role</span>
-					<strong>Concept · fieldwork · direction · edit</strong>
+					<strong>Research story · direction · edit</strong>
 				</div>
 			</div>
 		</div>
@@ -42,26 +41,21 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 
 			<a
 				class="hong-kong-experience__television"
-				href={videoUrl}
+				href={projectUrl}
 				target="_blank"
 				rel="noreferrer"
-				aria-label="Play The Hong Kong Experience film on YouTube"
+				aria-label="Open The Hong Kong Experience project page"
 			>
 				<span class="hong-kong-experience__tv-antenna" aria-hidden="true"></span>
 				<span class="hong-kong-experience__tv-body">
-					<span class="hong-kong-experience__tv-screen">
-						<img src={videoThumbnail} alt="The Hong Kong Experience film preview" loading="lazy" decoding="async" />
-						<span class="hong-kong-experience__tv-play" aria-hidden="true"></span>
+				<span class="hong-kong-experience__tv-screen">
+						<img src={`${base}assets/projects/hong-kong-experience-cover.png`} alt="The Hong Kong Experience project cover" loading="lazy" decoding="async" />
 					</span>
 					<span class="hong-kong-experience__tv-controls" aria-hidden="true"><i></i><i></i><i></i></span>
 				</span>
 				<span class="hong-kong-experience__tv-stand" aria-hidden="true"></span>
 			</a>
 
-			<div class="hong-kong-experience__caption">
-				<strong>Watch the film</strong>
-				<span>Click the screen to watch ↗</span>
-			</div>
 		</div>
 
 		<div class="hong-kong-experience__keywords" aria-label="Hong Kong Experience project themes">
@@ -287,37 +281,6 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 		transform: scale(1.035);
 	}
 
-	.hong-kong-experience__tv-play {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		display: grid;
-		width: clamp(3.6rem, 6vw, 5.8rem);
-		height: clamp(3.6rem, 6vw, 5.8rem);
-		border-radius: 50%;
-		background: #fbfcf5;
-		box-shadow: 0.4rem 0.6rem 1rem rgba(23, 42, 82, 0.28);
-		place-items: center;
-		transform: translate(-50%, -50%);
-		transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background 300ms ease;
-	}
-
-	.hong-kong-experience__tv-play::after {
-		width: 0;
-		height: 0;
-		margin-left: 0.25rem;
-		border-top: 0.75rem solid transparent;
-		border-bottom: 0.75rem solid transparent;
-		border-left: 1rem solid #1769e8;
-		content: '';
-	}
-
-	.hong-kong-experience__television:hover .hong-kong-experience__tv-play,
-	.hong-kong-experience__television:focus-visible .hong-kong-experience__tv-play {
-		background: #fff;
-		transform: translate(-50%, -50%) scale(1.12);
-	}
-
 	.hong-kong-experience__tv-controls {
 		display: flex;
 		justify-content: flex-end;
@@ -341,38 +304,6 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 		margin: -0.02rem auto 0;
 		border-radius: 0 0 999px 999px;
 		background: linear-gradient(180deg, #8ca9f2, #6078d8);
-	}
-
-	.hong-kong-experience__caption {
-		position: absolute;
-		right: 2%;
-		bottom: 11%;
-		z-index: 3;
-		display: grid;
-		gap: 0.45rem;
-		max-width: 14rem;
-		padding: 1rem 1.15rem;
-		border-radius: 1rem;
-		background: rgba(255, 255, 255, 0.7);
-		box-shadow: 0 1rem 2rem rgba(37, 82, 150, 0.12);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		color: #1d2b54;
-		transform: rotate(3deg);
-	}
-
-	.hong-kong-experience__caption strong {
-		font-family: var(--font-display);
-		font-size: clamp(1rem, 1.5vw, 1.3rem);
-		letter-spacing: -0.04em;
-	}
-
-	.hong-kong-experience__caption span {
-		color: #52627a;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.58rem;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
 	}
 
 	.hong-kong-experience__keywords {
@@ -423,12 +354,6 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 			width: 94%;
 		}
 
-		.hong-kong-experience__caption {
-			right: 3%;
-			bottom: 5%;
-			padding: 0.75rem 0.9rem;
-		}
-
 		.hong-kong-experience__keywords {
 			grid-template-columns: 1fr;
 		}
@@ -450,8 +375,7 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 
 	@media (prefers-reduced-motion: reduce) {
 		.hong-kong-experience__television,
-		.hong-kong-experience__tv-screen img,
-		.hong-kong-experience__tv-play {
+		.hong-kong-experience__tv-screen img {
 			transition: none;
 		}
 	}
