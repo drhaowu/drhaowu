@@ -8,6 +8,17 @@ const { base } = Astro.props;
 
 <section class="publication-shelf" id="research" aria-labelledby="publication-shelf-title">
 	<div class="publication-shelf__inner">
+		<div class="publication-shelf__identity" aria-labelledby="research-identity-title">
+			<span class="publication-shelf__quote" aria-hidden="true">“</span>
+			<h2 id="research-identity-title">
+				Digital geography is really about <em>people</em>, place and public life.
+			</h2>
+			<div class="publication-shelf__identity-credit">
+				<strong>Dr Hao Wu</strong>
+				<span>Digital Geographer · Researcher · Media Creator</span>
+			</div>
+		</div>
+
 		<div class="publication-shelf__heading">
 			<h2 id="publication-shelf-title"><span>Research</span><br /><em>On The Page.</em></h2>
 		</div>
@@ -87,6 +98,61 @@ src={`${base}assets/figma/skills/media-research.png`}
 	.publication-shelf__inner {
 		width: min(100%, 90rem);
 		margin: 0 auto;
+	}
+
+	.publication-shelf__identity {
+		max-width: 74rem;
+		margin: 0 auto clamp(6rem, 12vw, 11rem);
+		text-align: center;
+	}
+
+	.publication-shelf__quote {
+		display: block;
+		height: 3.5rem;
+		color: #687dff;
+		font-family: Georgia, serif;
+		font-size: clamp(5rem, 9vw, 9rem);
+		line-height: 0.72;
+	}
+
+	.publication-shelf__identity h2 {
+		margin: 0;
+		color: #171717;
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 6.6vw, 6.9rem);
+		font-weight: 800;
+		letter-spacing: -0.095em;
+		line-height: 0.9;
+	}
+
+	.publication-shelf__identity h2 em {
+		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-style: normal;
+	}
+
+	.publication-shelf__identity-credit {
+		display: grid;
+		gap: 0.5rem;
+		margin-top: 2.5rem;
+		color: #344d70;
+	}
+
+	.publication-shelf__identity-credit strong {
+		color: #1769e8;
+		font-family: var(--font-display);
+		font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+		font-style: italic;
+		letter-spacing: -0.04em;
+	}
+
+	.publication-shelf__identity-credit span {
+		font-family: var(--font-body);
+		font-size: clamp(0.78rem, 1vw, 0.95rem);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
 
 	.publication-shelf__heading {
@@ -316,6 +382,19 @@ src={`${base}assets/figma/skills/media-research.png`}
 		.publication-shelf {
 			padding-right: 1rem;
 			padding-left: 1rem;
+		}
+
+		.publication-shelf__identity h2 {
+			font-size: clamp(2.8rem, 11vw, 4rem);
+		}
+
+		.publication-shelf__identity-credit {
+			margin-top: 2rem;
+		}
+
+		.publication-shelf__identity-credit span {
+			font-size: 0.68rem;
+			letter-spacing: 0.04em;
 		}
 
 		.publication-shelf__heading h2 {
