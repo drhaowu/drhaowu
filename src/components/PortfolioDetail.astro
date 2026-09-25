@@ -1,5 +1,6 @@
 ---
 import type { PortfolioDetail as PortfolioDetailData } from '../data/portfolio';
+import PublicationShelf from './PublicationShelf.astro';
 
 interface Props {
 	page: PortfolioDetailData;
@@ -58,6 +59,8 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 			</section>
 		))}
 	</div>
+
+	{page.slug === 'media-research' && <PublicationShelf {base} />}
 
 	<section class="detail-next">
 		<p class="detail-story__eyebrow">Next practice</p>

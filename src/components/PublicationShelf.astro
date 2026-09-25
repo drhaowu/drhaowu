@@ -1,0 +1,323 @@
+---
+interface Props {
+	base: string;
+}
+
+const { base } = Astro.props;
+---
+
+<section class="publication-shelf" id="publications" aria-labelledby="publication-shelf-title">
+	<div class="publication-shelf__inner">
+		<div class="publication-shelf__heading">
+			<p class="publication-shelf__eyebrow">Selected publication · 01</p>
+			<h2 id="publication-shelf-title"><span>Research</span><br /><em>on the page.</em></h2>
+			<p>Some of my research begins as a question and becomes something that can travel beyond the thesis.</p>
+		</div>
+
+		<div class="publication-shelf__stage">
+			<a class="publication-shelf__object" href="https://doi.org/10.1002/berj.70215" target="_blank" rel="noreferrer" aria-label="Read The doctoral journey as decolonial praxis">
+				<span class="publication-shelf__object-label">Open article ↗</span>
+				<span class="publication-shelf__paper">
+					<img src={`${base}assets/papers/doctoral-journey-decolonial-praxis-cover.png`} alt="First page of The doctoral journey as decolonial praxis: Self-formation of Global South students in UK higher education" loading="lazy" decoding="async" />
+				</span>
+			</a>
+
+			<div class="publication-shelf__details">
+				<p class="publication-shelf__eyebrow">Co-authored article · 2026</p>
+				<h3>The doctoral journey as decolonial praxis:<br /><em>Self-formation of Global South students in UK higher education</em></h3>
+				<p class="publication-shelf__summary">This paper follows how Global South doctoral students negotiate Eurocentric academic norms and develop agency through a three-stage process of decolonial self-formation.</p>
+
+				<div class="publication-shelf__meta">
+					<div>
+						<span>Authors</span>
+						<strong>Peng Zhang · Hao Wu · Enze Guo · Amanda McCrory</strong>
+					</div>
+					<div>
+						<span>Published in</span>
+						<strong>British Educational Research Journal</strong>
+					</div>
+				</div>
+
+				<ul class="publication-shelf__stages" aria-label="Research stages">
+					<li><span>01</span>Internalised Prestige</li>
+					<li><span>02</span>Reflexive Repositioning</li>
+					<li><span>03</span>Transformative Engagement</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.publication-shelf {
+		position: relative;
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		padding: clamp(5rem, 10vw, 10rem) clamp(1.25rem, 7vw, 8.5rem) clamp(6rem, 11vw, 11rem);
+		background: linear-gradient(145deg, rgba(225, 239, 255, 0.46), rgba(255, 255, 255, 0.16) 54%, rgba(195, 215, 255, 0.28));
+	}
+
+	.publication-shelf__inner {
+		width: min(100%, 90rem);
+		margin: 0 auto;
+	}
+
+	.publication-shelf__heading {
+		max-width: 52rem;
+	}
+
+	.publication-shelf__eyebrow {
+		margin: 0 0 1.2rem;
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.62rem, 0.78vw, 0.76rem);
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+	}
+
+	.publication-shelf__heading h2 {
+		margin: 0;
+		color: #171717;
+		font-size: clamp(4rem, 9.4vw, 9.4rem);
+		font-weight: 800;
+		letter-spacing: -0.105em;
+		line-height: 0.82;
+	}
+
+	.publication-shelf__heading h2 em {
+		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-style: normal;
+	}
+
+	.publication-shelf__heading > p:last-child {
+		max-width: 32rem;
+		margin: 1.7rem 0 0;
+		color: #52627a;
+		font-size: clamp(1rem, 1.35vw, 1.35rem);
+		line-height: 1.5;
+	}
+
+	.publication-shelf__stage {
+		display: grid;
+		grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
+		gap: clamp(3rem, 8vw, 9rem);
+		align-items: center;
+		margin-top: clamp(5rem, 9vw, 9rem);
+	}
+
+	.publication-shelf__object {
+		position: relative;
+		display: block;
+		width: min(100%, 25rem);
+		margin: 0 auto;
+		padding: 2.5rem 1.5rem 1.5rem;
+		color: inherit;
+		text-decoration: none;
+		perspective: 1000px;
+	}
+
+	.publication-shelf__object::before,
+	.publication-shelf__object::after {
+		position: absolute;
+		border-radius: 50%;
+		background: rgba(74, 142, 245, 0.16);
+		content: '';
+		filter: blur(1px);
+		pointer-events: none;
+	}
+
+	.publication-shelf__object::before {
+		top: 12%;
+		left: 1%;
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.publication-shelf__object::after {
+		right: -3%;
+		bottom: 4%;
+		width: 2rem;
+		height: 2rem;
+		background: rgba(114, 123, 255, 0.28);
+	}
+
+	.publication-shelf__object-label {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.publication-shelf__paper {
+		position: relative;
+		display: block;
+		aspect-ratio: 484.724 / 697.323;
+		overflow: hidden;
+		background: #ffffff;
+		box-shadow: 1.3rem 1.5rem 2.2rem rgba(38, 82, 148, 0.18), -0.35rem 0 0 rgba(218, 229, 242, 0.8);
+		transform: rotate(-5deg) rotateY(8deg);
+		transform-origin: 50% 100%;
+		transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 500ms ease;
+	}
+
+	.publication-shelf__paper::after {
+		position: absolute;
+		inset: 0;
+		border: 0.55rem solid rgba(255, 255, 255, 0.26);
+		content: '';
+		pointer-events: none;
+	}
+
+	.publication-shelf__paper img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.publication-shelf__object:hover .publication-shelf__paper,
+	.publication-shelf__object:focus-visible .publication-shelf__paper {
+		box-shadow: 1.6rem 2rem 2.8rem rgba(38, 82, 148, 0.22), -0.35rem 0 0 rgba(218, 229, 242, 0.8);
+		transform: rotate(-1deg) rotateY(-2deg) translateY(-0.55rem) scale(1.015);
+	}
+
+	.publication-shelf__details {
+		max-width: 48rem;
+	}
+
+	.publication-shelf__details h3 {
+		margin: 0;
+		color: #171717;
+		font-size: clamp(2rem, 4.4vw, 4.7rem);
+		font-weight: 800;
+		letter-spacing: -0.085em;
+		line-height: 0.92;
+	}
+
+	.publication-shelf__details h3 em {
+		color: #1769e8;
+		font-style: normal;
+	}
+
+	.publication-shelf__summary {
+		max-width: 40rem;
+		margin: 2rem 0 0;
+		color: #344d70;
+		font-size: clamp(1rem, 1.35vw, 1.25rem);
+		line-height: 1.65;
+	}
+
+	.publication-shelf__meta {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin-top: 2.4rem;
+		padding-top: 1.2rem;
+		border-top: 1px solid rgba(47, 118, 237, 0.2);
+	}
+
+	.publication-shelf__meta div {
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.publication-shelf__meta span,
+	.publication-shelf__meta strong {
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.66rem;
+		line-height: 1.45;
+	}
+
+	.publication-shelf__meta span {
+		color: #7184b5;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.publication-shelf__meta strong {
+		color: #344d70;
+		font-weight: 500;
+	}
+
+	.publication-shelf__stages {
+		display: grid;
+		gap: 0;
+		margin: 2.4rem 0 0;
+		padding: 0;
+		border-top: 1px solid rgba(47, 118, 237, 0.2);
+		list-style: none;
+	}
+
+	.publication-shelf__stages li {
+		display: grid;
+		grid-template-columns: 2.5rem 1fr;
+		gap: 1rem;
+		padding: 0.85rem 0;
+		border-bottom: 1px solid rgba(47, 118, 237, 0.2);
+		color: #344d70;
+		font-size: 0.88rem;
+		font-weight: 600;
+	}
+
+	.publication-shelf__stages li span {
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.68rem;
+	}
+
+	@media (max-width: 800px) {
+		.publication-shelf__stage {
+			grid-template-columns: 1fr;
+			gap: 4rem;
+		}
+
+		.publication-shelf__object {
+			width: min(80%, 23rem);
+		}
+
+		.publication-shelf__details {
+			max-width: 42rem;
+			margin: 0 auto;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.publication-shelf {
+			padding-right: 1rem;
+			padding-left: 1rem;
+		}
+
+		.publication-shelf__heading h2 {
+			font-size: clamp(3.8rem, 17vw, 6.2rem);
+		}
+
+		.publication-shelf__object {
+			width: min(88%, 20rem);
+			padding-right: 1rem;
+			padding-left: 1rem;
+		}
+
+		.publication-shelf__details h3 {
+			font-size: clamp(2.2rem, 10vw, 3.5rem);
+		}
+
+		.publication-shelf__meta {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.publication-shelf__paper {
+			transition: none;
+		}
+	}
+</style>
