@@ -126,6 +126,19 @@ const practiceNodes = [
 		isolation: isolate;
 	}
 
+	/* This is the second beat of the same scroll transition, not a second hero. */
+	@supports (animation-timeline: view()) {
+		.practice-overview__thinking {
+			animation-name: practice-thinking-enter;
+			animation-duration: 1ms;
+			animation-timing-function: linear;
+			animation-fill-mode: both;
+			animation-timeline: view(block);
+			animation-range: entry 0% cover 42%;
+			will-change: opacity, transform;
+		}
+	}
+
 	.practice-overview__orbit {
 		position: absolute;
 		top: 9%;
@@ -383,6 +396,21 @@ const practiceNodes = [
 	@media (prefers-reduced-motion: reduce) {
 		.practice-overview__node img {
 			transition: none;
+		}
+
+		.practice-overview__thinking {
+			animation: none !important;
+		}
+	}
+
+	@keyframes practice-thinking-enter {
+		0% {
+			opacity: 0;
+			transform: translate3d(0, 3.5rem, 0) scale(0.9);
+		}
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale(1);
 		}
 	}
 </style>

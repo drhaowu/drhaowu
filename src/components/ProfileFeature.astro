@@ -193,6 +193,24 @@ const heroTitle = 'Hao Wu';
 		filter: drop-shadow(0 2rem 2.4rem rgba(25, 82, 160, 0.18));
 	}
 
+	/* The hero character hands the visual focus to the About Me character as the page scrolls. */
+	@supports (animation-timeline: view()) {
+		.profile-feature {
+			view-timeline-name: --profile-feature;
+			view-timeline-axis: block;
+		}
+
+		.profile-feature__character {
+			animation-name: profile-character-exit;
+			animation-duration: 1ms;
+			animation-timing-function: linear;
+			animation-fill-mode: both;
+			animation-timeline: --profile-feature;
+			animation-range: exit 0% exit 100%;
+			will-change: opacity, transform;
+		}
+	}
+
 	.profile-feature__character-glow {
 		position: absolute;
 		right: 7%;
@@ -421,6 +439,17 @@ const heroTitle = 'Hao Wu';
 		}
 	}
 
+	@keyframes profile-character-exit {
+		0% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale(1);
+		}
+		100% {
+			opacity: 0.08;
+			transform: translate3d(0, -4rem, 0) scale(0.9);
+		}
+	}
+
 	@media (max-width: 800px) {
 		.profile-feature__stage {
 			min-height: max(100vh, 100svh);
@@ -528,6 +557,10 @@ const heroTitle = 'Hao Wu';
 
 		.profile-feature__character-image img {
 			transition: none;
+		}
+
+		.profile-feature__character {
+			animation: none !important;
 		}
 
 		.profile-feature__title-letter {
