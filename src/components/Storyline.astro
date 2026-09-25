@@ -1,0 +1,319 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const chapters = [
+	{
+		number: '01',
+		eyebrow: 'Foundation',
+		title: 'A digital geographer with a media lens.',
+		copy: 'I completed my PhD in Digital Geography at University College London, combining media and geographical perspectives to explore queer lives and hybrid spaces in China.',
+	},
+	{
+		number: '02',
+		eyebrow: 'Public education',
+		title: 'Research should make room for more voices.',
+		copy: 'In 2025, I served as the UCL Faculty of Social and Historical Sciences Representative and was nominated and shortlisted for Academic Rep of the Year. I brought my commitment to diversity and inclusion into everyday academic life.',
+	},
+	{
+		number: '03',
+		eyebrow: 'Recognition and publication',
+		title: 'From participation to authorship.',
+		copy: 'In 2026, I joined the Early Career Editorial Board of Digital Geography and Society. I also contributed to a UCL ChangeMakers-funded project and published my first article as second and corresponding author.',
+	},
+	{
+		number: '04',
+		eyebrow: 'Research in public',
+		title: 'Turning fieldwork into shared experience.',
+		copy: 'As a Research Assistant, I contributed to The Hong Kong Experience, helping translate research on migration, memory and belonging into a public-facing project for families and communities.',
+	},
+	{
+		number: '05',
+		eyebrow: 'Media practice',
+		title: 'Four years learning how ideas travel.',
+		copy: 'During my PhD, I worked part-time for four years in social media operations at China Telecom Europe, managing content and community across Xiaohongshu and WeChat within a Fortune Global 500 telecommunications group.',
+	},
+];
+---
+
+<section class="storyline" aria-labelledby="storyline-title">
+	<div class="storyline__inner">
+		<div class="storyline__intro">
+			<div>
+				<p class="storyline__eyebrow">The thread</p>
+				<h2 id="storyline-title">From digital geography to <em>public practice.</em></h2>
+			</div>
+			<p class="storyline__intro-copy">
+				Dr Hao Wu is an interdisciplinary researcher working across media, space and education. His practice connects geographical inquiry with public-facing storytelling, asking how research can become more inclusive, accessible and alive.
+			</p>
+		</div>
+
+		<div class="storyline__layout">
+			<figure class="storyline__image">
+				<div class="storyline__image-frame">
+					<img src={`${base}assets/images/hao/ucl-main-building.jpg`} alt="University College London Main Building framed by trees and campus life" width="1024" height="768" loading="lazy" decoding="async" />
+				</div>
+				<figcaption>
+					<span>UCL · Digital Geography</span>
+					<span>Research, education and public life</span>
+				</figcaption>
+			</figure>
+
+			<ol class="storyline__chapters">
+				{chapters.map((chapter) => (
+					<li class="storyline__chapter">
+						<div class="storyline__chapter-marker" aria-hidden="true">{chapter.number}</div>
+						<div class="storyline__chapter-copy">
+							<p class="storyline__chapter-eyebrow">{chapter.eyebrow}</p>
+							<h3>{chapter.title}</h3>
+							<p>{chapter.copy}</p>
+						</div>
+					</li>
+				))}
+			</ol>
+		</div>
+
+		<p class="storyline__closing">Research gives me the questions. Media gives them form. Education makes space for others to take part.</p>
+	</div>
+</section>
+
+<style>
+	.storyline {
+		position: relative;
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 7vw, 8.5rem);
+		background: rgba(255, 255, 255, 0.12);
+		scroll-margin-top: 5rem;
+	}
+
+	.storyline__inner {
+		width: min(100%, 90rem);
+		margin: 0 auto;
+	}
+
+	.storyline__intro {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+		align-items: end;
+		gap: clamp(2rem, 7vw, 8rem);
+	}
+
+	.storyline__eyebrow,
+	.storyline__chapter-eyebrow {
+		margin: 0 0 1rem;
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.62rem, 0.8vw, 0.76rem);
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.storyline__intro h2 {
+		max-width: 58rem;
+		margin: 0;
+		color: #171717;
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 6.4vw, 7rem);
+		font-weight: 800;
+		letter-spacing: -0.1em;
+		line-height: 0.86;
+	}
+
+	.storyline__intro h2 em {
+		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-style: normal;
+	}
+
+	.storyline__intro-copy {
+		max-width: 31rem;
+		margin: 0 0 0.35rem;
+		color: #344d70;
+		font-size: clamp(1rem, 1.45vw, 1.35rem);
+		letter-spacing: -0.035em;
+		line-height: 1.4;
+	}
+
+	.storyline__layout {
+		display: grid;
+		grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
+		align-items: start;
+		gap: clamp(2rem, 7vw, 8rem);
+		margin-top: clamp(3.5rem, 7vw, 7rem);
+	}
+
+	.storyline__image {
+		position: sticky;
+		top: 6rem;
+		margin: 0;
+		padding: clamp(0.65rem, 1.25vw, 1rem);
+		border: 1px solid rgba(73, 139, 238, 0.18);
+		background: rgba(255, 255, 255, 0.52);
+		box-shadow: 0 1.5rem 3rem rgba(52, 99, 177, 0.12);
+		transform: rotate(-2deg);
+	}
+
+	.storyline__image-frame {
+		overflow: hidden;
+		background: #dfeeff;
+	}
+
+	.storyline__image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.storyline__image figcaption {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.85rem 0.15rem 0.1rem;
+		color: #42618f;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.55rem, 0.7vw, 0.68rem);
+		letter-spacing: 0.08em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.storyline__image figcaption span:last-child {
+		text-align: right;
+	}
+
+	.storyline__chapters {
+		position: relative;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.storyline__chapters::before {
+		position: absolute;
+		top: 0.6rem;
+		bottom: 0.8rem;
+		left: 1.15rem;
+		width: 1px;
+		background: linear-gradient(180deg, rgba(23, 105, 232, 0.5), rgba(114, 123, 255, 0.08));
+		content: '';
+	}
+
+	.storyline__chapter {
+		position: relative;
+		display: grid;
+		grid-template-columns: 2.35rem minmax(0, 1fr);
+		gap: 1.35rem;
+		padding: 0 0 clamp(2.2rem, 4vw, 3.8rem);
+	}
+
+	.storyline__chapter:last-child {
+		padding-bottom: 0;
+	}
+
+	.storyline__chapter-marker {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		width: 2.35rem;
+		height: 2.35rem;
+		place-items: center;
+		border: 1px solid rgba(23, 105, 232, 0.35);
+		border-radius: 50%;
+		background: #edf6ff;
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.62rem;
+		letter-spacing: 0.06em;
+	}
+
+	.storyline__chapter-eyebrow {
+		margin-bottom: 0.45rem;
+		font-size: 0.6rem;
+	}
+
+	.storyline__chapter h3 {
+		max-width: 32rem;
+		margin: 0;
+		color: #172d57;
+		font-family: var(--font-display);
+		font-size: clamp(1.45rem, 2.3vw, 2.45rem);
+		font-weight: 700;
+		letter-spacing: -0.06em;
+		line-height: 0.98;
+	}
+
+	.storyline__chapter-copy > p:last-child {
+		max-width: 38rem;
+		margin: 0.8rem 0 0;
+		color: #536b8d;
+		font-size: clamp(0.92rem, 1.1vw, 1.08rem);
+		letter-spacing: -0.02em;
+		line-height: 1.5;
+	}
+
+	.storyline__closing {
+		max-width: 52rem;
+		margin: clamp(4rem, 8vw, 7rem) auto 0;
+		color: #1769e8;
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 3vw, 3rem);
+		font-weight: 700;
+		letter-spacing: -0.07em;
+		line-height: 1.05;
+		text-align: center;
+	}
+
+	@media (max-width: 800px) {
+		.storyline__intro {
+			grid-template-columns: 1fr;
+			gap: 1.8rem;
+		}
+
+		.storyline__layout {
+			grid-template-columns: 1fr;
+			gap: 3.5rem;
+			margin-top: 3.5rem;
+		}
+
+		.storyline__image {
+			position: relative;
+			top: auto;
+			max-width: 40rem;
+			margin: 0 auto;
+			transform: rotate(-1deg);
+		}
+	}
+
+	@media (max-width: 520px) {
+		.storyline {
+			padding-right: 1rem;
+			padding-left: 1rem;
+		}
+
+		.storyline__intro h2 {
+			font-size: clamp(2.8rem, 13vw, 4.6rem);
+		}
+
+		.storyline__image figcaption {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+
+		.storyline__image figcaption span:last-child {
+			text-align: left;
+		}
+
+		.storyline__chapter {
+			grid-template-columns: 2rem minmax(0, 1fr);
+			gap: 0.9rem;
+		}
+
+		.storyline__chapter-marker {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+</style>
