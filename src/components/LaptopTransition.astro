@@ -22,11 +22,19 @@ const cards = [
 		src: `${base}assets/projects/china-telecom/ctexcel-v2_9140.jpg`,
 		alt: 'Visual design for a mobile content system',
 	},
+	{
+		src: `${base}assets/projects/global-south-childhoods/gscsn-homepage.png`,
+		alt: 'GSCSN website homepage with a video-led welcome section',
+	},
+	{
+		src: `${base}assets/projects/global-south-childhoods/gscsn-webinar-series.png`,
+		alt: 'GSCSN webinar series webpage with editorial typography and event information',
+	},
 ];
 
 const columns = [
-	{ direction: 'up', cards: cards.slice(0, 3) },
-	{ direction: 'down', cards: cards.slice(2, 5) },
+	{ direction: 'up', cards: [cards[0], cards[1], cards[2], cards[5]] },
+	{ direction: 'down', cards: [cards[2], cards[3], cards[4], cards[6]] },
 ];
 ---
 
