@@ -233,7 +233,7 @@ const columns = [
 
 	.visual-design-showcase__track {
 		display: block;
-		height: 200%;
+		height: auto;
 	}
 
 	.visual-design-showcase__column--up .visual-design-showcase__track {
@@ -245,21 +245,20 @@ const columns = [
 	}
 
 	.visual-design-showcase__set {
-		display: grid;
-		grid-template-rows: repeat(3, minmax(0, 1fr));
+		display: flex;
+		flex-direction: column;
 		gap: clamp(0.45rem, 0.9vw, 0.75rem);
-		height: 50%;
+		height: auto;
 	}
 
 	.visual-design-showcase__set img {
 		display: block;
 		width: 100%;
-		height: 100%;
-		min-height: 0;
+		height: auto;
+		flex: 0 0 auto;
 		border-radius: clamp(0.35rem, 0.7vw, 0.65rem);
-		object-fit: contain;
+		object-fit: initial;
 		object-position: center;
-		background: #f8fbff;
 		box-shadow: 0 0.4rem 1rem rgba(15, 34, 68, 0.22);
 	}
 
