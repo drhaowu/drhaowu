@@ -1,13 +1,62 @@
 ---
----
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const avatarBase = `${base}assets/images/hao/`;
+const practiceBase = `${base}assets/images/practice/`;
 
+const practiceNodes = [
+	{
+		className: 'practice-overview__node--media',
+		label: 'Media',
+		description: 'Media practice',
+		image: `${practiceBase}icon-media-3d.png`,
+	},
+	{
+		className: 'practice-overview__node--paper',
+		label: 'Paper',
+		description: 'Research papers',
+		image: `${practiceBase}icon-paper-3d.png`,
+	},
+	{
+		className: 'practice-overview__node--idea',
+		label: 'Idea',
+		description: 'Public thinking',
+		image: `${practiceBase}icon-idea-3d.png`,
+	},
+];
+---
 
 <section class="practice-overview" id="about" aria-labelledby="practice-overview-title">
 	<div class="practice-overview__inner">
 		<div class="practice-overview__heading">
 			<p class="practice-overview__eyebrow">About me</p>
-			<h2 id="practice-overview-title">Digital geography is really about <em>people</em>, place and public life.</h2>
+			<h2 id="practice-overview-title">Digital geography is about <em>people</em>, place and public life.</h2>
 		</div>
+
+		<div class="practice-overview__thinking" aria-label="A thinking practice moving between media, research papers and ideas">
+			<div class="practice-overview__orbit" aria-hidden="true"></div>
+			<div class="practice-overview__orbit practice-overview__orbit--inner" aria-hidden="true"></div>
+
+			{practiceNodes.map((node) => (
+				<div class={`practice-overview__node ${node.className}`} role="img" aria-label={`${node.label}: ${node.description}`}>
+					<img src={node.image} alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+					<span>{node.label}</span>
+				</div>
+			))}
+
+			<figure class="practice-overview__avatar">
+				<div class="practice-overview__avatar-glow" aria-hidden="true"></div>
+				<img
+					src={`${avatarBase}hao-wu-avatar-transparent.png`}
+					alt="A 3D illustrated avatar of Hao Wu thinking with a laptop"
+					width="1024"
+					height="1536"
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+		</div>
+
+		<p class="practice-overview__signature"><span>Media Practice</span> <em>based on</em> <strong>Research</strong></p>
 
 		<div class="practice-overview__profile">
 			<div class="practice-overview__copy">
@@ -16,23 +65,7 @@
 				</p>
 				<p class="practice-overview__credit">Dr Hao Wu · Digital Geographer · Researcher · Media Creator</p>
 			</div>
-
-			<div class="practice-overview__stats" aria-label="Profile highlights">
-				<div>
-					<strong>6 Years</strong>
-					<span>Media industry experience</span>
-				</div>
-				<div>
-					<strong>3 Practices</strong>
-					<span>Research · media · design</span>
-				</div>
-				<div>
-					<strong>1 Pipeline</strong>
-					<span>Research to public</span>
-				</div>
-			</div>
 		</div>
-
 	</div>
 </section>
 
@@ -57,15 +90,6 @@
 		text-align: center;
 	}
 
-	.practice-overview__profile {
-		display: grid;
-		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-		gap: clamp(3rem, 7vw, 8rem);
-		align-items: start;
-		max-width: 80rem;
-		margin: clamp(3.5rem, 6vw, 6rem) auto 0;
-	}
-
 	.practice-overview__eyebrow {
 		margin: 0 0 1rem;
 		color: #1769e8;
@@ -76,13 +100,14 @@
 	}
 
 	.practice-overview__heading h2 {
-		margin: 0;
+		max-width: 62rem;
+		margin: 0 auto;
 		color: #171717;
 		font-family: var(--font-display);
-		font-size: clamp(3.35rem, 6.3vw, 6.8rem);
+		font-size: clamp(2.8rem, 5.6vw, 5.8rem);
 		font-weight: 800;
 		letter-spacing: -0.095em;
-		line-height: 0.88;
+		line-height: 0.9;
 	}
 
 	.practice-overview__heading h2 em {
@@ -93,17 +118,158 @@
 		font-style: normal;
 	}
 
+	.practice-overview__thinking {
+		position: relative;
+		width: min(100%, 57rem);
+		aspect-ratio: 1.34;
+		margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+		isolation: isolate;
+	}
+
+	.practice-overview__orbit {
+		position: absolute;
+		top: 9%;
+		left: 14%;
+		width: 72%;
+		height: 78%;
+		border: 1px solid rgba(73, 139, 238, 0.2);
+		border-radius: 50%;
+		transform: rotate(-10deg);
+		pointer-events: none;
+	}
+
+	.practice-overview__orbit--inner {
+		top: 17%;
+		left: 23%;
+		width: 54%;
+		height: 62%;
+		border-color: rgba(73, 139, 238, 0.11);
+		transform: rotate(22deg);
+	}
+
+	.practice-overview__avatar {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		z-index: 2;
+		width: min(45%, 23rem);
+		margin: 0;
+		transform: translateX(-50%);
+		filter: drop-shadow(0 1.4rem 1.6rem rgba(52, 99, 177, 0.14));
+	}
+
+	.practice-overview__avatar img {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.practice-overview__avatar-glow {
+		position: absolute;
+		bottom: 12%;
+		left: 50%;
+		z-index: -1;
+		width: 80%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: rgba(137, 184, 255, 0.28);
+		filter: blur(2.6rem);
+		transform: translateX(-50%);
+	}
+
+	.practice-overview__node {
+		position: absolute;
+		z-index: 3;
+		width: clamp(7rem, 16vw, 11.5rem);
+		text-align: center;
+	}
+
+	.practice-overview__node img {
+		display: block;
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(0 0.9rem 1rem rgba(49, 103, 197, 0.18));
+		transition: transform 240ms ease, filter 240ms ease;
+	}
+
+	.practice-overview__node span {
+		display: block;
+		margin-top: -0.45rem;
+		color: #3863a0;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: clamp(0.58rem, 0.78vw, 0.72rem);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.practice-overview__node:hover img {
+		filter: drop-shadow(0 1.2rem 1.4rem rgba(49, 103, 197, 0.25));
+		transform: translateY(-0.45rem) scale(1.05);
+	}
+
+	.practice-overview__node--media {
+		top: 12%;
+		left: 4%;
+	}
+
+	.practice-overview__node--paper {
+		top: 2%;
+		right: 3%;
+		width: clamp(7.4rem, 17vw, 12rem);
+	}
+
+	.practice-overview__node--idea {
+		right: 15%;
+		bottom: 4%;
+		width: clamp(6.8rem, 15vw, 10.5rem);
+	}
+
+	.practice-overview__signature {
+		margin: clamp(0.25rem, 1vw, 0.8rem) 0 0;
+		color: #162b55;
+		font-family: var(--font-display);
+		font-size: clamp(1.45rem, 2.7vw, 2.7rem);
+		font-weight: 700;
+		letter-spacing: -0.06em;
+		line-height: 1;
+		text-align: center;
+	}
+
+	.practice-overview__signature span {
+		color: #1769e8;
+	}
+
+	.practice-overview__signature em {
+		color: #6680b0;
+		font-style: normal;
+		font-weight: 500;
+	}
+
+	.practice-overview__signature strong {
+		background: linear-gradient(110deg, #1769e8, #49b9ec, #727bff);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	.practice-overview__profile {
+		max-width: 68rem;
+		margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+	}
+
 	.practice-overview__copy {
-		max-width: 48rem;
+		max-width: 52rem;
+		margin: 0 auto;
+		text-align: center;
 	}
 
 	.practice-overview__lead {
-		max-width: 42rem;
 		margin: 0;
 		color: #344d70;
-		font-size: clamp(1.18rem, 1.8vw, 1.8rem);
-		letter-spacing: -0.045em;
-		line-height: 1.28;
+		font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+		letter-spacing: -0.04em;
+		line-height: 1.32;
 	}
 
 	.practice-overview__lead strong {
@@ -112,106 +278,111 @@
 	}
 
 	.practice-overview__credit {
-		margin: 1.45rem 0 0;
+		margin: 1.15rem 0 0;
 		color: #1769e8;
 		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.62rem, 0.8vw, 0.76rem);
+		font-size: clamp(0.58rem, 0.75vw, 0.7rem);
 		letter-spacing: 0.08em;
 		line-height: 1.5;
 		text-transform: uppercase;
 	}
 
-	.practice-overview__stats {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 0;
-		align-self: stretch;
-	}
-
-	.practice-overview__stats div {
-		display: grid;
-		gap: 0.7rem;
-		min-height: 9rem;
-		padding: 0 1.25rem;
-		border-left: 1px solid rgba(47, 118, 237, 0.2);
-	}
-
-	.practice-overview__stats div:first-child {
-		padding-left: 0;
-		border-left: 0;
-	}
-
-	.practice-overview__stats strong {
-		color: #1769e8;
-		font-size: clamp(1.45rem, 2.15vw, 2.6rem);
-		letter-spacing: -0.08em;
-		line-height: 0.9;
-		white-space: nowrap;
-	}
-
-	.practice-overview__stats span {
-		align-self: end;
-		color: #667995;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.55rem, 0.72vw, 0.7rem);
-		line-height: 1.4;
-		text-transform: uppercase;
-	}
-
-	@media (max-width: 900px) {
-		.practice-overview__profile {
-			grid-template-columns: 1fr;
-			gap: 2.8rem;
+	@media (max-width: 700px) {
+		.practice-overview__heading h2 {
+			font-size: clamp(2.45rem, 10vw, 4.2rem);
 		}
 
-		.practice-overview__stats {
-			max-width: 52rem;
+		.practice-overview__thinking {
+			width: 110%;
+			margin-left: -5%;
+			aspect-ratio: 0.92;
+		}
+
+		.practice-overview__orbit {
+			top: 10%;
+			left: 8%;
+			width: 84%;
+			height: 72%;
+		}
+
+		.practice-overview__orbit--inner {
+			top: 18%;
+			left: 17%;
+			width: 66%;
+			height: 55%;
+		}
+
+		.practice-overview__avatar {
+			width: 58%;
+		}
+
+		.practice-overview__node--media {
+			top: 13%;
+			left: 0;
+		}
+
+		.practice-overview__node--paper {
+			top: 11%;
+			right: 0;
+		}
+
+		.practice-overview__node--idea {
+			right: 3%;
+			bottom: 4%;
+		}
+
+		.practice-overview__signature {
+			max-width: 20rem;
+			margin-right: auto;
+			margin-left: auto;
+			font-size: clamp(1.3rem, 6vw, 2rem);
+			line-height: 1.05;
 		}
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 420px) {
 		.practice-overview {
 			padding-right: 1rem;
 			padding-left: 1rem;
 		}
 
-		.practice-overview__profile {
-			grid-template-columns: 1fr;
-			gap: 3rem;
-			margin-top: 3rem;
+		.practice-overview__thinking {
+			width: 118%;
+			margin-left: -9%;
+		}
+
+		.practice-overview__avatar {
+			width: 62%;
+		}
+
+		.practice-overview__node {
+			width: 7rem;
+		}
+
+		.practice-overview__node--media {
+			left: 1%;
+		}
+
+		.practice-overview__node--paper {
+			right: 1%;
+		}
+
+		.practice-overview__node--idea {
+			right: 2%;
 		}
 
 		.practice-overview__lead {
-			font-size: 1.35rem;
-		}
-
-		.practice-overview__heading h2 {
-			font-size: clamp(2.8rem, 11vw, 4.4rem);
+			font-size: 1.15rem;
 		}
 
 		.practice-overview__credit {
-			font-size: 0.56rem;
+			font-size: 0.53rem;
 		}
-
-		.practice-overview__stats div {
-			min-height: 6.5rem;
-			padding: 0 0.6rem;
-		}
-
-		.practice-overview__stats div:first-child {
-			padding-left: 0;
-		}
-
-		.practice-overview__stats strong {
-			font-size: 1.5rem;
-		}
-
-		.practice-overview__stats span {
-			font-size: 0.5rem;
-		}
-
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.practice-overview__node img {
+			transition: none;
+		}
 	}
 </style>
