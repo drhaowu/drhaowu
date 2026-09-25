@@ -69,7 +69,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 			>
 				<span class="publication-shelf__frame publication-shelf__frame--public">
 					<img
-						src="https://www.ucl.ac.uk/social-historical-sciences/sites/social_historical_sciences/files/styles/marketing_hero_xl/public/hao_news_articles.jpg.jpg?itok=b29Zjiwx"
+						src={`${base}assets/projects/research/ucl-hybrid-queer-spaces.png`}
 						alt="UCL research news article about Hao Wu's study of hybrid queer spaces in China"
 						loading="lazy"
 						decoding="async"
@@ -127,10 +127,12 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 	}
 
 	.publication-shelf__triangle {
+		position: relative;
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		align-items: end;
-		width: min(100%, 72rem);
+		align-items: start;
+		width: min(100%, 66rem);
+		min-height: clamp(35rem, 51vw, 47rem);
 		margin: clamp(3.5rem, 6vw, 6rem) auto 0;
 	}
 
@@ -145,39 +147,46 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	.publication-shelf__object--article {
 		grid-column: 1 / -1;
+		grid-row: 1;
 		justify-self: center;
 		width: min(100%, 25rem);
-		z-index: 3;
+		transform: translateY(3.6rem);
+		z-index: 5;
 	}
 
 	.publication-shelf__object--journal {
+		grid-column: 1;
+		grid-row: 1;
 		justify-self: start;
-		margin-top: -3.7rem;
-		transform: translateX(-1rem) rotate(8deg);
+		width: min(100%, 21rem);
+		margin-top: clamp(7rem, 10vw, 9rem);
+		transform: translateX(3.2rem) rotate(8deg);
 		z-index: 2;
 	}
 
 	.publication-shelf__object--public {
+		grid-column: 2;
+		grid-row: 1;
 		justify-self: end;
-		width: min(100%, 27rem);
-		margin-top: -3.7rem;
-		transform: translateX(1rem) rotate(-8deg);
+		width: min(100%, 24rem);
+		margin-top: clamp(7rem, 10vw, 9rem);
+		transform: translateX(-3.2rem) rotate(-8deg);
 		z-index: 2;
 	}
 
 	.publication-shelf__object--article:hover,
 	.publication-shelf__object--article:focus-visible {
-		transform: translateY(-0.7rem) rotate(1deg);
+		transform: translateY(2.9rem) rotate(1deg);
 	}
 
 	.publication-shelf__object--journal:hover,
 	.publication-shelf__object--journal:focus-visible {
-		transform: translate(-1rem, -0.7rem) rotate(3deg);
+		transform: translate(3.2rem, -0.7rem) rotate(5deg);
 	}
 
 	.publication-shelf__object--public:hover,
 	.publication-shelf__object--public:focus-visible {
-		transform: translate(1rem, -0.7rem) rotate(-3deg);
+		transform: translate(-3.2rem, -0.7rem) rotate(-5deg);
 	}
 
 	.publication-shelf__frame {
@@ -193,7 +202,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		position: absolute;
 		bottom: 80%;
 		left: 20%;
-		z-index: 1;
+		z-index: 3;
 		display: block;
 		width: clamp(8rem, 13vw, 11rem);
 		aspect-ratio: 2 / 3;
@@ -260,7 +269,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 	}
 
 	.publication-shelf__frame--public {
-		aspect-ratio: 4 / 3;
+		aspect-ratio: 2644 / 2522;
 	}
 
 	.publication-shelf__television {
@@ -404,7 +413,8 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		display: block;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
+		background: #ffffff;
 	}
 
 	.publication-shelf__hover-label {
@@ -448,7 +458,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	.publication-shelf__details {
 		max-width: 64rem;
-		margin: clamp(4rem, 7vw, 7rem) auto 0;
+		margin: clamp(1.5rem, 3vw, 3rem) auto 0;
 		text-align: center;
 	}
 
@@ -481,16 +491,21 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 	@media (max-width: 700px) {
 		.publication-shelf__triangle {
 			grid-template-columns: 1fr;
+			min-height: auto;
 			gap: 2rem;
 		}
 
 		.publication-shelf__object--article {
 			grid-column: auto;
+			grid-row: auto;
 			width: min(82%, 23rem);
+			transform: none;
 		}
 
 		.publication-shelf__object--journal,
 		.publication-shelf__object--public {
+			grid-column: auto;
+			grid-row: auto;
 			justify-self: center;
 			margin-top: 0;
 			transform: none;

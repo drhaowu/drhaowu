@@ -29,7 +29,7 @@ const seo = {
 		<LaptopTransition />
 
 		<div class="home-page__sections" aria-label="Practice details">
-			{portfolioCards.filter((card) => card.slug !== 'media-research' && card.slug !== 'visual-design').map((card) => (
+			{portfolioCards.filter((card) => card.slug !== 'media-research' && card.slug !== 'visual-design' && card.slug !== 'video-production').map((card) => (
 				<PracticeSection page={portfolioDetails[card.slug]} {assetBase} {base} />
 			))}
 		</div>
