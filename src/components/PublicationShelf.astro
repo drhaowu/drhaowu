@@ -153,22 +153,22 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 	}
 
 	.publication-shelf__object--journal {
-		grid-column: 1;
-		grid-row: 1;
-		justify-self: start;
-		width: min(100%, 21rem);
-		margin-top: clamp(3rem, 6vw, 5rem);
-		transform: translateX(3.2rem) rotate(8deg);
-		z-index: 2;
-	}
-
-	.publication-shelf__object--public {
 		grid-column: 2;
 		grid-row: 1;
 		justify-self: end;
 		width: min(100%, 25rem);
 		margin-top: clamp(7rem, 10vw, 9rem);
 		transform: translateX(-3.2rem) rotate(-8deg);
+		z-index: 2;
+	}
+
+	.publication-shelf__object--public {
+		grid-column: 1;
+		grid-row: 1;
+		justify-self: start;
+		width: min(100%, 25rem);
+		margin-top: clamp(7rem, 10vw, 9rem);
+		transform: translateX(3.2rem) rotate(8deg);
 		z-index: 2;
 	}
 
@@ -179,12 +179,12 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	.publication-shelf__object--journal:hover,
 	.publication-shelf__object--journal:focus-visible {
-		transform: translate(3.2rem, -0.7rem) rotate(5deg);
+		transform: translate(-3.2rem, -0.7rem) rotate(-5deg);
 	}
 
 	.publication-shelf__object--public:hover,
 	.publication-shelf__object--public:focus-visible {
-		transform: translate(-3.2rem, -0.7rem) rotate(-5deg);
+		transform: translate(3.2rem, -0.7rem) rotate(5deg);
 	}
 
 	.publication-shelf__frame {
@@ -258,13 +258,10 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		z-index: 5;
 	}
 
-	.publication-shelf__frame--journal {
-		aspect-ratio: 3 / 4;
-	}
-
 	.publication-shelf__frame--article,
+	.publication-shelf__frame--journal,
 	.publication-shelf__frame--public {
-		/* Match the paper and blog frames without cropping either image. */
+		/* Match all three research cards without cropping their source images. */
 		aspect-ratio: 808 / 1163;
 	}
 
@@ -460,6 +457,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		}
 
 		.publication-shelf__object--article {
+			order: 1;
 			grid-column: auto;
 			grid-row: auto;
 			justify-self: center;
@@ -469,11 +467,20 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 		.publication-shelf__object--journal,
 		.publication-shelf__object--public {
+			width: min(82%, 23rem);
 			grid-column: auto;
 			grid-row: auto;
 			justify-self: center;
 			margin-top: 0;
 			transform: none;
+		}
+
+		.publication-shelf__object--public {
+			order: 2;
+		}
+
+		.publication-shelf__object--journal {
+			order: 3;
 		}
 
 		.publication-shelf__accept-character {
