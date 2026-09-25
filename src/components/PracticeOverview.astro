@@ -224,18 +224,21 @@ const practiceNodes = [
 	.practice-overview__node--media {
 		top: 12%;
 		left: 4%;
+		animation: practice-node-float-up 5.4s ease-in-out infinite;
 	}
 
 	.practice-overview__node--paper {
 		top: 2%;
 		right: 3%;
 		width: clamp(7.4rem, 17vw, 12rem);
+		animation: practice-node-float-down 6.2s ease-in-out -1.8s infinite;
 	}
 
 	.practice-overview__node--idea {
 		right: 15%;
 		bottom: 4%;
 		width: clamp(6.8rem, 15vw, 10.5rem);
+		animation: practice-node-float-up 5.8s ease-in-out -2.4s infinite;
 	}
 
 	.practice-overview__signature {
@@ -394,7 +397,9 @@ const practiceNodes = [
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.practice-overview__node,
 		.practice-overview__node img {
+			animation: none !important;
 			transition: none;
 		}
 
@@ -411,6 +416,26 @@ const practiceNodes = [
 		100% {
 			opacity: 1;
 			transform: translate3d(0, 0, 0) scale(1);
+		}
+	}
+
+	@keyframes practice-node-float-up {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-0.7rem);
+		}
+	}
+
+	@keyframes practice-node-float-down {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(0.7rem);
 		}
 	}
 </style>
