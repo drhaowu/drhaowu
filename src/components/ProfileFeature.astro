@@ -1,6 +1,4 @@
 ---
-import LaptopTransition from './LaptopTransition.astro';
-
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const avatarBase = `${base}assets/images/hao/`;
 const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
@@ -67,30 +65,6 @@ const heroTitle = 'Hao Wu';
 		</a>
 	</div>
 
-	<LaptopTransition />
-
-	<div class="profile-feature__support">
-		<div class="profile-feature__copy">
-			<p class="profile-feature__support-eyebrow">A profile in practice</p>
-			<p class="profile-feature__lead">Hao’s creative approach bridges <strong>theory and practice</strong>, supporting inclusive learning and fostering cross-cultural understanding through digital storytelling.</p>
-			<p class="profile-feature__zh" lang="zh-CN">吴豪一直致力于将理论与实践结合起来，通过媒体叙事的方法支持课堂中的包容性学习，以及跨文化理解。</p>
-		</div>
-
-		<div class="profile-feature__stats" aria-label="Profile highlights">
-			<div>
-				<strong>6 Years</strong>
-				<span>Media Industry<br />Experience</span>
-			</div>
-			<div>
-				<strong>3</strong>
-				<span>Connected<br />Practices</span>
-			</div>
-			<div>
-				<strong>1</strong>
-				<span>Research-to-public<br />Pipeline</span>
-			</div>
-		</div>
-	</div>
 </section>
 
 <style>
@@ -395,72 +369,6 @@ const heroTitle = 'Hao Wu';
 		animation: profile-scroll-bob 2.4s ease-in-out infinite;
 	}
 
-	.profile-feature__support {
-		display: grid;
-		grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-		gap: clamp(2rem, 6vw, 6rem);
-		align-items: end;
-		max-width: 62rem;
-		margin: clamp(2rem, 5vw, 4rem) auto 0;
-		padding: clamp(1rem, 4vw, 2rem) clamp(0.5rem, 3vw, 2rem);
-	}
-
-	.profile-feature__copy {
-		max-width: 43rem;
-	}
-
-	.profile-feature__support-eyebrow {
-		margin-bottom: 1rem;
-	}
-
-	.profile-feature__lead,
-	.profile-feature__zh {
-		margin: 0;
-		color: #344d70;
-		font-size: clamp(1rem, 1.4vw, 1.15rem);
-		line-height: 1.6;
-	}
-
-	.profile-feature__lead strong {
-		color: #1769e8;
-	}
-
-	.profile-feature__zh {
-		margin-top: 1rem;
-		font-size: 0.9rem;
-	}
-
-	.profile-feature__stats {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 0;
-	}
-
-	.profile-feature__stats div {
-		display: grid;
-		gap: 0.5rem;
-		padding: 0 1rem;
-		border-left: 1px solid rgba(47, 118, 237, 0.18);
-	}
-
-	.profile-feature__stats div:first-child {
-		border-left: 0;
-	}
-
-	.profile-feature__stats strong {
-		color: #1769e8;
-		font-size: clamp(1.2rem, 2.4vw, 2rem);
-		line-height: 1;
-	}
-
-	.profile-feature__stats span {
-		color: #667995;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.58rem;
-		line-height: 1.35;
-		text-transform: uppercase;
-	}
-
 	@keyframes profile-orb-one {
 		0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
 		50% { transform: translate3d(10%, 8%, 0) scale(1.12); }
@@ -608,22 +516,6 @@ const heroTitle = 'Hao Wu';
 			display: none;
 		}
 
-		.profile-feature__stats {
-			grid-template-columns: 1fr;
-			gap: 0;
-		}
-
-		.profile-feature__stats div {
-			grid-template-columns: 1fr 1fr;
-			align-items: center;
-			padding: 0.8rem 0;
-			border-top: 1px solid rgba(47, 118, 237, 0.18);
-			border-left: 0;
-		}
-
-		.profile-feature__stats div:first-child {
-			border-top: 0;
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
