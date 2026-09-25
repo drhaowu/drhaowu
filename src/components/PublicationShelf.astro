@@ -12,7 +12,27 @@ const { base } = Astro.props;
 			<h2 id="publication-shelf-title"><span>Research</span><br /><em>On The Page.</em></h2>
 		</div>
 
-		<div class="publication-shelf__triangle" aria-label="Hao Wu's editorial and public-facing work">
+		<div class="publication-shelf__triangle" aria-label="Hao Wu's research, editorial and public-facing work">
+			<a
+				class="publication-shelf__object publication-shelf__object--article"
+				href="https://doi.org/10.1002/berj.70215"
+				target="_blank"
+				rel="noreferrer"
+				aria-label="Read The doctoral journey as decolonial praxis: Self-formation of Global South students in UK higher education"
+			>
+				<span class="publication-shelf__frame publication-shelf__frame--article">
+					<img
+						src={`${base}assets/papers/doctoral-journey-decolonial-praxis-cover.png`}
+						alt="First page of The doctoral journey as decolonial praxis: Self-formation of Global South students in UK higher education"
+						width="808"
+						height="1163"
+						loading="lazy"
+						decoding="async"
+					/>
+				</span>
+				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>Published<br />Article</strong></span>
+			</a>
+
 			<a
 				class="publication-shelf__object publication-shelf__object--journal"
 				href="https://www.sciencedirect.com/journal/digital-geography-and-society"
@@ -110,7 +130,7 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		align-items: start;
 		width: min(100%, 66rem);
-		min-height: clamp(25rem, 38vw, 34rem);
+		min-height: clamp(35rem, 51vw, 47rem);
 		margin: clamp(3.5rem, 6vw, 6rem) auto 0;
 	}
 
@@ -121,6 +141,15 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		color: inherit;
 		text-decoration: none;
 		transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.publication-shelf__object--article {
+		grid-column: 1 / -1;
+		grid-row: 1;
+		justify-self: center;
+		width: min(100%, 25rem);
+		transform: translateY(3.6rem);
+		z-index: 5;
 	}
 
 	.publication-shelf__object--journal {
@@ -137,10 +166,15 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		grid-column: 2;
 		grid-row: 1;
 		justify-self: end;
-		width: min(100%, 24rem);
-		margin-top: clamp(3rem, 6vw, 5rem);
+		width: min(100%, 25rem);
+		margin-top: clamp(7rem, 10vw, 9rem);
 		transform: translateX(-3.2rem) rotate(-8deg);
 		z-index: 2;
+	}
+
+	.publication-shelf__object--article:hover,
+	.publication-shelf__object--article:focus-visible {
+		transform: translateY(2.9rem) rotate(1deg);
 	}
 
 	.publication-shelf__object--journal:hover,
@@ -228,8 +262,10 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		aspect-ratio: 3 / 4;
 	}
 
+	.publication-shelf__frame--article,
 	.publication-shelf__frame--public {
-		aspect-ratio: 2644 / 2522;
+		/* Match the paper and blog frames without cropping either image. */
+		aspect-ratio: 808 / 1163;
 	}
 
 	.publication-shelf__television {
@@ -423,6 +459,14 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 			gap: 2rem;
 		}
 
+		.publication-shelf__object--article {
+			grid-column: auto;
+			grid-row: auto;
+			justify-self: center;
+			width: min(82%, 23rem);
+			transform: none;
+		}
+
 		.publication-shelf__object--journal,
 		.publication-shelf__object--public {
 			grid-column: auto;
@@ -438,6 +482,8 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 			left: 50%;
 		}
 
+		.publication-shelf__object--article:hover,
+		.publication-shelf__object--article:focus-visible,
 		.publication-shelf__object--journal:hover,
 		.publication-shelf__object--journal:focus-visible,
 		.publication-shelf__object--public:hover,
@@ -468,6 +514,10 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 		.publication-shelf__heading h2 {
 			font-size: clamp(4.2rem, 19vw, 7rem);
+		}
+
+		.publication-shelf__object--article {
+			width: min(88%, 20rem);
 		}
 
 	}
