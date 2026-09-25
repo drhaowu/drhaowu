@@ -4,12 +4,19 @@ import LaptopTransition from './LaptopTransition.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const avatarBase = `${base}assets/images/hao/`;
 const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
+const heroTitle = 'Hao Wu';
 ---
 
 <section class="profile-feature" aria-labelledby="profile-feature-title">
 	<div class="profile-feature__stage">
 		<p class="profile-feature__eyebrow">Research · Media · Design</p>
-		<h1 class="profile-feature__title" id="profile-feature-title">Hao Wu</h1>
+		<h1 class="profile-feature__title" id="profile-feature-title" aria-label={heroTitle}>
+			{heroTitle.split('').map((letter, index) => (
+				<span class="profile-feature__title-letter" aria-hidden="true" style={`--title-letter-index: ${index};`}>
+					{letter === ' ' ? '\u00a0' : letter}
+				</span>
+			))}
+		</h1>
 		<p class="profile-feature__stage-note">A curious practice moving between questions, screens and places.</p>
 
 		<div class="profile-feature__character" data-character>
@@ -162,13 +169,13 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 
 	.profile-feature__title {
 		position: absolute;
-		top: 19%;
+		top: 11%;
 		left: 50%;
 		z-index: 0;
 		width: 100%;
 		margin: 0;
 		color: rgba(47, 118, 237, 0.16);
-		font-size: clamp(7rem, 23vw, 20rem);
+		font-size: clamp(8rem, 26vw, 23rem);
 		font-weight: 800;
 		letter-spacing: -0.12em;
 		line-height: 0.78;
@@ -176,6 +183,16 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 		pointer-events: none;
 		transform: translateX(-50%);
 		white-space: nowrap;
+	}
+
+	.profile-feature__title-letter {
+		display: inline-block;
+		opacity: 0;
+		clip-path: inset(0 100% 0 0);
+		filter: blur(4px);
+		transform: translate3d(-0.12em, 0.12em, 0) rotate(3deg);
+		will-change: opacity, clip-path, filter, transform;
+		animation: profile-title-write 860ms cubic-bezier(0.16, 1, 0.3, 1) calc(120ms + var(--title-letter-index) * 90ms) both;
 	}
 
 	.profile-feature__stage-note {
@@ -472,6 +489,27 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 		50% { transform: translateY(0.25rem); }
 	}
 
+	@keyframes profile-title-write {
+		0% {
+			opacity: 0;
+			clip-path: inset(0 100% 0 0);
+			filter: blur(4px);
+			transform: translate3d(-0.12em, 0.12em, 0) rotate(3deg);
+		}
+		48% {
+			opacity: 0.72;
+			clip-path: inset(0 18% 0 0);
+			filter: blur(0.6px);
+			transform: translate3d(0.02em, -0.02em, 0) rotate(-1deg);
+		}
+		100% {
+			opacity: 1;
+			clip-path: inset(0 0 0 0);
+			filter: blur(0);
+			transform: translate3d(0, 0, 0) rotate(0);
+		}
+	}
+
 	@media (max-width: 800px) {
 		.profile-feature__stage {
 			min-height: max(100vh, 100svh);
@@ -479,8 +517,8 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 		}
 
 		.profile-feature__title {
-			top: 22%;
-			font-size: clamp(5.5rem, 25vw, 10rem);
+			top: 14%;
+			font-size: clamp(6.5rem, 28vw, 11rem);
 		}
 
 		.profile-feature__character {
@@ -512,7 +550,8 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 		}
 
 		.profile-feature__title {
-			font-size: clamp(3.2rem, 18vw, 6rem);
+			top: 16%;
+			font-size: clamp(4rem, 21vw, 7rem);
 		}
 
 		.profile-feature__stage-note {
@@ -594,6 +633,14 @@ const avatarLogo = `${avatarBase}hao-wu-avatar-logo.png`;
 
 		.profile-feature__character-image img {
 			transition: none;
+		}
+
+		.profile-feature__title-letter {
+			animation: none;
+			opacity: 1;
+			clip-path: none;
+			filter: none;
+			transform: none;
 		}
 	}
 </style>
