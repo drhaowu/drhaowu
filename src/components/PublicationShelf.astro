@@ -6,43 +6,21 @@ interface Props {
 const { base } = Astro.props;
 ---
 
-<section class="publication-shelf" id="publications" aria-labelledby="publication-shelf-title">
+<section class="publication-shelf" id="research" aria-labelledby="publication-shelf-title">
 	<div class="publication-shelf__inner">
 		<div class="publication-shelf__heading">
-			<p class="publication-shelf__eyebrow">Selected publication · 01</p>
 			<h2 id="publication-shelf-title"><span>Research</span><br /><em>on the page.</em></h2>
-			<p>Some of my research begins as a question and becomes something that can travel beyond the thesis.</p>
 		</div>
 
 		<div class="publication-shelf__stage">
 			<a class="publication-shelf__object" href="https://doi.org/10.1002/berj.70215" target="_blank" rel="noreferrer" aria-label="Read The doctoral journey as decolonial praxis">
-				<span class="publication-shelf__object-label">Open article ↗</span>
 				<span class="publication-shelf__paper">
 					<img src={`${base}assets/papers/doctoral-journey-decolonial-praxis-cover.png`} alt="First page of The doctoral journey as decolonial praxis: Self-formation of Global South students in UK higher education" loading="lazy" decoding="async" />
 				</span>
 			</a>
 
 			<div class="publication-shelf__details">
-				<p class="publication-shelf__eyebrow">Co-authored article · 2026</p>
 				<h3>The doctoral journey as decolonial praxis:<br /><em>Self-formation of Global South students in UK higher education</em></h3>
-				<p class="publication-shelf__summary">This paper follows how Global South doctoral students negotiate Eurocentric academic norms and develop agency through a three-stage process of decolonial self-formation.</p>
-
-				<div class="publication-shelf__meta">
-					<div>
-						<span>Authors</span>
-						<strong>Peng Zhang · Hao Wu · Enze Guo · Amanda McCrory</strong>
-					</div>
-					<div>
-						<span>Published in</span>
-						<strong>British Educational Research Journal</strong>
-					</div>
-				</div>
-
-				<ul class="publication-shelf__stages" aria-label="Research stages">
-					<li><span>01</span>Internalised Prestige</li>
-					<li><span>02</span>Reflexive Repositioning</li>
-					<li><span>03</span>Transformative Engagement</li>
-				</ul>
 			</div>
 		</div>
 	</div>
@@ -78,7 +56,7 @@ const { base } = Astro.props;
 	.publication-shelf__heading h2 {
 		margin: 0;
 		color: #171717;
-		font-size: clamp(4rem, 9.4vw, 9.4rem);
+		font-size: clamp(4.8rem, 11vw, 10rem);
 		font-weight: 800;
 		letter-spacing: -0.105em;
 		line-height: 0.82;
@@ -102,10 +80,10 @@ const { base } = Astro.props;
 
 	.publication-shelf__stage {
 		display: grid;
-		grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
-		gap: clamp(3rem, 8vw, 9rem);
+		grid-template-columns: 1fr;
+		gap: clamp(3rem, 6vw, 5rem);
 		align-items: center;
-		margin-top: clamp(5rem, 9vw, 9rem);
+		margin-top: clamp(4rem, 7vw, 7rem);
 	}
 
 	.publication-shelf__object {
@@ -190,13 +168,16 @@ const { base } = Astro.props;
 	}
 
 	.publication-shelf__details {
-		max-width: 48rem;
+		max-width: 64rem;
+		margin: 0 auto;
+		text-align: center;
 	}
 
 	.publication-shelf__details h3 {
 		margin: 0;
 		color: #171717;
-		font-size: clamp(2rem, 4.4vw, 4.7rem);
+		font-family: var(--font-display);
+		font-size: clamp(2.4rem, 5.4vw, 5.8rem);
 		font-weight: 800;
 		letter-spacing: -0.085em;
 		line-height: 0.92;
@@ -318,6 +299,60 @@ const { base } = Astro.props;
 	@media (prefers-reduced-motion: reduce) {
 		.publication-shelf__paper {
 			transition: none;
+		}
+	}
+</style>
+
+<style>
+	/* The paper carries the information; the supporting microcopy stays out of the way. */
+	.publication-shelf {
+		scroll-margin-top: 5rem;
+	}
+
+	.publication-shelf__eyebrow,
+	.publication-shelf__heading > p:last-child,
+	.publication-shelf__summary,
+	.publication-shelf__meta,
+	.publication-shelf__stages,
+	.publication-shelf__object-label {
+		display: none;
+	}
+
+	.publication-shelf__heading h2 {
+		font-family: var(--font-display);
+		font-size: clamp(4.8rem, 11vw, 10rem);
+		line-height: 0.82;
+	}
+
+	.publication-shelf__stage {
+		grid-template-columns: 1fr;
+		gap: clamp(3rem, 6vw, 5rem);
+		margin-top: clamp(4rem, 7vw, 7rem);
+	}
+
+	.publication-shelf__object {
+		width: min(100%, 25rem);
+	}
+
+	.publication-shelf__details {
+		max-width: 64rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.publication-shelf__details h3 {
+		font-family: var(--font-display);
+		font-size: clamp(2.4rem, 5.4vw, 5.8rem);
+		line-height: 0.9;
+	}
+
+	@media (max-width: 560px) {
+		.publication-shelf__heading h2 {
+			font-size: clamp(4.2rem, 19vw, 7rem);
+		}
+
+		.publication-shelf__details h3 {
+			font-size: clamp(2.25rem, 10vw, 3.7rem);
 		}
 	}
 </style>

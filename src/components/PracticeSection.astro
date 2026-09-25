@@ -11,54 +11,16 @@ const { page, assetBase, base } = Astro.props;
 ---
 
 <section class={`practice-section practice-section--${page.slug}`} id={page.slug} aria-labelledby={`${page.slug}-title`}>
-	<header class="practice-section__header">
-		<div class="practice-section__label">
-			<span>{page.number}</span>
-			<span>{page.title}</span>
-		</div>
-		<a class="practice-section__deep-link" href={`${base}${page.slug}/`}>
-			Full page <span aria-hidden="true">↗</span>
-		</a>
-	</header>
-
 	<div class="practice-section__main">
 		<div class="practice-section__copy">
-			<p class="practice-section__eyebrow">{page.tagline}</p>
 			<h2 id={`${page.slug}-title`}>{page.title}<em>{page.chinese}</em></h2>
-			<p class="practice-section__intro">{page.intro}</p>
-
-			<ul class="practice-section__keywords" aria-label={`${page.title} themes`}>
-				{page.keywords.map((keyword, index) => (
-					<li><span>0{index + 1}</span>{keyword}</li>
-				))}
-			</ul>
 		</div>
 
 		<figure class="practice-section__media">
-			<div class="practice-section__media-bar">
-				<span class="practice-section__media-dot" aria-hidden="true"></span>
-				<span>Selected work</span>
-				<span class="practice-section__media-index">{page.number} / 03</span>
-			</div>
 			<div class="practice-section__media-frame">
 				<img src={`${assetBase}${page.image}`} alt={page.imageAlt} loading="lazy" decoding="async" />
 			</div>
 		</figure>
-	</div>
-
-	<div class="practice-section__stories">
-		{page.sections.map((section, index) => (
-			<article class="practice-story">
-				<p class="practice-story__eyebrow">0{index + 1} / {section.eyebrow}</p>
-				<h3>{section.title}</h3>
-				<p>{section.copy}</p>
-				{section.list && (
-					<ul>
-						{section.list.map((item) => <li>{item}</li>)}
-					</ul>
-				)}
-			</article>
-		))}
 	</div>
 </section>
 
@@ -66,8 +28,8 @@ const { page, assetBase, base } = Astro.props;
 	.practice-section {
 		--section-accent: #1769e8;
 		position: relative;
-		scroll-margin-top: 6.5rem;
-		padding: clamp(1.2rem, 2.8vw, 2.5rem) clamp(0.25rem, 3vw, 2rem) clamp(2rem, 4vw, 3.5rem);
+		scroll-margin-top: 5rem;
+		padding: clamp(6rem, 12vw, 12rem) clamp(0.25rem, 3vw, 2rem);
 	}
 
 	.practice-section + .practice-section {
@@ -153,8 +115,8 @@ const { page, assetBase, base } = Astro.props;
 	.practice-section__main {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: clamp(2.5rem, 5vw, 4.5rem);
-		padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
+		gap: clamp(3rem, 6vw, 6rem);
+		padding: 0;
 		text-align: center;
 	}
 
@@ -176,7 +138,8 @@ const { page, assetBase, base } = Astro.props;
 
 	.practice-section h2 {
 		margin: 0;
-		font-size: clamp(2.7rem, 6.2vw, 6rem);
+		font-family: var(--font-display);
+		font-size: clamp(4.5rem, 10.8vw, 10rem);
 		font-weight: 700;
 		letter-spacing: -0.08em;
 		line-height: 0.91;
@@ -186,7 +149,7 @@ const { page, assetBase, base } = Astro.props;
 		display: block;
 		margin-top: 0.25em;
 		color: var(--section-accent);
-		font-size: 0.5em;
+		font-size: 0.34em;
 		font-style: normal;
 		letter-spacing: -0.04em;
 	}
@@ -258,7 +221,7 @@ const { page, assetBase, base } = Astro.props;
 
 	.practice-section__media-frame {
 		position: relative;
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 16 / 9;
 		overflow: hidden;
 		background: transparent;
 	}
@@ -404,6 +367,54 @@ const { page, assetBase, base } = Astro.props;
 	@media (prefers-reduced-motion: reduce) {
 		.practice-section__media-frame img {
 			transition: none;
+		}
+	}
+</style>
+
+<style>
+	/* On the single-page home, each practice is carried by one large title and one visual. */
+	.practice-section {
+		scroll-margin-top: 5rem;
+		padding-top: clamp(6rem, 12vw, 12rem);
+		padding-bottom: clamp(6rem, 12vw, 12rem);
+	}
+
+	.practice-section__header,
+	.practice-section__eyebrow,
+	.practice-section__intro,
+	.practice-section__keywords,
+	.practice-section__media-bar,
+	.practice-section__stories {
+		display: none;
+	}
+
+	.practice-section__main {
+		gap: clamp(3rem, 6vw, 6rem);
+		padding: 0;
+	}
+
+	.practice-section h2 {
+		font-family: var(--font-display);
+		font-size: clamp(4.5rem, 10.8vw, 10rem);
+		line-height: 0.82;
+	}
+
+	.practice-section h2 em {
+		font-size: 0.34em;
+	}
+
+	.practice-section__media-frame {
+		aspect-ratio: 16 / 9;
+	}
+
+	@media (max-width: 560px) {
+		.practice-section {
+			padding-top: 6rem;
+			padding-bottom: 6rem;
+		}
+
+		.practice-section h2 {
+			font-size: clamp(3.6rem, 18vw, 6.5rem);
 		}
 	}
 </style>

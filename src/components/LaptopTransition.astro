@@ -11,53 +11,36 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		<div class="laptop-transition__bubble laptop-transition__bubble--three" aria-hidden="true"></div>
 
 		<div class="laptop-transition__copy">
-			<p class="laptop-transition__eyebrow">02 / TURN THE PAGE</p>
 			<h2 id="laptop-transition-title">From thinking<br /><em>to making.</em></h2>
-			<p>Scroll down and let the computer open the next layer of the practice.</p>
 		</div>
 
 		<div class="laptop-transition__device" data-laptop-device aria-hidden="true">
 			<div class="laptop-transition__screen" data-laptop-screen>
 				<div class="laptop-transition__screen-inner">
-					<div class="laptop-transition__screen-bar">
-						<span>CHINA TEL · VISUAL DESIGN</span>
-						<span>01 / 03</span>
-					</div>
 					<div class="laptop-transition__screen-heading">
-						<span>Social visuals</span>
 						<strong>CTExcel / platform system</strong>
 					</div>
 					<div class="laptop-transition__case-window">
 						<div class="laptop-transition__case-track">
 							<figure class="laptop-transition__case-card laptop-transition__case-card--one">
 								<img src={visualAsset} alt="China Tel and CTExcel social media design work" loading="lazy" decoding="async" />
-								<figcaption>01 / China Tel · CTExcel</figcaption>
 							</figure>
 							<figure class="laptop-transition__case-card laptop-transition__case-card--two">
 								<img src={visualAsset} alt="China Tel platform-adaptive visual system" loading="lazy" decoding="async" />
-								<figcaption>02 / Platform adaptation</figcaption>
 							</figure>
 							<figure class="laptop-transition__case-card laptop-transition__case-card--three">
 								<img src={visualAsset} alt="China Tel public-facing social storytelling" loading="lazy" decoding="async" />
-								<figcaption>03 / Public-facing design</figcaption>
 							</figure>
 							<figure class="laptop-transition__case-card laptop-transition__case-card--one" aria-hidden="true">
 								<img src={visualAsset} alt="" loading="lazy" decoding="async" />
-								<figcaption>01 / China Tel · CTExcel</figcaption>
 							</figure>
 							<figure class="laptop-transition__case-card laptop-transition__case-card--two" aria-hidden="true">
 								<img src={visualAsset} alt="" loading="lazy" decoding="async" />
-								<figcaption>02 / Platform adaptation</figcaption>
 							</figure>
 							<figure class="laptop-transition__case-card laptop-transition__case-card--three" aria-hidden="true">
 								<img src={visualAsset} alt="" loading="lazy" decoding="async" />
-								<figcaption>03 / Public-facing design</figcaption>
 							</figure>
 						</div>
-					</div>
-					<div class="laptop-transition__screen-footer">
-						<span>China Telecom · social content system</span>
-						<span>looping case study ↗</span>
 					</div>
 				</div>
 			</div>
@@ -66,7 +49,6 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 			</div>
 		</div>
 
-		<p class="laptop-transition__guide">Scroll to reveal the work <span aria-hidden="true">↓</span></p>
 	</div>
 </section>
 
@@ -192,7 +174,8 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 
 	.laptop-transition__copy h2 {
 		margin: 0;
-		font-size: clamp(2.8rem, 6vw, 6rem);
+		font-family: var(--font-display);
+		font-size: clamp(4rem, 9vw, 8.4rem);
 		font-weight: 750;
 		letter-spacing: -0.08em;
 		line-height: 0.88;
@@ -241,7 +224,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 
 	.laptop-transition__screen-inner {
 		display: grid;
-		grid-template-rows: auto auto 1fr auto;
+		grid-template-rows: auto 1fr;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -267,7 +250,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 	.laptop-transition__screen-heading {
 		display: flex;
 		align-items: baseline;
-		justify-content: space-between;
+		justify-content: center;
 		gap: 1rem;
 		padding: 0.4rem 1rem 0.8rem;
 		color: #536b8b;
@@ -276,7 +259,8 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 
 	.laptop-transition__screen-heading strong {
 		color: #1769e8;
-		font-size: clamp(0.85rem, 1.5vw, 1.25rem);
+		font-family: var(--font-display);
+		font-size: clamp(1.2rem, 2.4vw, 2rem);
 		font-weight: 700;
 		letter-spacing: -0.03em;
 	}
@@ -504,5 +488,37 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		.laptop-transition__guide span {
 			animation: none;
 		}
+	}
+</style>
+
+<style>
+	.laptop-transition {
+		scroll-margin-top: 5rem;
+	}
+
+	.laptop-transition__eyebrow,
+	.laptop-transition__copy > p:last-child,
+	.laptop-transition__guide,
+	.laptop-transition__screen-bar,
+	.laptop-transition__screen-footer,
+	.laptop-transition__case-card figcaption,
+	.laptop-transition__screen-heading span {
+		display: none;
+	}
+
+	.laptop-transition__copy h2 {
+		font-family: var(--font-display);
+		font-size: clamp(4rem, 9vw, 8.4rem);
+		line-height: 0.84;
+	}
+
+	.laptop-transition__screen-heading {
+		justify-content: center;
+		padding: 1rem;
+	}
+
+	.laptop-transition__screen-heading strong {
+		font-family: var(--font-display);
+		font-size: clamp(1.2rem, 2.4vw, 2rem);
 	}
 </style>

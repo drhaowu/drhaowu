@@ -11,7 +11,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		<span>HAO WU</span>
 	</a>
 	<nav aria-label="Primary navigation">
-		<a href={`${base}#media-research`}>Research</a>
+		<a href={`${base}#research`}>Research</a>
 		<a href={`${base}#video-production`}>Media</a>
 		<a href={`${base}#visual-design`}>Design</a>
 		<a href={`${base}#about`}>About</a>
@@ -42,8 +42,8 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		display: inline-flex;
 		align-items: center;
 		gap: 0.55rem;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.66rem, 1vw, 0.86rem);
+		font-family: var(--font-body);
+		font-size: clamp(0.84rem, 1.15vw, 1rem);
 		font-weight: 600;
 		letter-spacing: 0.08em;
 		pointer-events: auto;
@@ -71,9 +71,10 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 		align-items: center;
 		gap: clamp(0.8rem, 2.8vw, 2.4rem);
 		margin-left: auto;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.66rem, 1vw, 0.86rem);
-		letter-spacing: 0.04em;
+		font-family: var(--font-body);
+		font-size: clamp(0.92rem, 1.45vw, 1.2rem);
+		font-weight: 500;
+		letter-spacing: 0.02em;
 		pointer-events: auto;
 	}
 
@@ -94,7 +95,7 @@ const avatarLogo = `${base}assets/images/hao/hao-wu-avatar-logo.png`;
 
 		.portfolio-nav nav {
 			gap: 0.9rem;
-			font-size: 0.58rem;
+			font-size: 0.8rem;
 		}
 	}
 
