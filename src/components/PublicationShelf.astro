@@ -49,6 +49,17 @@ src={`${base}assets/papers/doctoral-journey-decolonial-praxis-cover.png`}
 				rel="noreferrer"
 				aria-label="Digital Geography and Society — Early Career Editorial Board"
 			>
+				<span class="publication-shelf__accept-character" aria-hidden="true">
+					<img
+						src={`${base}assets/images/hao/hao-wu-avatar-accept.png`}
+					alt=""
+					width="1024"
+						height="1536"
+						loading="lazy"
+						decoding="async"
+					/>
+					<span class="publication-shelf__accept-sign"><span aria-hidden="true">✓</span><strong>Accept</strong></span>
+				</span>
 				<span class="publication-shelf__frame publication-shelf__frame--journal">
 					<img
 src={`${base}assets/papers/digital-geography-and-society-cover.png`}
@@ -245,10 +256,73 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	.publication-shelf__frame {
 		position: relative;
+		z-index: 2;
 		display: block;
 		overflow: hidden;
 		background: #fff;
 		box-shadow: 1.3rem 1.5rem 2.2rem rgba(38, 82, 148, 0.18), -0.35rem 0 0 rgba(218, 229, 242, 0.8);
+	}
+
+	.publication-shelf__accept-character {
+		position: absolute;
+		bottom: 80%;
+		left: 20%;
+		z-index: 3;
+		display: block;
+		width: clamp(8rem, 13vw, 11rem);
+		aspect-ratio: 2 / 3;
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%, 1.8rem) scale(0.94);
+		transform-origin: 50% 100%;
+		transition: opacity 180ms ease, transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.publication-shelf__accept-character img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		clip-path: inset(0 0 34% 0);
+	}
+
+	.publication-shelf__accept-sign {
+		position: absolute;
+		top: 52%;
+		left: 15%;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.34rem;
+		width: 61%;
+		height: 22%;
+		color: #1769e8;
+		font-family: var(--font-display);
+		font-size: clamp(0.72rem, 1.15vw, 1rem);
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		line-height: 1;
+		text-shadow: 0 0.05rem 0 rgba(255, 255, 255, 0.8);
+	}
+
+	.publication-shelf__accept-sign > span {
+		font-family: ui-sans-serif, system-ui, sans-serif;
+		font-size: 1.05em;
+		font-weight: 900;
+	}
+
+	.publication-shelf__object--journal:hover .publication-shelf__accept-character,
+	.publication-shelf__object--journal:focus .publication-shelf__accept-character,
+	.publication-shelf__object--journal:focus-visible .publication-shelf__accept-character {
+		opacity: 1;
+		transform: translate(-50%, 0) scale(1);
+	}
+
+	.publication-shelf__object--journal:hover,
+	.publication-shelf__object--journal:focus,
+	.publication-shelf__object--journal:focus-visible {
+		z-index: 5;
 	}
 
 	.publication-shelf__frame--article {
@@ -496,6 +570,12 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 			transform: none;
 		}
 
+		.publication-shelf__accept-character {
+			width: clamp(7.5rem, 40vw, 10rem);
+			bottom: 80%;
+			left: 50%;
+		}
+
 		.publication-shelf__object--journal:hover,
 		.publication-shelf__object--journal:focus-visible,
 		.publication-shelf__object--public:hover,
@@ -552,7 +632,8 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	@media (prefers-reduced-motion: reduce) {
 		.publication-shelf__object,
-		.publication-shelf__hover-label {
+		.publication-shelf__hover-label,
+		.publication-shelf__accept-character {
 			transition: none;
 		}
 	}
