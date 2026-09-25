@@ -3,28 +3,37 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 ---
 
 <footer class="portfolio-footer" id="contact">
-	<div>
+	<div class="portfolio-footer__background-title" aria-hidden="true">Bye Bye</div>
+
+	<div class="portfolio-footer__closing">
 		<p class="portfolio-footer__eyebrow">The End</p>
-		<h2>Thank you for reviewing<br /><em>my portfolio.</em></h2>
+		<h2>Bye Bye</h2>
+		<p class="portfolio-footer__closing-note">Thanks for following the work.</p>
 	</div>
+
 	<div class="portfolio-footer__portrait" aria-hidden="true">
 		<div class="portfolio-footer__sun"></div>
 		<img src={`${base}assets/images/hao/hao-wu-avatar-wave-transparent.png`} alt="A 3D illustrated Hao Wu waving goodbye" width="1024" height="1536" loading="lazy" decoding="async" />
 	</div>
-	<div class="portfolio-footer__contact">
-		<p>Contact</p>
-		<a class="portfolio-footer__email" href="mailto:ucfawuc@gmail.com">ucfawuc@gmail.com</a>
-		<div class="portfolio-footer__socials" aria-label="Social links">
-			<a href="https://twitter.com/CasperWU6" target="_blank" rel="noreferrer">
-				<span>Twitter</span>
-				<span>@CasperWU6 <span aria-hidden="true">↗</span></span>
-			</a>
-			<a href="https://www.linkedin.com/in/hao-wu-digital-geographer/" target="_blank" rel="noreferrer">
-				<span>LinkedIn</span>
-				<span>hao-wu-digital-geographer <span aria-hidden="true">↗</span></span>
-			</a>
-		</div>
-	</div>
+
+	<nav class="portfolio-footer__contact" aria-label="Contact Hao Wu">
+		<a class="portfolio-footer__sticker portfolio-footer__sticker--email" href="mailto:ucfawuc@gmail.com">
+			<span class="portfolio-footer__sticker-icon" aria-hidden="true">@</span>
+			<span class="portfolio-footer__sticker-name">Email</span>
+			<span class="portfolio-footer__sticker-detail">ucfawuc@gmail.com</span>
+		</a>
+		<a class="portfolio-footer__sticker portfolio-footer__sticker--twitter" href="https://twitter.com/CasperWU6" target="_blank" rel="noreferrer">
+			<span class="portfolio-footer__sticker-icon" aria-hidden="true">𝕏</span>
+			<span class="portfolio-footer__sticker-name">Twitter</span>
+			<span class="portfolio-footer__sticker-detail">@CasperWU6 ↗</span>
+		</a>
+		<a class="portfolio-footer__sticker portfolio-footer__sticker--linkedin" href="https://www.linkedin.com/in/hao-wu-digital-geographer/" target="_blank" rel="noreferrer">
+			<span class="portfolio-footer__sticker-icon" aria-hidden="true">in</span>
+			<span class="portfolio-footer__sticker-name">LinkedIn</span>
+			<span class="portfolio-footer__sticker-detail">hao-wu-digital-geographer ↗</span>
+		</a>
+	</nav>
+
 	<div class="portfolio-footer__meta">
 		<span>Dr Hao Wu · Digital Geographer / Media Creator</span>
 		<span>© {new Date().getFullYear()} Dr Hao Wu</span>
@@ -172,6 +181,301 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
 		.portfolio-footer__meta {
 			align-items: center;
+		}
+	}
+</style>
+
+<style>
+	.portfolio-footer {
+		position: relative;
+		display: grid;
+		place-items: center;
+		width: 100vw;
+		min-height: max(100vh, 100svh);
+		margin-left: calc(50% - 50vw);
+		padding: clamp(5rem, 9vw, 8rem) clamp(1rem, 5vw, 4rem) clamp(4rem, 7vw, 6rem);
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.portfolio-footer__background-title {
+		position: absolute;
+		top: 8%;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		color: rgba(47, 118, 237, 0.14);
+		font-size: clamp(7rem, 22vw, 23rem);
+		font-weight: 800;
+		letter-spacing: -0.14em;
+		line-height: 0.75;
+		text-align: center;
+		white-space: nowrap;
+		pointer-events: none;
+	}
+
+	.portfolio-footer__closing {
+		position: relative;
+		z-index: 3;
+		margin-top: -3rem;
+		text-align: center;
+	}
+
+	.portfolio-footer__closing h2 {
+		margin: 0;
+		color: #171717;
+		font-size: clamp(4rem, 10vw, 9rem);
+		font-weight: 800;
+		letter-spacing: -0.12em;
+		line-height: 0.82;
+	}
+
+	.portfolio-footer__closing-note {
+		margin: 1rem 0 0;
+		color: #52627a;
+		font-size: clamp(0.9rem, 1.2vw, 1.15rem);
+	}
+
+	.portfolio-footer__portrait {
+		position: relative;
+		z-index: 2;
+		width: min(31rem, 54vw);
+		aspect-ratio: 1;
+		margin-top: -2rem;
+	}
+
+	.portfolio-footer__sun {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 80%;
+		aspect-ratio: 2 / 1;
+		border-radius: 999px 999px 0 0;
+		background: linear-gradient(180deg, #9dcdff, #727bff);
+		transform: translateX(-50%);
+	}
+
+	.portfolio-footer__portrait img {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 86%;
+		height: 100%;
+		object-fit: contain;
+		object-position: bottom center;
+		filter: drop-shadow(0 1.5rem 1.5rem rgba(34, 92, 176, 0.15));
+		transform: translateX(-50%);
+	}
+
+	.portfolio-footer__contact {
+		position: absolute;
+		inset: 0;
+		z-index: 5;
+		width: 100%;
+		margin: 0;
+		color: #344054;
+		pointer-events: none;
+	}
+
+	.portfolio-footer__sticker {
+		--sticker-rotate: 0deg;
+		position: absolute;
+		display: grid;
+		grid-template-columns: 2.75rem minmax(0, 1fr);
+		grid-template-rows: auto auto;
+		gap: 0.1rem 0.7rem;
+		width: clamp(10.5rem, 15vw, 14rem);
+		padding: 0.7rem 0.8rem;
+		border: 1px solid rgba(255, 255, 255, 0.72);
+		border-radius: 1rem;
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(206, 229, 255, 0.72));
+		box-shadow: 0 1.4rem 2rem rgba(44, 101, 185, 0.16), inset 0 0.12rem rgba(255, 255, 255, 0.95);
+		color: #344054;
+		text-decoration: none;
+		pointer-events: auto;
+		animation: footer-sticker-float 6.5s ease-in-out infinite;
+		transition: width 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+	}
+
+	.portfolio-footer__sticker--email {
+		top: 47%;
+		left: clamp(1rem, 10vw, 10rem);
+		--sticker-rotate: -7deg;
+	}
+
+	.portfolio-footer__sticker--twitter {
+		top: 35%;
+		right: clamp(1rem, 11vw, 12rem);
+		--sticker-rotate: 6deg;
+		animation-delay: -2.2s;
+	}
+
+	.portfolio-footer__sticker--linkedin {
+		right: clamp(2rem, 17vw, 19rem);
+		bottom: 22%;
+		--sticker-rotate: -4deg;
+		animation-delay: -4.1s;
+	}
+
+	.portfolio-footer__sticker:hover,
+	.portfolio-footer__sticker:focus-visible {
+		z-index: 6;
+		width: clamp(13rem, 20vw, 18rem);
+		background: rgba(255, 255, 255, 0.98);
+		box-shadow: 0 1.8rem 2.6rem rgba(44, 101, 185, 0.23), inset 0 0.12rem rgba(255, 255, 255, 0.95);
+		outline: none;
+	}
+
+	.portfolio-footer__sticker-icon {
+		display: grid;
+		grid-row: 1 / span 2;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 0.75rem;
+		background: linear-gradient(145deg, #1769e8, #727bff);
+		box-shadow: inset 0 0.1rem rgba(255, 255, 255, 0.55), 0 0.35rem 0.6rem rgba(35, 91, 185, 0.2);
+		color: #ffffff;
+		font-size: 1.35rem;
+		font-weight: 800;
+	}
+
+	.portfolio-footer__sticker-name,
+	.portfolio-footer__sticker-detail {
+		align-self: center;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.66rem;
+		letter-spacing: 0.04em;
+		white-space: nowrap;
+	}
+
+	.portfolio-footer__sticker-name {
+		color: #1769e8;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.portfolio-footer__sticker-detail {
+		max-width: 100%;
+		overflow: hidden;
+		color: #52627a;
+		opacity: 0;
+		text-overflow: ellipsis;
+		transform: translateY(0.25rem);
+		transition: opacity 180ms ease, transform 180ms ease;
+	}
+
+	.portfolio-footer__sticker:hover .portfolio-footer__sticker-detail,
+	.portfolio-footer__sticker:focus-visible .portfolio-footer__sticker-detail {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.portfolio-footer__meta {
+		position: absolute;
+		right: clamp(1rem, 4vw, 4rem);
+		bottom: clamp(1.2rem, 3vw, 2.5rem);
+		left: clamp(1rem, 4vw, 4rem);
+		z-index: 3;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: auto;
+		margin: 0;
+		padding: 0;
+		color: #6b7178;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+	}
+
+	@keyframes footer-sticker-float {
+		0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--sticker-rotate)); }
+		50% { transform: translate3d(0, -0.8rem, 0) rotate(calc(var(--sticker-rotate) * -0.45)); }
+	}
+
+	@media (hover: none) {
+		.portfolio-footer__sticker-detail {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.portfolio-footer {
+			min-height: max(100vh, 44rem);
+			padding-top: 4.5rem;
+		}
+
+		.portfolio-footer__background-title {
+			top: 11%;
+			font-size: clamp(5.8rem, 24vw, 10rem);
+		}
+
+		.portfolio-footer__closing {
+			margin-top: -1rem;
+		}
+
+		.portfolio-footer__closing h2 {
+			font-size: clamp(4.2rem, 19vw, 7rem);
+		}
+
+		.portfolio-footer__portrait {
+			width: min(22rem, 66vw);
+			margin-top: -1rem;
+		}
+
+		.portfolio-footer__sticker {
+			width: 9.5rem;
+			padding: 0.55rem;
+			grid-template-columns: 2.2rem minmax(0, 1fr);
+			gap: 0.08rem 0.5rem;
+		}
+
+		.portfolio-footer__sticker:hover,
+		.portfolio-footer__sticker:focus-visible {
+			width: 12.5rem;
+		}
+
+		.portfolio-footer__sticker-icon {
+			width: 2.2rem;
+			height: 2.2rem;
+			font-size: 1rem;
+		}
+
+		.portfolio-footer__sticker-name,
+		.portfolio-footer__sticker-detail {
+			font-size: 0.54rem;
+		}
+
+		.portfolio-footer__sticker--email {
+			top: 52%;
+			left: 0.4rem;
+		}
+
+		.portfolio-footer__sticker--twitter {
+			top: 39%;
+			right: 0.4rem;
+		}
+
+		.portfolio-footer__sticker--linkedin {
+			right: 0.8rem;
+			bottom: 23%;
+		}
+
+		.portfolio-footer__meta {
+			align-items: center;
+			flex-direction: column;
+			gap: 0.55rem;
+			text-align: center;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.portfolio-footer__sticker {
+			animation: none;
+			transition: none;
 		}
 	}
 </style>

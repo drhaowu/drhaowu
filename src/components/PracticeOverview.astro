@@ -1,5 +1,4 @@
 ---
-import { portfolioCards } from '../data/portfolio';
 ---
 
 <section class="practice-overview" id="practices" aria-labelledby="practice-overview-title">
@@ -29,24 +28,6 @@ import { portfolioCards } from '../data/portfolio';
 			</div>
 		</div>
 
-		<div class="practice-overview__heading">
-			<p class="practice-overview__eyebrow">Ways of working</p>
-			<h2 id="practice-overview-title"><span>Three </span><em>connected</em><br /><span>practices.</span></h2>
-			<p>Choose a thread and follow it down the page.</p>
-		</div>
-
-		<nav class="practice-overview__nav" aria-label="Hao Wu's connected practices">
-			{portfolioCards.map((card) => (
-				<a class="practice-overview__link" href={`#${card.slug}`}>
-					<span class="practice-overview__number">{card.number}</span>
-					<span class="practice-overview__label">
-						<strong>{card.title}</strong>
-						<small>{card.chinese} · {card.shortDescription}</small>
-					</span>
-					<span class="practice-overview__arrow" aria-hidden="true">↗</span>
-				</a>
-			))}
-		</nav>
 	</div>
 </section>
 
@@ -54,7 +35,7 @@ import { portfolioCards } from '../data/portfolio';
 	.practice-overview {
 		position: relative;
 		width: 100vw;
-		min-height: max(100vh, 58rem);
+		min-height: max(100vh, 46rem);
 		margin-left: calc(50% - 50vw);
 		padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 7vw, 8.5rem) clamp(6rem, 11vw, 11rem);
 		background: transparent;
@@ -67,9 +48,9 @@ import { portfolioCards } from '../data/portfolio';
 
 	.practice-overview__profile {
 		display: grid;
-		grid-template-columns: minmax(0, 1.12fr) minmax(25rem, 0.88fr);
-		gap: clamp(2.5rem, 7vw, 8rem);
-		align-items: end;
+		grid-template-columns: 1fr;
+		gap: clamp(4rem, 9vw, 8rem);
+		align-items: start;
 	}
 
 	.practice-overview__eyebrow {
@@ -142,124 +123,6 @@ import { portfolioCards } from '../data/portfolio';
 		text-transform: uppercase;
 	}
 
-	.practice-overview__heading {
-		margin: clamp(8rem, 15vw, 15rem) auto 0;
-		text-align: center;
-	}
-
-	.practice-overview__heading .practice-overview__eyebrow {
-		margin-bottom: 1.5rem;
-	}
-
-	.practice-overview__heading h2 {
-		margin: 0;
-		color: #171717;
-		font-size: clamp(4.4rem, 10.2vw, 10rem);
-		font-weight: 800;
-		letter-spacing: -0.105em;
-		line-height: 0.82;
-	}
-
-	.practice-overview__heading h2 em {
-		background: linear-gradient(110deg, #1769e8 5%, #42b9ef 52%, #727bff 95%);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-		font-style: normal;
-	}
-
-	.practice-overview__heading > p:last-child {
-		margin: 1.7rem 0 0;
-		color: #667995;
-		font-size: clamp(1rem, 1.35vw, 1.35rem);
-		letter-spacing: -0.025em;
-	}
-
-	.practice-overview__nav {
-		margin-top: clamp(5rem, 8vw, 8rem);
-		border-top: 1px solid rgba(47, 118, 237, 0.2);
-	}
-
-	.practice-overview__link {
-		display: grid;
-		grid-template-columns: 4rem minmax(0, 1fr) 4.25rem;
-		align-items: center;
-		min-height: clamp(8rem, 11vw, 11rem);
-		padding: 1.1rem 0;
-		border-bottom: 1px solid rgba(47, 118, 237, 0.2);
-		color: #171717;
-		text-decoration: none;
-		transition: background-color 220ms ease, color 220ms ease, padding 220ms ease;
-	}
-
-	.practice-overview__number {
-		align-self: start;
-		padding-top: 0.55rem;
-		color: #7184b5;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.82rem;
-		letter-spacing: 0.06em;
-	}
-
-	.practice-overview__label {
-		display: grid;
-		gap: 0.7rem;
-	}
-
-	.practice-overview__label strong {
-		font-size: clamp(2.2rem, 5vw, 5rem);
-		font-weight: 800;
-		letter-spacing: -0.085em;
-		line-height: 0.9;
-	}
-
-	.practice-overview__label small {
-		color: #667995;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.62rem, 0.78vw, 0.78rem);
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-	}
-
-	.practice-overview__arrow {
-		display: grid;
-		place-items: center;
-		justify-self: end;
-		width: 3.3rem;
-		height: 3.3rem;
-		border: 1px solid rgba(47, 118, 237, 0.32);
-		border-radius: 50%;
-		color: #1769e8;
-		font-size: 1.55rem;
-		transition: background-color 220ms ease, color 220ms ease, transform 220ms ease;
-	}
-
-	.practice-overview__link:hover,
-	.practice-overview__link:focus-visible {
-		padding-right: 0.8rem;
-		padding-left: 0.8rem;
-		background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(184, 218, 255, 0.22), rgba(255, 255, 255, 0));
-		color: #1769e8;
-	}
-
-	.practice-overview__link:hover .practice-overview__arrow,
-	.practice-overview__link:focus-visible .practice-overview__arrow {
-		background: #1769e8;
-		color: #ffffff;
-		transform: translate(0.15rem, -0.15rem);
-	}
-
-	@media (max-width: 900px) {
-		.practice-overview__profile {
-			grid-template-columns: 1fr;
-			gap: 3.5rem;
-		}
-
-		.practice-overview__stats {
-			max-width: 38rem;
-		}
-	}
-
 	@media (max-width: 560px) {
 		.practice-overview {
 			padding-right: 1rem;
@@ -267,7 +130,7 @@ import { portfolioCards } from '../data/portfolio';
 		}
 
 		.practice-overview__profile {
-			gap: 2.5rem;
+			gap: 3.5rem;
 		}
 
 		.practice-overview__lead {
@@ -295,39 +158,8 @@ import { portfolioCards } from '../data/portfolio';
 			font-size: 0.5rem;
 		}
 
-		.practice-overview__heading {
-			margin-top: 7rem;
-		}
-
-		.practice-overview__heading h2 {
-			font-size: clamp(3.5rem, 16vw, 6rem);
-		}
-
-		.practice-overview__link {
-			grid-template-columns: 2.25rem minmax(0, 1fr) 3rem;
-			min-height: 7.5rem;
-		}
-
-		.practice-overview__label strong {
-			font-size: clamp(1.7rem, 8vw, 2.7rem);
-		}
-
-		.practice-overview__label small {
-			font-size: 0.52rem;
-			line-height: 1.45;
-		}
-
-		.practice-overview__arrow {
-			width: 2.5rem;
-			height: 2.5rem;
-			font-size: 1.1rem;
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.practice-overview__link,
-		.practice-overview__arrow {
-			transition: none;
-		}
 	}
 </style>
