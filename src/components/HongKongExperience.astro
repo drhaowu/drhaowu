@@ -14,18 +14,27 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 			<p class="hong-kong-experience__eyebrow">Media + Research · 01</p>
 			<h2 id="hong-kong-experience-title">The Hong Kong<br /><em>Experience.</em></h2>
 			<p class="hong-kong-experience__intro">
-				A filmed research project about how a city is encountered, remembered and shared through everyday experience.
+				A filmed research project about how a city is encountered, remembered and shared through everyday experience. I developed the research concept and translated the fieldwork into a public-facing film.
 			</p>
+			<div class="hong-kong-experience__project-meta" aria-label="Hong Kong Experience project details">
+				<div>
+					<span>Project</span>
+					<strong>Hong Kong · research film</strong>
+				</div>
+				<div>
+					<span>My role</span>
+					<strong>Concept · fieldwork · direction · edit</strong>
+				</div>
+			</div>
 		</div>
 
 		<div class="hong-kong-experience__stage">
-			<div class="hong-kong-experience__wordmark" aria-hidden="true">HK / FIELD NOTES</div>
 			<div class="hong-kong-experience__person" aria-hidden="true">
 				<img
-					src={`${base}assets/images/profile-photo.png`}
+					src={`${base}assets/images/hao/hao-wu-avatar-transparent.png`}
 					alt=""
-					width="2302"
-					height="2304"
+					width="1024"
+					height="1536"
 					loading="lazy"
 					decoding="async"
 				/>
@@ -50,7 +59,7 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 			</a>
 
 			<div class="hong-kong-experience__caption">
-				<strong>Research in public</strong>
+				<strong>Watch the film</strong>
 				<span>Click the screen to watch ↗</span>
 			</div>
 		</div>
@@ -58,7 +67,6 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 		<div class="hong-kong-experience__keywords" aria-label="Hong Kong Experience project themes">
 			<span>Fieldwork</span>
 			<span>Cross-cultural storytelling</span>
-			<span>Public research</span>
 		</div>
 	</div>
 </section>
@@ -115,11 +123,46 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 	}
 
 	.hong-kong-experience__intro {
-		max-width: 31rem;
+		max-width: 42rem;
 		margin: 1.7rem auto 0;
 		color: #52627a;
 		font-size: clamp(0.92rem, 1.2vw, 1.08rem);
 		line-height: 1.55;
+	}
+
+	.hong-kong-experience__project-meta {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		max-width: 42rem;
+		margin: 1.7rem auto 0;
+		border-top: 1px solid rgba(47, 118, 237, 0.18);
+		border-bottom: 1px solid rgba(47, 118, 237, 0.18);
+		text-align: left;
+	}
+
+	.hong-kong-experience__project-meta div {
+		display: grid;
+		gap: 0.35rem;
+		padding: 0.85rem 1rem;
+	}
+
+	.hong-kong-experience__project-meta div + div {
+		border-left: 1px solid rgba(47, 118, 237, 0.18);
+	}
+
+	.hong-kong-experience__project-meta span {
+		color: #1769e8;
+		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.hong-kong-experience__project-meta strong {
+		color: #344d70;
+		font-size: clamp(0.8rem, 1vw, 0.95rem);
+		font-weight: 500;
+		line-height: 1.3;
 	}
 
 	.hong-kong-experience__stage {
@@ -143,27 +186,12 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 		transform: translateX(-50%);
 	}
 
-	.hong-kong-experience__wordmark {
-		position: absolute;
-		top: 8%;
-		left: 50%;
-		z-index: 0;
-		color: rgba(47, 118, 237, 0.12);
-		font-family: var(--font-display);
-		font-size: clamp(3rem, 10vw, 10rem);
-		font-weight: 800;
-		letter-spacing: -0.1em;
-		line-height: 0.82;
-		white-space: nowrap;
-		transform: translateX(-50%);
-	}
-
 	.hong-kong-experience__person {
 		position: absolute;
-		right: 2%;
+		right: 4%;
 		bottom: 0;
 		z-index: 1;
-		width: min(29rem, 40vw);
+		width: min(20rem, 28vw);
 		filter: drop-shadow(0 1.7rem 1.6rem rgba(37, 82, 150, 0.16));
 	}
 
@@ -384,14 +412,9 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 			margin-top: 2.5rem;
 		}
 
-		.hong-kong-experience__wordmark {
-			top: 8%;
-			font-size: clamp(2.8rem, 15vw, 5rem);
-		}
-
 		.hong-kong-experience__person {
 			right: 4%;
-			width: min(18rem, 54vw);
+			width: min(15rem, 44vw);
 		}
 
 		.hong-kong-experience__television {
@@ -408,6 +431,15 @@ const videoThumbnail = 'https://i.ytimg.com/vi/RSIHUVj4IS4/hqdefault.jpg';
 
 		.hong-kong-experience__keywords {
 			grid-template-columns: 1fr;
+		}
+
+		.hong-kong-experience__project-meta {
+			grid-template-columns: 1fr;
+		}
+
+		.hong-kong-experience__project-meta div + div {
+			border-top: 1px solid rgba(47, 118, 237, 0.18);
+			border-left: 0;
 		}
 
 		.hong-kong-experience__keywords span + span {
