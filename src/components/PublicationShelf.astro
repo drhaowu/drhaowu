@@ -30,7 +30,6 @@ const { base } = Astro.props;
 						decoding="async"
 					/>
 				</span>
-				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>Published<br />Article</strong></span>
 			</a>
 
 			<a
@@ -59,7 +58,6 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 						decoding="async"
 					/>
 				</span>
-				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>Early Career<br />Editorial Board</strong></span>
 			</a>
 
 			<a
@@ -77,7 +75,6 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 						decoding="async"
 					/>
 				</span>
-				<span class="publication-shelf__hover-label" aria-hidden="true"><strong>UCL Research<br />News</strong></span>
 			</a>
 		</div>
 
@@ -410,45 +407,6 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 		background: #ffffff;
 	}
 
-	.publication-shelf__hover-label {
-		position: absolute;
-		top: 8%;
-		right: -12%;
-		z-index: 4;
-		display: block;
-		padding: 1rem 1.25rem;
-		border-radius: 999px;
-		background: #fbfcf5;
-		box-shadow: 0.4rem 0.7rem 1.3rem rgba(36, 68, 125, 0.2);
-		color: #1d2b54;
-		font-family: var(--font-display);
-		font-size: clamp(1rem, 1.7vw, 1.4rem);
-		font-weight: 700;
-		letter-spacing: -0.045em;
-		line-height: 0.9;
-		opacity: 0;
-		pointer-events: none;
-		transform: translateY(0.8rem) rotate(3deg);
-		transition: opacity 260ms ease, transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
-	}
-
-	.publication-shelf__object--public .publication-shelf__hover-label {
-		right: -12%;
-		left: auto;
-		transform: translateY(0.8rem) rotate(3deg);
-	}
-
-	.publication-shelf__object:hover .publication-shelf__hover-label,
-	.publication-shelf__object:focus-visible .publication-shelf__hover-label {
-		opacity: 1;
-		transform: translateY(0) rotate(3deg);
-	}
-
-	.publication-shelf__object--public:hover .publication-shelf__hover-label,
-	.publication-shelf__object--public:focus-visible .publication-shelf__hover-label {
-		transform: translateY(0) rotate(3deg);
-	}
-
 	@media (max-width: 700px) {
 		.publication-shelf__triangle {
 			grid-template-columns: 1fr;
@@ -498,19 +456,6 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 			transform: translateY(-0.6rem) rotate(2deg);
 		}
 
-		.publication-shelf__object--public:hover .publication-shelf__hover-label,
-		.publication-shelf__object--public:focus-visible .publication-shelf__hover-label {
-			transform: translateY(0) rotate(3deg);
-		}
-
-		.publication-shelf__hover-label {
-			right: -4%;
-		}
-
-		.publication-shelf__object--public .publication-shelf__hover-label {
-			right: -4%;
-			left: auto;
-		}
 	}
 
 	@media (max-width: 560px) {
@@ -531,7 +476,6 @@ src={`${base}assets/papers/digital-geography-and-society-cover.png`}
 
 	@media (prefers-reduced-motion: reduce) {
 		.publication-shelf__object,
-		.publication-shelf__hover-label,
 		.publication-shelf__accept-character {
 			transition: none;
 		}

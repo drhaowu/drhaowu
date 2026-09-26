@@ -28,7 +28,6 @@ const practiceNodes = [
 <section class="practice-overview" id="about" aria-labelledby="practice-overview-title">
 	<div class="practice-overview__inner">
 		<div class="practice-overview__heading">
-			<p class="practice-overview__eyebrow">About me</p>
 			<h2 id="practice-overview-title">An interdisciplinary researcher working across <em>media</em>, space and education.</h2>
 		</div>
 
@@ -39,7 +38,6 @@ const practiceNodes = [
 			{practiceNodes.map((node) => (
 				<div class={`practice-overview__node ${node.className}`} role="img" aria-label={`${node.label}: ${node.description}`}>
 					<img src={node.image} alt="" width="1254" height="1254" loading="lazy" decoding="async" />
-					<span>{node.label}</span>
 				</div>
 			))}
 
@@ -63,7 +61,6 @@ const practiceNodes = [
 				<p class="practice-overview__lead">
 					My practice bridges <strong>theory and practice</strong>, moving between research, media and design to make complex ideas feel public, human and shareable.
 				</p>
-				<p class="practice-overview__credit">Dr Hao Wu · Digital Geographer · Researcher · Media Creator</p>
 			</div>
 		</div>
 	</div>
@@ -88,15 +85,6 @@ const practiceNodes = [
 		max-width: 70rem;
 		margin: 0 auto;
 		text-align: center;
-	}
-
-	.practice-overview__eyebrow {
-		margin: 0 0 1rem;
-		color: #1769e8;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.65rem, 0.8vw, 0.78rem);
-		letter-spacing: 0.13em;
-		text-transform: uppercase;
 	}
 
 	.practice-overview__heading h2 {
@@ -206,16 +194,6 @@ const practiceNodes = [
 		transition: transform 240ms ease, filter 240ms ease;
 	}
 
-	.practice-overview__node span {
-		display: block;
-		margin-top: -0.45rem;
-		color: #3863a0;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.58rem, 0.78vw, 0.72rem);
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-	}
-
 	.practice-overview__node:hover img {
 		filter: drop-shadow(0 1.2rem 1.4rem rgba(49, 103, 197, 0.25));
 		transform: translateY(-0.45rem) scale(1.05);
@@ -291,16 +269,6 @@ const practiceNodes = [
 	.practice-overview__lead strong {
 		color: #1769e8;
 		font-weight: 700;
-	}
-
-	.practice-overview__credit {
-		margin: 1.15rem 0 0;
-		color: #1769e8;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.58rem, 0.75vw, 0.7rem);
-		letter-spacing: 0.08em;
-		line-height: 1.5;
-		text-transform: uppercase;
 	}
 
 	@media (max-width: 700px) {
@@ -391,9 +359,6 @@ const practiceNodes = [
 			font-size: 1.15rem;
 		}
 
-		.practice-overview__credit {
-			font-size: 0.53rem;
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

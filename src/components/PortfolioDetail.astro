@@ -18,7 +18,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 <article class="detail-page" style={`--detail-accent: ${page.accent}`}>
 	<section class="detail-hero" aria-labelledby="detail-title">
 		<div class="detail-hero__copy">
-			<p class="detail-hero__eyebrow">{page.number} / {page.title}</p>
 			<h1 id="detail-title">{page.title}<br /><em>{page.chinese}</em></h1>
 			<p class="detail-hero__tagline">{page.tagline}</p>
 			<p class="detail-hero__intro">{page.intro}</p>
@@ -29,20 +28,10 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		</div>
 	</section>
 
-	<section class="detail-keywords" aria-label="Key themes">
-		{page.keywords.map((keyword, index) => (
-			<div>
-				<span>0{index + 1}</span>
-				<strong>{keyword}</strong>
-			</div>
-		))}
-	</section>
-
 	<div class="detail-sections">
 		{page.sections.map((section, index) => (
 			<section class={`detail-story ${index % 2 === 1 ? 'detail-story--reverse' : ''}`}>
 				<div class="detail-story__copy">
-					<p class="detail-story__eyebrow">{section.eyebrow}</p>
 					<h2>{section.title}</h2>
 					<p class="detail-story__body">{section.copy}</p>
 					{section.list && (
@@ -63,7 +52,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 	{page.slug === 'media-research' && <PublicationShelf {base} />}
 
 	<section class="detail-next">
-		<p class="detail-story__eyebrow">Next practice</p>
 		<a href={`${base}${nextSlug}/`}>
 			<span>{nextTitle}</span>
 			<strong aria-hidden="true">↗</strong>
@@ -94,16 +82,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 		z-index: 1;
 		max-width: 48rem;
 		margin: 0 auto;
-	}
-
-	.detail-hero__eyebrow,
-	.detail-story__eyebrow {
-		margin: 0 0 1.2rem;
-		color: var(--detail-accent);
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.7rem;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
 	}
 
 	.detail-hero h1 {
@@ -168,30 +146,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 	.detail-hero__media img[src*='video-production'] {
 		object-fit: cover;
 		object-position: center 30%;
-	}
-
-	.detail-keywords {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1rem;
-		padding: 1.4rem 0;
-		text-align: center;
-	}
-
-	.detail-keywords div {
-		display: grid;
-		gap: 0.45rem;
-	}
-
-	.detail-keywords span {
-		color: #6b7178;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.62rem;
-	}
-
-	.detail-keywords strong {
-		font-size: 1rem;
-		font-weight: 600;
 	}
 
 	.detail-sections {
@@ -361,11 +315,6 @@ const nextTitle = nextSlug === 'visual-design' ? 'Visual Design' : nextSlug === 
 	}
 
 	@media (max-width: 560px) {
-		.detail-keywords {
-			grid-template-columns: 1fr;
-			gap: 1rem;
-		}
-
 		.detail-hero h1 {
 			font-size: clamp(3.2rem, 15vw, 5rem);
 		}

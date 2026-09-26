@@ -3,32 +3,22 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
 const chapters = [
 	{
-		number: '01',
-		eyebrow: 'Foundation',
 		title: 'A digital geographer with a media lens.',
 		copy: 'I completed my PhD in Digital Geography at University College London, combining media and geographical perspectives to explore queer lives and hybrid spaces in China.',
 	},
 	{
-		number: '02',
-		eyebrow: 'Public education',
 		title: 'Research should make room for more voices.',
 		copy: 'In 2025, I served as the UCL Faculty of Social and Historical Sciences Representative and was nominated and shortlisted for Academic Rep of the Year. I brought my commitment to diversity and inclusion into everyday academic life.',
 	},
 	{
-		number: '03',
-		eyebrow: 'Recognition and publication',
 		title: 'From participation to authorship.',
 		copy: 'In 2026, I joined the Early Career Editorial Board of Digital Geography and Society. I also contributed to a UCL ChangeMakers-funded project and published my first article as second and corresponding author.',
 	},
 	{
-		number: '04',
-		eyebrow: 'Research in public',
 		title: 'Turning fieldwork into shared experience.',
 		copy: 'As a Research Assistant, I contributed to The Hong Kong Experience, helping translate research on migration, memory and belonging into a public-facing project for families and communities.',
 	},
 	{
-		number: '05',
-		eyebrow: 'Media practice',
 		title: 'Four years learning how ideas travel.',
 		copy: 'During my PhD, I worked part-time for four years in social media operations at China Telecom Europe, managing content and community across Xiaohongshu and WeChat within a Fortune Global 500 telecommunications group.',
 	},
@@ -39,7 +29,6 @@ const chapters = [
 	<div class="storyline__inner">
 		<div class="storyline__intro">
 			<div>
-				<p class="storyline__eyebrow">The thread</p>
 				<h2 id="storyline-title">From digital geography to <em>public practice.</em></h2>
 			</div>
 			<p class="storyline__intro-copy">
@@ -52,18 +41,13 @@ const chapters = [
 				<div class="storyline__image-frame">
 					<img src={`${base}assets/images/hao/ucl-main-building.jpg`} alt="University College London Main Building framed by trees and campus life" width="1024" height="768" loading="lazy" decoding="async" />
 				</div>
-				<figcaption>
-					<span>UCL · Digital Geography</span>
-					<span>Research, education and public life</span>
-				</figcaption>
 			</figure>
 
 			<ol class="storyline__chapters">
 				{chapters.map((chapter) => (
 					<li class="storyline__chapter">
-						<div class="storyline__chapter-marker" aria-hidden="true">{chapter.number}</div>
+						<div class="storyline__chapter-marker" aria-hidden="true"></div>
 						<div class="storyline__chapter-copy">
-							<p class="storyline__chapter-eyebrow">{chapter.eyebrow}</p>
 							<h3>{chapter.title}</h3>
 							<p>{chapter.copy}</p>
 						</div>
@@ -96,16 +80,6 @@ const chapters = [
 		grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
 		align-items: end;
 		gap: clamp(2rem, 7vw, 8rem);
-	}
-
-	.storyline__eyebrow,
-	.storyline__chapter-eyebrow {
-		margin: 0 0 1rem;
-		color: #1769e8;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.62rem, 0.8vw, 0.76rem);
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
 	}
 
 	.storyline__intro h2 {
@@ -166,23 +140,6 @@ const chapters = [
 		height: auto;
 	}
 
-	.storyline__image figcaption {
-		display: flex;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: 0.85rem 0.15rem 0.1rem;
-		color: #42618f;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: clamp(0.55rem, 0.7vw, 0.68rem);
-		letter-spacing: 0.08em;
-		line-height: 1.4;
-		text-transform: uppercase;
-	}
-
-	.storyline__image figcaption span:last-child {
-		text-align: right;
-	}
-
 	.storyline__chapters {
 		position: relative;
 		list-style: none;
@@ -215,22 +172,13 @@ const chapters = [
 	.storyline__chapter-marker {
 		position: relative;
 		z-index: 1;
-		display: grid;
-		width: 2.35rem;
-		height: 2.35rem;
-		place-items: center;
-		border: 1px solid rgba(23, 105, 232, 0.35);
+		width: 0.72rem;
+		height: 0.72rem;
+		margin: 0.8rem auto 0;
+		border: 1px solid rgba(23, 105, 232, 0.42);
 		border-radius: 50%;
 		background: #edf6ff;
-		color: #1769e8;
-		font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 0.62rem;
-		letter-spacing: 0.06em;
-	}
-
-	.storyline__chapter-eyebrow {
-		margin-bottom: 0.45rem;
-		font-size: 0.6rem;
+		box-shadow: 0 0 0 0.28rem rgba(23, 105, 232, 0.08);
 	}
 
 	.storyline__chapter h3 {
@@ -296,24 +244,15 @@ const chapters = [
 			font-size: clamp(2.8rem, 13vw, 4.6rem);
 		}
 
-		.storyline__image figcaption {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 0.25rem;
-		}
-
-		.storyline__image figcaption span:last-child {
-			text-align: left;
-		}
-
 		.storyline__chapter {
 			grid-template-columns: 2rem minmax(0, 1fr);
 			gap: 0.9rem;
 		}
 
 		.storyline__chapter-marker {
-			width: 2rem;
-			height: 2rem;
+			width: 0.66rem;
+			height: 0.66rem;
+			margin-top: 0.7rem;
 		}
 	}
 </style>
